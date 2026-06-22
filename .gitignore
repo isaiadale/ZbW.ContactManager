@@ -1,0 +1,74 @@
+# ==========================
+# Visual Studio
+# ==========================
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.dbmdl
+*.bak
+*.backup
+TestResults/
+build/
+[Bb]uild/
+bin/
+obj/
+Debug/
+Release/
+x64/
+x86/
+*.log
+*.cache
+*.zip
+*.vsix
+
+# ==========================
+# Rider
+# ==========================
+.idea/
+*.sln.iml
+*.iws
+*.ipr
+.idea_modules/
+.idea_workspace.xml
+.idea_shelf/
+out/
+
+# ==========================
+# ReSharper
+# ==========================
+_ReSharper*/
+*.[Rr]e[Ss]harper
+*.DotSettings.user
+
+# ==========================
+# NuGet
+# ==========================
+*.nupkg
+*.snupkg
+packages/
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+# ==========================
+# MSTest / Tests
+# ==========================
+*.trx
+*.TestSettings
+*.vsmdi
+*.testsettings
+*.testresults
+*.coverage
+*.coveragexml
+
+# ==========================
+# DotNet / Build Artifacts
+# ==========================
+*.dll
+*.exe
+*.pdb
+*.app
+*.appx
+*.appxbundle
