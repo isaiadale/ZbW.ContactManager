@@ -1,3 +1,6 @@
 <Solution>
+  <Project Path="ContactManager.Business/ContactManager.Business.csproj" />
+  <Project Path="ContactManager.Model/ContactManager.Model.csproj" />
+  <Project Path="ContactManager.Persistence.Json/ContactManager.Persistence.Json.csproj" />
   <Project Path="ContactManager.UI.WinForms/ContactManager.UI.WinForms.csproj" />
 </Solution>
