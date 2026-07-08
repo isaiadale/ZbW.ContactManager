@@ -6,4 +6,9 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\ContactManager.Model\ContactManager.Model.csproj" />
+    <ProjectReference Include="..\ContactManager.Persistence.Json\ContactManager.Persistence.Json.csproj" />
+  </ItemGroup>
+
 </Project>
