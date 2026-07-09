@@ -6,37 +6,37 @@ using ContactManager.Model.Enums;
 namespace ContactManager.Model
 {
     /// <summary>
-    /// Abstract base class for every person in the system. Bundles the properties
-    /// shared by <see cref="Customer"/> and <see cref="Employee"/>. Cannot be
-    /// instantiated directly; only its subtypes represent real contacts.
+    /// Abstrakte Basisklasse für jede Person im System. Bündelt die Eigenschaften,
+    /// die sich <see cref="Customer"/> und <see cref="Employee"/> teilen. Kann nicht
+    /// direkt instanziiert werden; nur die abgeleiteten Typen stellen reale Kontakte dar.
     /// </summary>
     public abstract class Person
     {
-        /// <summary>Unique identifier, generated once on creation and never changed.</summary>
+        /// <summary>Eindeutiger Bezeichner, wird einmalig bei der Erstellung erzeugt und nie geändert.</summary>
         public Guid Id { get; init; } = Guid.NewGuid();
 
-        /// <summary>Form of address (e.g. Mr/Mrs); optional.</summary>
+        /// <summary>Anrede (z. B. Herr/Frau); optional.</summary>
         public Salutation? Salutation { get; set; }
 
-        /// <summary>Given name of the person. Mandatory.</summary>
+        /// <summary>Vorname der Person. Pflichtfeld.</summary>
         public required string FirstName { get; set; }
 
-        /// <summary>Family name of the person. Mandatory.</summary>
+        /// <summary>Nachname der Person. Pflichtfeld.</summary>
         public required string LastName { get; set; }
 
-        /// <summary>Date of birth (without time component); optional.</summary>
+        /// <summary>Geburtsdatum (ohne Uhrzeit); optional.</summary>
         public DateOnly? DateOfBirth { get; set; }
 
-        /// <summary>Gender of the person; optional.</summary>
+        /// <summary>Geschlecht der Person; optional.</summary>
         public Gender? Gender { get; set; }
 
-        /// <summary>Mobile phone number as free text (keeps leading zeros and "+41"); optional.</summary>
+        /// <summary>Mobiltelefonnummer als Freitext (behält führende Nullen und "+41"); optional.</summary>
         public string? MobilePhone { get; set; }
 
-        /// <summary>Business phone number as free text; optional.</summary>
+        /// <summary>Geschäftliche Telefonnummer als Freitext; optional.</summary>
         public string? BusinessPhone { get; set; }
 
-        /// <summary>E-mail address; optional.</summary>
+        /// <summary>E-Mail-Adresse; optional.</summary>
         public string? Email { get; set; }
     }
 }

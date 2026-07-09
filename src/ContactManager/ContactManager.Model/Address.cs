@@ -5,19 +5,19 @@ using System.Text;
 namespace ContactManager.Model
 {
     /// <summary>
-    /// Postal address (Swiss format). Standalone value object,
-    /// referenced by persons as e.g. home or business address.
+    /// Postanschrift (Schweizer Format). Eigenständiges Wertobjekt,
+    /// das von Personen z. B. als Wohn- oder Geschäftsadresse referenziert wird.
     /// </summary>
     public class Address
     {
-        
-        /// <summary>Street including house number, e.g. "Bahnhofstrasse 1".</summary>
+
+        /// <summary>Strasse inklusive Hausnummer, z. B. "Bahnhofstrasse 1".</summary>
         public required string Street { get; set; }
 
-        /// <summary>Swiss postal code (4 digits), e.g. "9000".</summary>
+        /// <summary>Schweizer Postleitzahl (4-stellig), z. B. "9000".</summary>
         public required string PostalCode { get; set; }
 
-        /// <summary>City or town, e.g. "St. Gallen".</summary>
+        /// <summary>Ort bzw. Stadt, z. B. "St. Gallen".</summary>
         public required string City { get; set; }
         
     }

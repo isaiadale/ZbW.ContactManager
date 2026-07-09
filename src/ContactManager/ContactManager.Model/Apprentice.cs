@@ -5,15 +5,15 @@ using System.Text;
 namespace ContactManager.Model
 {
     /// <summary>
-    /// An apprentice. A special kind of <see cref="Employee"/> that additionally
-    /// tracks the apprenticeship duration and current year.
+    /// Ein Lernender. Eine besondere Art von <see cref="Employee"/>, die zusätzlich
+    /// die Dauer der Lehre und das aktuelle Lehrjahr festhält.
     /// </summary>
     public class Apprentice : Employee
     {
-        /// <summary>Total duration of the apprenticeship in years (e.g. 3 or 4).</summary>
+        /// <summary>Gesamtdauer der Lehre in Jahren (z. B. 3 oder 4).</summary>
         public int ApprenticeshipYears { get; set; }
 
-        /// <summary>Current year of the apprenticeship; should not exceed <see cref="ApprenticeshipYears"/>.</summary>
+        /// <summary>Aktuelles Lehrjahr; sollte <see cref="ApprenticeshipYears"/> nicht überschreiten.</summary>
         public int? CurrentApprenticeshipYear { get; set; }
     }
 }

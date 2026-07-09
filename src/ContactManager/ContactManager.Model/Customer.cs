@@ -6,18 +6,18 @@ using ContactManager.Model.Enums;
 namespace ContactManager.Model
 {
     /// <summary>
-    /// A customer contact. Inherits the common person data from <see cref="Person"/>
-    /// and adds customer-specific information.
+    /// Ein Kundenkontakt. Erbt die gemeinsamen Personendaten von <see cref="Person"/>
+    /// und ergänzt sie um kundenspezifische Informationen.
     /// </summary>
     public class Customer : Person
     {
-        /// <summary>Academic or professional title (e.g. "Dr."); optional.</summary>
+        /// <summary>Akademischer oder beruflicher Titel (z. B. "Dr."); optional.</summary>
         public string? Title { get; set; }
 
-        /// <summary>Whether the customer is currently active or passive. Mandatory.</summary>
+        /// <summary>Gibt an, ob der Kunde aktuell aktiv oder passiv ist. Pflichtfeld.</summary>
         public required Status CustomerStatus { get; set; }
 
-        /// <summary>Postal address of the customer; optional.</summary>
+        /// <summary>Postanschrift des Kunden; optional.</summary>
         public Address? Address { get; set; }
     }
 }

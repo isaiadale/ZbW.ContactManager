@@ -5,14 +5,14 @@ using System.Text;
 namespace ContactManager.Model.Enums
 {
     /// <summary>
-    /// Activity state of a customer.
+    /// Aktivitätsstatus eines Kunden.
     /// </summary>
     public enum Status
     {
-        /// <summary>Customer is currently active.</summary>
+        /// <summary>Kunde ist aktuell aktiv.</summary>
         Active = 1,
 
-        /// <summary>Customer is inactive / dormant.</summary>
+        /// <summary>Kunde ist inaktiv / ruhend (passiv).</summary>
         Passive = 2
     }
 }

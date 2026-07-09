@@ -5,7 +5,7 @@ using System.Text;
 namespace ContactManager.Model.Enums
 {
     /// <summary>
-    /// Biological/legal gender of a person.
+    /// Biologisches/rechtliches Geschlecht einer Person.
     /// </summary>
     public enum Gender
     {

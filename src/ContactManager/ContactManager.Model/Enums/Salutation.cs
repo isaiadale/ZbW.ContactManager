@@ -5,7 +5,7 @@ using System.Text;
 namespace ContactManager.Model.Enums
 {
     /// <summary>
-    /// Form of address used when contacting a person.
+    /// Anrede, die bei der Kontaktaufnahme mit einer Person verwendet wird.
     /// </summary>
     public enum Salutation
     {
