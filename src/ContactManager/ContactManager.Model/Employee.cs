@@ -45,5 +45,16 @@ namespace ContactManager.Model
 
         /// <summary>Wohnadresse des Mitarbeiters; optional.</summary>
         public Address? HomeAddress { get; set; }
+
+        public void AssignEmployeeNumber(int number)
+        {
+            if (number <= 0)
+                throw new ArgumentOutOfRangeException(nameof(number), "Mitarbeiternummer muss positiv sein.");
+
+            if (EmployeeNumber != 0)
+                throw new InvalidOperationException("Mitarbeiternummer wurde bereits vergeben.");
+
+            EmployeeNumber = number;
+        }
     }
 }
