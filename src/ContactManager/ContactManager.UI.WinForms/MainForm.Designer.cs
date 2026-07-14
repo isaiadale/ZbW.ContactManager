@@ -30,12 +30,12 @@
         {
             SuspendLayout();
             // 
-            // Form1
+            // MainForm
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(11F, 21F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
-            Name = "Form1";
+            ClientSize = new Size(880, 378);
+            Name = "MainForm";
             Text = "ContactManager";
             ResumeLayout(false);
         }
