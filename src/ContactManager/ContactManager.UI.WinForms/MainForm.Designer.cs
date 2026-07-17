@@ -59,12 +59,14 @@
             // LblCustomerTile
             // 
             LblCustomerTile.Dock = DockStyle.Fill;
+            LblCustomerTile.Font = new Font("Century Gothic", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             LblCustomerTile.Location = new Point(0, 0);
             LblCustomerTile.Name = "LblCustomerTile";
             LblCustomerTile.Size = new Size(200, 150);
             LblCustomerTile.TabIndex = 0;
             LblCustomerTile.Text = "Kundschaft";
             LblCustomerTile.TextAlign = ContentAlignment.MiddleCenter;
+            LblCustomerTile.Click += LblCustomerTile_Click;
             // 
             // PnlEmployeeTile
             // 
@@ -77,12 +79,14 @@
             // LblEmployeeTile
             // 
             LblEmployeeTile.Dock = DockStyle.Fill;
+            LblEmployeeTile.Font = new Font("Century Gothic", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             LblEmployeeTile.Location = new Point(0, 0);
             LblEmployeeTile.Name = "LblEmployeeTile";
             LblEmployeeTile.Size = new Size(200, 150);
             LblEmployeeTile.TabIndex = 0;
             LblEmployeeTile.Text = "Mitarbeitende";
             LblEmployeeTile.TextAlign = ContentAlignment.MiddleCenter;
+            LblEmployeeTile.Click += LblEmployeeTile_Click;
             // 
             // MainForm
             // 
