@@ -33,6 +33,9 @@ namespace ContactManager.UI.WinForms
             if (_customerListForm == null || _customerListForm.IsDisposed)
             {
                 _customerListForm = new CustomerListForm();
+
+                // Reagiert, sobald das Kundschaft-Fenster geschlossen wird
+                _customerListForm.FormClosed += CustomerListForm_Closed;
                 _customerListForm.Show();
             }
 
@@ -41,6 +44,9 @@ namespace ContactManager.UI.WinForms
             {
                 _customerListForm.BringToFront();
             }
+
+            // Startseite ausblenden, solange das Kundschaft-Fenster offen ist
+            this.Hide();
         }
 
         private void LblEmployeeTile_Click(object sender, EventArgs e)
@@ -49,6 +55,9 @@ namespace ContactManager.UI.WinForms
             if (_employeeListForm == null || _employeeListForm.IsDisposed)
             {
                 _employeeListForm = new EmployeeListForm();
+
+                // Reagiert, sobald das Kundschaft-Fenster geschlossen wird
+                _employeeListForm.FormClosed += EmployeeListForm_Closed;
                 _employeeListForm.Show();
             }
 
@@ -57,6 +66,21 @@ namespace ContactManager.UI.WinForms
             {
                 _employeeListForm.BringToFront();
             }
+
+            // Startseite ausblenden, solange das Kundschaft-Fenster offen ist
+            this.Hide();
+        }
+
+        // Wird automatisch aufgerufen, wenn das Kundschaft-Fenster geschlossen wird
+        private void CustomerListForm_Closed(object? sender, FormClosedEventArgs e)
+        {
+            // Startseite wieder anzeigen
+            this.Show();
+        }
+        private void EmployeeListForm_Closed(object? sender, FormClosedEventArgs e)
+        {
+            // Startseite wieder anzeigen
+            this.Show();
         }
     }
 }
