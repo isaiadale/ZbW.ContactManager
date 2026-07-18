@@ -59,10 +59,10 @@
             // TxtbSearch
             // 
             TxtbSearch.Font = new Font("Century Gothic", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            TxtbSearch.Location = new Point(379, 77);
+            TxtbSearch.Location = new Point(412, 77);
             TxtbSearch.Multiline = true;
             TxtbSearch.Name = "TxtbSearch";
-            TxtbSearch.Size = new Size(266, 35);
+            TxtbSearch.Size = new Size(200, 35);
             TxtbSearch.TabIndex = 2;
             TxtbSearch.Text = " * Textbox für Suche";
             // 
