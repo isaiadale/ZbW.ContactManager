@@ -46,6 +46,14 @@ namespace ContactManager.Model
         /// <summary>Wohnadresse des Mitarbeiters; optional.</summary>
         public Address? HomeAddress { get; set; }
 
+        /// <summary>
+        /// Vergibt die Mitarbeiternummer einmalig. Die Berechnung der nächsten freien Nummer
+        /// liegt in der Business-Schicht; das Model stellt hier nur sicher, dass eine
+        /// einmal vergebene Nummer nicht mehr überschrieben werden kann.
+        /// </summary>
+        /// <param name="number">Die zu vergebende Mitarbeiternummer; muss grösser als 0 sein.</param>
+        /// <exception cref="ArgumentOutOfRangeException">Wird geworfen, wenn <paramref name="number"/> kleiner oder gleich 0 ist.</exception>
+        /// <exception cref="InvalidOperationException">Wird geworfen, wenn diesem Mitarbeiter bereits eine Nummer zugewiesen wurde.</exception>
         public void AssignEmployeeNumber(int number)
         {
             if (number <= 0)

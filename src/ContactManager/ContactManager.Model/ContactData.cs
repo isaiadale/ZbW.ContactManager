@@ -11,5 +11,8 @@
 
         /// <summary>Zuletzt vergebene Mitarbeiternummer, damit der Zähler nach Neustart weiterläuft.</summary>
         public int LastEmployeeNumber { get; set; }
+
+        /// <summary>Zuletzt vergebene Kundennummer, damit der Zähler nach Neustart weiterläuft.</summary>
+        public int LastCustomerNumber { get; set; }
     }
 }
