@@ -20,5 +20,10 @@ namespace ContactManager.UI.WinForms.Forms
         {
             InitializeComponent();
         }
+
+        private void TxtbLastNameSearch_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

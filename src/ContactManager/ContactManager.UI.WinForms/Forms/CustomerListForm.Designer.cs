@@ -29,9 +29,7 @@
         private void InitializeComponent()
         {
             LblCustomerListTitle = new Label();
-            TxtbSearch = new TextBox();
             BtnAddCustomer = new Button();
-            BtnDeleteCustomer = new Button();
             DgvCustomerList = new DataGridView();
             ColCustomerNumber = new DataGridViewTextBoxColumn();
             ColLastname = new DataGridViewTextBoxColumn();
@@ -41,6 +39,14 @@
             ColPhone = new DataGridViewTextBoxColumn();
             ColEmail = new DataGridViewTextBoxColumn();
             ColStatus = new DataGridViewTextBoxColumn();
+            TxtbDateOfBirthSearch = new TextBox();
+            TxtbFirstNameSearch = new TextBox();
+            LblDateOfBirth = new Label();
+            LblFirstName = new Label();
+            LblLastName = new Label();
+            TxtbLastNameSearch = new TextBox();
+            BtnReturnToHome = new Button();
+            BtnOpenEmployeeList = new Button();
             ((System.ComponentModel.ISupportInitialize)DgvCustomerList).BeginInit();
             SuspendLayout();
             // 
@@ -49,108 +55,188 @@
             LblCustomerListTitle.Dock = DockStyle.Top;
             LblCustomerListTitle.Font = new Font("Century Gothic", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
             LblCustomerListTitle.Location = new Point(0, 0);
-            LblCustomerListTitle.Margin = new Padding(2, 0, 2, 0);
             LblCustomerListTitle.Name = "LblCustomerListTitle";
-            LblCustomerListTitle.Size = new Size(1024, 57);
+            LblCustomerListTitle.Size = new Size(1388, 70);
             LblCustomerListTitle.TabIndex = 1;
-            LblCustomerListTitle.Text = "Kundschaft";
+            LblCustomerListTitle.Text = "Übersicht Kundschaft";
             LblCustomerListTitle.TextAlign = ContentAlignment.BottomCenter;
-            // 
-            // TxtbSearch
-            // 
-            TxtbSearch.Font = new Font("Century Gothic", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            TxtbSearch.Location = new Point(412, 77);
-            TxtbSearch.Multiline = true;
-            TxtbSearch.Name = "TxtbSearch";
-            TxtbSearch.Size = new Size(200, 35);
-            TxtbSearch.TabIndex = 2;
-            TxtbSearch.Text = " * Textbox für Suche";
             // 
             // BtnAddCustomer
             // 
             BtnAddCustomer.Font = new Font("Century Gothic", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            BtnAddCustomer.Location = new Point(61, 77);
+            BtnAddCustomer.Location = new Point(1050, 122);
+            BtnAddCustomer.Margin = new Padding(5, 4, 5, 4);
             BtnAddCustomer.Name = "BtnAddCustomer";
-            BtnAddCustomer.Size = new Size(160, 35);
+            BtnAddCustomer.Size = new Size(251, 43);
             BtnAddCustomer.TabIndex = 3;
             BtnAddCustomer.Text = "Neuer Kontakt";
             BtnAddCustomer.UseVisualStyleBackColor = true;
-            // 
-            // BtnDeleteCustomer
-            // 
-            BtnDeleteCustomer.Location = new Point(834, 422);
-            BtnDeleteCustomer.Name = "BtnDeleteCustomer";
-            BtnDeleteCustomer.Size = new Size(130, 35);
-            BtnDeleteCustomer.TabIndex = 4;
-            BtnDeleteCustomer.Text = "Löschen";
-            BtnDeleteCustomer.UseVisualStyleBackColor = true;
             // 
             // DgvCustomerList
             // 
             DgvCustomerList.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             DgvCustomerList.Columns.AddRange(new DataGridViewColumn[] { ColCustomerNumber, ColLastname, ColFirstName, ColTitle, ColDateOfBirth, ColPhone, ColEmail, ColStatus });
-            DgvCustomerList.Location = new Point(61, 132);
+            DgvCustomerList.Location = new Point(87, 327);
+            DgvCustomerList.Margin = new Padding(5, 4, 5, 4);
             DgvCustomerList.Name = "DgvCustomerList";
-            DgvCustomerList.Size = new Size(903, 270);
+            DgvCustomerList.RowHeadersWidth = 62;
+            DgvCustomerList.Size = new Size(1214, 278);
             DgvCustomerList.TabIndex = 5;
-            DgvCustomerList.CellContentClick += DgvCustomerList_CellContentClick;
             // 
             // ColCustomerNumber
             // 
-            ColCustomerNumber.HeaderText = "Nr.";
+            ColCustomerNumber.HeaderText = "KD-Nr.";
+            ColCustomerNumber.MinimumWidth = 8;
             ColCustomerNumber.Name = "ColCustomerNumber";
-            ColCustomerNumber.Width = 40;
+            ColCustomerNumber.Width = 80;
             // 
             // ColLastname
             // 
             ColLastname.HeaderText = "Nachname";
+            ColLastname.MinimumWidth = 8;
             ColLastname.Name = "ColLastname";
-            ColLastname.Width = 120;
+            ColLastname.Width = 160;
             // 
             // ColFirstName
             // 
             ColFirstName.HeaderText = "Vorname";
+            ColFirstName.MinimumWidth = 8;
             ColFirstName.Name = "ColFirstName";
-            ColFirstName.Width = 120;
+            ColFirstName.Width = 160;
             // 
             // ColTitle
             // 
             ColTitle.HeaderText = "Titel";
+            ColTitle.MinimumWidth = 8;
             ColTitle.Name = "ColTitle";
+            ColTitle.Width = 150;
             // 
             // ColDateOfBirth
             // 
             ColDateOfBirth.HeaderText = "Geburtsdatum";
+            ColDateOfBirth.MinimumWidth = 8;
             ColDateOfBirth.Name = "ColDateOfBirth";
+            ColDateOfBirth.Width = 150;
             // 
             // ColPhone
             // 
             ColPhone.HeaderText = "Telefon";
+            ColPhone.MinimumWidth = 8;
             ColPhone.Name = "ColPhone";
+            ColPhone.Width = 150;
             // 
             // ColEmail
             // 
             ColEmail.HeaderText = "E-Mail";
+            ColEmail.MinimumWidth = 8;
             ColEmail.Name = "ColEmail";
-            ColEmail.Width = 200;
+            ColEmail.Width = 220;
             // 
             // ColStatus
             // 
             ColStatus.HeaderText = "Status";
+            ColStatus.MinimumWidth = 8;
             ColStatus.Name = "ColStatus";
             ColStatus.Width = 80;
             // 
+            // TxtbDateOfBirthSearch
+            // 
+            TxtbDateOfBirthSearch.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            TxtbDateOfBirthSearch.Location = new Point(262, 226);
+            TxtbDateOfBirthSearch.Margin = new Padding(5, 4, 5, 4);
+            TxtbDateOfBirthSearch.Name = "TxtbDateOfBirthSearch";
+            TxtbDateOfBirthSearch.Size = new Size(240, 32);
+            TxtbDateOfBirthSearch.TabIndex = 19;
+            TxtbDateOfBirthSearch.Text = "...";
+            // 
+            // TxtbFirstNameSearch
+            // 
+            TxtbFirstNameSearch.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            TxtbFirstNameSearch.Location = new Point(262, 171);
+            TxtbFirstNameSearch.Margin = new Padding(5, 4, 5, 4);
+            TxtbFirstNameSearch.Name = "TxtbFirstNameSearch";
+            TxtbFirstNameSearch.Size = new Size(240, 32);
+            TxtbFirstNameSearch.TabIndex = 18;
+            TxtbFirstNameSearch.Text = "...";
+            // 
+            // LblDateOfBirth
+            // 
+            LblDateOfBirth.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            LblDateOfBirth.Location = new Point(87, 228);
+            LblDateOfBirth.Name = "LblDateOfBirth";
+            LblDateOfBirth.Size = new Size(170, 35);
+            LblDateOfBirth.TabIndex = 17;
+            LblDateOfBirth.Text = "Geburtsdatum";
+            // 
+            // LblFirstName
+            // 
+            LblFirstName.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            LblFirstName.Location = new Point(87, 175);
+            LblFirstName.Name = "LblFirstName";
+            LblFirstName.Size = new Size(170, 35);
+            LblFirstName.TabIndex = 16;
+            LblFirstName.Text = "Vorname";
+            // 
+            // LblLastName
+            // 
+            LblLastName.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            LblLastName.Location = new Point(87, 122);
+            LblLastName.Name = "LblLastName";
+            LblLastName.Size = new Size(170, 35);
+            LblLastName.TabIndex = 15;
+            LblLastName.Text = "Nachname";
+            // 
+            // TxtbLastNameSearch
+            // 
+            TxtbLastNameSearch.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            TxtbLastNameSearch.Location = new Point(262, 119);
+            TxtbLastNameSearch.Margin = new Padding(5, 4, 5, 4);
+            TxtbLastNameSearch.Name = "TxtbLastNameSearch";
+            TxtbLastNameSearch.Size = new Size(240, 32);
+            TxtbLastNameSearch.TabIndex = 14;
+            TxtbLastNameSearch.Text = "...";
+            // 
+            // BtnReturnToHome
+            // 
+            BtnReturnToHome.Font = new Font("Century Gothic", 8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            BtnReturnToHome.Location = new Point(25, 27);
+            BtnReturnToHome.Margin = new Padding(5, 4, 5, 4);
+            BtnReturnToHome.Name = "BtnReturnToHome";
+            BtnReturnToHome.Size = new Size(192, 43);
+            BtnReturnToHome.TabIndex = 20;
+            BtnReturnToHome.Text = "Zurück (ev. mit Icon)";
+            BtnReturnToHome.UseVisualStyleBackColor = true;
+            BtnReturnToHome.Click += BtnReturnToHome_Click;
+            // 
+            // BtnOpenEmployeeList
+            // 
+            BtnOpenEmployeeList.Font = new Font("Century Gothic", 8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            BtnOpenEmployeeList.Location = new Point(1145, 27);
+            BtnOpenEmployeeList.Margin = new Padding(5, 4, 5, 4);
+            BtnOpenEmployeeList.Name = "BtnOpenEmployeeList";
+            BtnOpenEmployeeList.Size = new Size(220, 43);
+            BtnOpenEmployeeList.TabIndex = 21;
+            BtnOpenEmployeeList.Text = "Übersicht Mitarbeitende";
+            BtnOpenEmployeeList.UseVisualStyleBackColor = true;
+            BtnOpenEmployeeList.Click += BtnOpenEmployeeList_Click;
+            // 
             // CustomerListForm
             // 
-            AutoScaleDimensions = new SizeF(7F, 17F);
+            AutoScaleDimensions = new SizeF(11F, 21F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1024, 471);
+            ClientSize = new Size(1388, 654);
+            Controls.Add(BtnOpenEmployeeList);
+            Controls.Add(BtnReturnToHome);
+            Controls.Add(TxtbDateOfBirthSearch);
+            Controls.Add(TxtbFirstNameSearch);
+            Controls.Add(LblDateOfBirth);
+            Controls.Add(LblFirstName);
+            Controls.Add(LblLastName);
+            Controls.Add(TxtbLastNameSearch);
             Controls.Add(DgvCustomerList);
-            Controls.Add(BtnDeleteCustomer);
             Controls.Add(BtnAddCustomer);
-            Controls.Add(TxtbSearch);
             Controls.Add(LblCustomerListTitle);
-            Margin = new Padding(2);
+            Margin = new Padding(3, 2, 3, 2);
             Name = "CustomerListForm";
             Text = "ContactManager - Kundschaft";
             ((System.ComponentModel.ISupportInitialize)DgvCustomerList).EndInit();
@@ -161,9 +247,7 @@
         #endregion
 
         private Label LblCustomerListTitle;
-        private TextBox TxtbSearch;
         private Button BtnAddCustomer;
-        private Button BtnDeleteCustomer;
         private DataGridView DgvCustomerList;
         private DataGridViewTextBoxColumn ColCustomerNumber;
         private DataGridViewTextBoxColumn ColLastname;
@@ -173,5 +257,13 @@
         private DataGridViewTextBoxColumn ColPhone;
         private DataGridViewTextBoxColumn ColEmail;
         private DataGridViewTextBoxColumn ColStatus;
+        private TextBox TxtbDateOfBirthSearch;
+        private TextBox TxtbFirstNameSearch;
+        private Label LblDateOfBirth;
+        private Label LblFirstName;
+        private Label LblLastName;
+        private TextBox TxtbLastNameSearch;
+        private Button BtnReturnToHome;
+        private Button BtnOpenEmployeeList;
     }
 }

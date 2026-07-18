@@ -21,9 +21,15 @@ namespace ContactManager.UI.WinForms.Forms
             InitializeComponent();
         }
 
-        private void DgvCustomerList_CellContentClick(object sender, DataGridViewCellEventArgs e)
+       
+        private void BtnOpenEmployeeList_Click(object sender, EventArgs e)
         {
+           // to do
+        }
 
+        private void BtnReturnToHome_Click(object sender, EventArgs e)
+        {
+            // to do
         }
     }
 }
