@@ -9,6 +9,11 @@ using ContactManager.UI.WinForms.Base;
 
 namespace ContactManager.UI.WinForms.Forms
 {
+    /// <summary>
+    /// Zeigt die Übersicht aller Mitarbeitenden an. Bewusst als eigenständiges Formular
+    /// umgesetzt statt gemeinsam mit <see cref="CustomerListForm"/>, da sich die
+    /// Datentiefe von Customer und Employee deutlich unterscheidet.
+    /// </summary>
     public partial class EmployeeListForm : BaseForm
     {
         public EmployeeListForm()
