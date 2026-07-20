@@ -6,6 +6,8 @@
     <Nullable>enable</Nullable>
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
+	<!-- Einheitliche Schriftart für die gesamte Anwendung, gilt für alle Forms/Controls ohne eigene Font-Angabe -->
+	<ApplicationDefaultFont>Century Gothic, 9pt</ApplicationDefaultFont>
   </PropertyGroup>
 
   <ItemGroup>

@@ -11,4 +11,8 @@
     <ProjectReference Include="..\ContactManager.Persistence.Json\ContactManager.Persistence.Json.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Repositories\" />
+  </ItemGroup>
+
 </Project>
