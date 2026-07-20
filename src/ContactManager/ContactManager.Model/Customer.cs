@@ -20,9 +20,6 @@ namespace ContactManager.Model
         /// <summary>Akademischer oder beruflicher Titel (z. B. "Dr."); optional.</summary>
         public string? Title { get; set; }
 
-        /// <summary>Gibt an, ob der Kunde aktuell aktiv oder passiv ist. Pflichtfeld.</summary>
-        public required Status CustomerStatus { get; set; }
-
         /// <summary>Postanschrift des Kunden; optional.</summary>
         public Address? Address { get; set; }
 
