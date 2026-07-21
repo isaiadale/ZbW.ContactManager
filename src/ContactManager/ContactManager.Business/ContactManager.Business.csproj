@@ -15,7 +15,6 @@
     <Folder Include="Helpers\" />
     <Folder Include="Exceptions\" />
     <Folder Include="Repositories\" />
-    <Folder Include="Search\" />
   </ItemGroup>
 
 </Project>
