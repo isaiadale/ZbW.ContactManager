@@ -46,7 +46,6 @@
             TxtbFirstNameSearch = new TextBox();
             TxtbDateOfBirthSearch = new TextBox();
             BtnReturnToHome = new Button();
-            BtnOpenCustomerList = new Button();
             ((System.ComponentModel.ISupportInitialize)DgvEmployeeList).BeginInit();
             SuspendLayout();
             // 
@@ -70,7 +69,6 @@
             TxtbLastNameSearch.Size = new Size(240, 32);
             TxtbLastNameSearch.TabIndex = 4;
             TxtbLastNameSearch.Text = "...";
-            TxtbLastNameSearch.TextChanged += TxtbLastNameSearch_TextChanged;
             // 
             // DgvEmployeeList
             // 
@@ -207,24 +205,13 @@
             BtnReturnToHome.TabIndex = 21;
             BtnReturnToHome.Text = "Zurück (ev. mit Icon)";
             BtnReturnToHome.UseVisualStyleBackColor = true;
-            // 
-            // BtnOpenCustomerList
-            // 
-            BtnOpenCustomerList.Font = new Font("Century Gothic", 8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            BtnOpenCustomerList.Location = new Point(1154, 27);
-            BtnOpenCustomerList.Margin = new Padding(5, 4, 5, 4);
-            BtnOpenCustomerList.Name = "BtnOpenCustomerList";
-            BtnOpenCustomerList.Size = new Size(220, 43);
-            BtnOpenCustomerList.TabIndex = 22;
-            BtnOpenCustomerList.Text = "Übersicht Kundschaft";
-            BtnOpenCustomerList.UseVisualStyleBackColor = true;
+            BtnReturnToHome.Click += BtnReturnToHome_Click;
             // 
             // EmployeeListForm
             // 
             AutoScaleDimensions = new SizeF(11F, 21F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1388, 654);
-            Controls.Add(BtnOpenCustomerList);
             Controls.Add(BtnReturnToHome);
             Controls.Add(TxtbDateOfBirthSearch);
             Controls.Add(TxtbFirstNameSearch);
@@ -263,6 +250,5 @@
         private TextBox TxtbFirstNameSearch;
         private TextBox TxtbDateOfBirthSearch;
         private Button BtnReturnToHome;
-        private Button BtnOpenCustomerList;
     }
 }

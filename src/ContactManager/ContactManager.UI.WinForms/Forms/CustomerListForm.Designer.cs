@@ -46,7 +46,6 @@
             LblLastName = new Label();
             TxtbLastNameSearch = new TextBox();
             BtnReturnToHome = new Button();
-            BtnOpenEmployeeList = new Button();
             ((System.ComponentModel.ISupportInitialize)DgvCustomerList).BeginInit();
             SuspendLayout();
             // 
@@ -208,24 +207,11 @@
             BtnReturnToHome.UseVisualStyleBackColor = true;
             BtnReturnToHome.Click += BtnReturnToHome_Click;
             // 
-            // BtnOpenEmployeeList
-            // 
-            BtnOpenEmployeeList.Font = new Font("Century Gothic", 8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            BtnOpenEmployeeList.Location = new Point(1145, 27);
-            BtnOpenEmployeeList.Margin = new Padding(5, 4, 5, 4);
-            BtnOpenEmployeeList.Name = "BtnOpenEmployeeList";
-            BtnOpenEmployeeList.Size = new Size(220, 43);
-            BtnOpenEmployeeList.TabIndex = 21;
-            BtnOpenEmployeeList.Text = "Übersicht Mitarbeitende";
-            BtnOpenEmployeeList.UseVisualStyleBackColor = true;
-            BtnOpenEmployeeList.Click += BtnOpenEmployeeList_Click;
-            // 
             // CustomerListForm
             // 
             AutoScaleDimensions = new SizeF(11F, 21F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1388, 654);
-            Controls.Add(BtnOpenEmployeeList);
             Controls.Add(BtnReturnToHome);
             Controls.Add(TxtbDateOfBirthSearch);
             Controls.Add(TxtbFirstNameSearch);
@@ -264,6 +250,5 @@
         private Label LblLastName;
         private TextBox TxtbLastNameSearch;
         private Button BtnReturnToHome;
-        private Button BtnOpenEmployeeList;
     }
 }

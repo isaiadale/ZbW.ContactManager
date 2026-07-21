@@ -20,16 +20,11 @@ namespace ContactManager.UI.WinForms.Forms
         {
             InitializeComponent();
         }
-
-       
-        private void BtnOpenEmployeeList_Click(object sender, EventArgs e)
-        {
-           // to do
-        }
-
+                      
         private void BtnReturnToHome_Click(object sender, EventArgs e)
         {
-            // to do
+            // Schliesst dieses Fenster; MainForm erscheint automatisch wieder (FormClosed-Event)
+            this.Close();
         }
     }
 }

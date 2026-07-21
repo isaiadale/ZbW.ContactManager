@@ -21,9 +21,10 @@ namespace ContactManager.UI.WinForms.Forms
             InitializeComponent();
         }
 
-        private void TxtbLastNameSearch_TextChanged(object sender, EventArgs e)
+        private void BtnReturnToHome_Click(object sender, EventArgs e)
         {
-
+            // Schliesst dieses Fenster; MainForm erscheint automatisch wieder (FormClosed-Event)
+            this.Close();
         }
     }
 }
