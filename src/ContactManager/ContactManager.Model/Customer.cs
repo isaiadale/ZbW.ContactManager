@@ -24,6 +24,13 @@ namespace ContactManager.Model
         public Address? Address { get; set; }
 
         /// <summary>
+        /// Chronologische Historie der Kontaktnotizen zu diesem Kunden. Notizen werden
+        /// ausschliesslich angehängt und nie geändert oder entfernt. Die Verwaltung läuft
+        /// über den <c>ContactNoteService</c> der Business-Schicht.
+        /// </summary>
+        public List<ContactNote> Notes { get; init; } = new();
+
+        /// <summary>
         /// Vergibt die Kundennummer einmalig. Die Berechnung der nächsten freien Nummer
         /// liegt in der Business-Schicht; das Model stellt hier nur sicher, dass eine
         /// einmal vergebene Nummer nicht mehr überschrieben werden kann.
