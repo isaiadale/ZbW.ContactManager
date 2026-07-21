@@ -42,8 +42,9 @@
             LblHomeTitle.Dock = DockStyle.Top;
             LblHomeTitle.Font = new Font("Century Gothic", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
             LblHomeTitle.Location = new Point(0, 0);
+            LblHomeTitle.Margin = new Padding(2, 0, 2, 0);
             LblHomeTitle.Name = "LblHomeTitle";
-            LblHomeTitle.Size = new Size(688, 70);
+            LblHomeTitle.Size = new Size(834, 57);
             LblHomeTitle.TabIndex = 0;
             LblHomeTitle.Text = "Kontaktübersicht";
             LblHomeTitle.TextAlign = ContentAlignment.BottomCenter;
@@ -51,18 +52,20 @@
             // PnlCustomerTile
             // 
             PnlCustomerTile.Controls.Add(LblCustomerTile);
-            PnlCustomerTile.Location = new Point(135, 150);
+            PnlCustomerTile.Location = new Point(175, 155);
+            PnlCustomerTile.Margin = new Padding(2);
             PnlCustomerTile.Name = "PnlCustomerTile";
-            PnlCustomerTile.Size = new Size(200, 150);
+            PnlCustomerTile.Size = new Size(230, 170);
             PnlCustomerTile.TabIndex = 1;
             // 
             // LblCustomerTile
             // 
             LblCustomerTile.Dock = DockStyle.Fill;
-            LblCustomerTile.Font = new Font("Century Gothic", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            LblCustomerTile.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             LblCustomerTile.Location = new Point(0, 0);
+            LblCustomerTile.Margin = new Padding(2, 0, 2, 0);
             LblCustomerTile.Name = "LblCustomerTile";
-            LblCustomerTile.Size = new Size(200, 150);
+            LblCustomerTile.Size = new Size(230, 170);
             LblCustomerTile.TabIndex = 0;
             LblCustomerTile.Text = "Kundschaft";
             LblCustomerTile.TextAlign = ContentAlignment.MiddleCenter;
@@ -71,18 +74,20 @@
             // PnlEmployeeTile
             // 
             PnlEmployeeTile.Controls.Add(LblEmployeeTile);
-            PnlEmployeeTile.Location = new Point(375, 150);
+            PnlEmployeeTile.Location = new Point(445, 155);
+            PnlEmployeeTile.Margin = new Padding(2);
             PnlEmployeeTile.Name = "PnlEmployeeTile";
-            PnlEmployeeTile.Size = new Size(200, 150);
+            PnlEmployeeTile.Size = new Size(230, 170);
             PnlEmployeeTile.TabIndex = 2;
             // 
             // LblEmployeeTile
             // 
             LblEmployeeTile.Dock = DockStyle.Fill;
-            LblEmployeeTile.Font = new Font("Century Gothic", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            LblEmployeeTile.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             LblEmployeeTile.Location = new Point(0, 0);
+            LblEmployeeTile.Margin = new Padding(2, 0, 2, 0);
             LblEmployeeTile.Name = "LblEmployeeTile";
-            LblEmployeeTile.Size = new Size(200, 150);
+            LblEmployeeTile.Size = new Size(230, 170);
             LblEmployeeTile.TabIndex = 0;
             LblEmployeeTile.Text = "Mitarbeitende";
             LblEmployeeTile.TextAlign = ContentAlignment.MiddleCenter;
@@ -90,13 +95,14 @@
             // 
             // MainForm
             // 
-            AutoScaleDimensions = new SizeF(11F, 21F);
+            AutoScaleDimensions = new SizeF(7F, 17F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(688, 414);
+            ClientSize = new Size(834, 441);
             Controls.Add(PnlEmployeeTile);
             Controls.Add(PnlCustomerTile);
             Controls.Add(LblHomeTitle);
             FormBorderStyle = FormBorderStyle.FixedSingle;
+            Margin = new Padding(2);
             MinimizeBox = false;
             Name = "MainForm";
             Text = "ContactManager - Home";
