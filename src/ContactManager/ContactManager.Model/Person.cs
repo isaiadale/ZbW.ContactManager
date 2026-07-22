@@ -38,5 +38,8 @@ namespace ContactManager.Model
 
         /// <summary>E-Mail-Adresse; optional.</summary>
         public string? Email { get; set; }
+
+        /// <summary>Gibt an, ob die Person (Kunde oder Mitarbeiter) aktuell aktiv oder passiv ist. Pflichtfeld.</summary>
+        public required Status PersonStatus { get; set; }
     }
 }
