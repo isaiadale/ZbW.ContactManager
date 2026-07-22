@@ -1,4 +1,5 @@
-﻿using ContactManager.Model;
+﻿using ContactManager.Business.Helpers;
+using ContactManager.Model;
 using ContactManager.Model.Enums;
 using ContactManager.Persistence.Json;
 
@@ -78,9 +79,9 @@ namespace ContactManager.Business.Services
             if (_data.Employees.Exists(c => c.Id == employee.Id))
                 throw new InvalidOperationException($"Ein Mitarbeiter mit der Id: {employee.Id} ist bereits erfasst.");
 
-            int nextNumber = _data.LastEmployeeNumber + 1;
-            employee.AssignEmployeeNumber(nextNumber);
-            _data.LastEmployeeNumber = nextNumber;
+            ContactValidator.Validate(employee);
+
+            employee.AssignEmployeeNumber(NumberGenerator.NextEmployeeNumber(_data));
 
             _data.Employees.Add(employee);
 
@@ -96,6 +97,8 @@ namespace ContactManager.Business.Services
         public void Update(Employee employee)
         {
             ArgumentNullException.ThrowIfNull(employee);
+
+            ContactValidator.Validate(employee);
 
             Employee existing = GetRequired(employee.Id);
 
