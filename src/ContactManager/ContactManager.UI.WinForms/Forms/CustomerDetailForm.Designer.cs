@@ -28,18 +28,33 @@
         /// </summary>
         private void InitializeComponent()
         {
+            LblCustomerInfos = new Label();
             SuspendLayout();
+            // 
+            // LblCustomerInfos
+            // 
+            LblCustomerInfos.Dock = DockStyle.Top;
+            LblCustomerInfos.Font = new Font("Century Gothic", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            LblCustomerInfos.Location = new Point(0, 0);
+            LblCustomerInfos.Name = "LblCustomerInfos";
+            LblCustomerInfos.Size = new Size(800, 70);
+            LblCustomerInfos.TabIndex = 10;
+            LblCustomerInfos.Text = "KD-Nr. Name Vorname";
+            LblCustomerInfos.TextAlign = ContentAlignment.BottomCenter;
             // 
             // CustomerDetailForm
             // 
             AutoScaleDimensions = new SizeF(11F, 21F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(800, 654);
+            Controls.Add(LblCustomerInfos);
             Name = "CustomerDetailForm";
             Text = "Kundschaft - Details";
             ResumeLayout(false);
         }
 
         #endregion
+
+        private Label LblCustomerInfos;
     }
 }
