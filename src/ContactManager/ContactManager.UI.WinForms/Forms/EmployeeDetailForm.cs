@@ -19,6 +19,6 @@ namespace ContactManager.UI.WinForms.Forms
         public EmployeeDetailForm()
         {
             InitializeComponent();
-        }
+        }      
     }
 }

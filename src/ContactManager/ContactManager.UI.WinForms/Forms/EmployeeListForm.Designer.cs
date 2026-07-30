@@ -43,11 +43,11 @@
             LblEmployeeNr = new Label();
             LblLastName = new Label();
             LblFirstName = new Label();
-            this.TxtbLastNameSearch = new TextBox();
             BtnReturnToHome = new Button();
-            TxtbDateOfBirthSearch = new TextBox();
             LblDateOfBirth = new Label();
             TxtbFirstNameSearch = new TextBox();
+            TxtbLblLastNameSearch = new TextBox();
+            TxtbDateOfBirthSearch = new TextBox();
             ((System.ComponentModel.ISupportInitialize)DgvEmployeeList).BeginInit();
             SuspendLayout();
             // 
@@ -177,16 +177,6 @@
             LblFirstName.TabIndex = 11;
             LblFirstName.Text = "Vorname";
             // 
-            // TxtbLastNameSearch
-            // 
-            this.TxtbLastNameSearch.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            this.TxtbLastNameSearch.Location = new Point(229, 171);
-            this.TxtbLastNameSearch.Margin = new Padding(5, 4, 5, 4);
-            this.TxtbLastNameSearch.Name = "TxtbLastNameSearch";
-            this.TxtbLastNameSearch.Size = new Size(240, 32);
-            this.TxtbLastNameSearch.TabIndex = 12;
-            this.TxtbLastNameSearch.Text = "...";
-            // 
             // BtnReturnToHome
             // 
             BtnReturnToHome.Font = new Font("Century Gothic", 8F, FontStyle.Regular, GraphicsUnit.Point, 0);
@@ -198,16 +188,6 @@
             BtnReturnToHome.Text = "Zurück (ev. mit Icon)";
             BtnReturnToHome.UseVisualStyleBackColor = true;
             BtnReturnToHome.Click += BtnReturnToHome_Click;
-            // 
-            // TxtbDateOfBirthSearch
-            // 
-            TxtbDateOfBirthSearch.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            TxtbDateOfBirthSearch.Location = new Point(229, 278);
-            TxtbDateOfBirthSearch.Margin = new Padding(5, 4, 5, 4);
-            TxtbDateOfBirthSearch.Name = "TxtbDateOfBirthSearch";
-            TxtbDateOfBirthSearch.Size = new Size(240, 32);
-            TxtbDateOfBirthSearch.TabIndex = 23;
-            TxtbDateOfBirthSearch.Text = "...";
             // 
             // LblDateOfBirth
             // 
@@ -225,8 +205,28 @@
             TxtbFirstNameSearch.Margin = new Padding(5, 4, 5, 4);
             TxtbFirstNameSearch.Name = "TxtbFirstNameSearch";
             TxtbFirstNameSearch.Size = new Size(240, 32);
-            TxtbFirstNameSearch.TabIndex = 13;
+            TxtbFirstNameSearch.TabIndex = 23;
             TxtbFirstNameSearch.Text = "...";
+            // 
+            // TxtbLblLastNameSearch
+            // 
+            TxtbLblLastNameSearch.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            TxtbLblLastNameSearch.Location = new Point(229, 172);
+            TxtbLblLastNameSearch.Margin = new Padding(5, 4, 5, 4);
+            TxtbLblLastNameSearch.Name = "TxtbLblLastNameSearch";
+            TxtbLblLastNameSearch.Size = new Size(240, 32);
+            TxtbLblLastNameSearch.TabIndex = 13;
+            TxtbLblLastNameSearch.Text = "...";
+            // 
+            // TxtbDateOfBirthSearch
+            // 
+            TxtbDateOfBirthSearch.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            TxtbDateOfBirthSearch.Location = new Point(229, 278);
+            TxtbDateOfBirthSearch.Margin = new Padding(5, 4, 5, 4);
+            TxtbDateOfBirthSearch.Name = "TxtbDateOfBirthSearch";
+            TxtbDateOfBirthSearch.Size = new Size(240, 32);
+            TxtbDateOfBirthSearch.TabIndex = 24;
+            TxtbDateOfBirthSearch.Text = "...";
             // 
             // EmployeeListForm
             // 
@@ -234,10 +234,10 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1388, 654);
             Controls.Add(TxtbDateOfBirthSearch);
+            Controls.Add(TxtbLblLastNameSearch);
             Controls.Add(LblDateOfBirth);
             Controls.Add(BtnReturnToHome);
             Controls.Add(TxtbFirstNameSearch);
-            Controls.Add(this.TxtbLastNameSearch);
             Controls.Add(LblFirstName);
             Controls.Add(LblLastName);
             Controls.Add(LblEmployeeNr);
@@ -272,8 +272,8 @@
         private Label LblFirstName;
         private TextBox TxtbDateOfBirthSearch;
         private Button BtnReturnToHome;
-        private TextBox TxtbDateOfBirthSearch;
         private Label LblDateOfBirth;
         private TextBox TxtbFirstNameSearch;
+        private TextBox TxtbLblLastNameSearch;
     }
 }
