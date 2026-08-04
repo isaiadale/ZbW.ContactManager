@@ -43,36 +43,34 @@
             CombNationality = new ComboBox();
             LblNationality = new Label();
             GrpPersonalData = new GroupBox();
-            GrpPrivateAddress = new GroupBox();
+            CombSalutation = new ComboBox();
             LblSalutation = new Label();
+            DtpDateOfBirth = new DateTimePicker();
+            GrpPrivateAddress = new GroupBox();
             LblPrivateCity = new Label();
             TxtbPrivateCity = new TextBox();
             LblPrivateStreet = new Label();
             TxtbPrivateStreet = new TextBox();
             LblPrivatePostalCode = new Label();
             TxtbPrivatePostalCode = new TextBox();
-            GrpEmploymentInfo = new GroupBox();
+            GrpEmployeeInfo = new GroupBox();
+            DtpTerminationDate = new DateTimePicker();
+            LblTerminationDate = new Label();
+            DtpHireDate = new DateTimePicker();
+            LblHireDate = new Label();
+            CombManagementLevel = new ComboBox();
+            CombDepartment = new ComboBox();
             LblManagementLevel = new Label();
             LblDepartment = new Label();
             LblJobTitle = new Label();
             TxtbJobTitle = new TextBox();
-            CombSalutation = new ComboBox();
-            CombDepartment = new ComboBox();
-            CombManagementLevel = new ComboBox();
-            LblHireDate = new Label();
-            DtpHireDate = new DateTimePicker();
-            DtpDateOfBirth = new DateTimePicker();
-            DtpTerminationDate = new DateTimePicker();
-            LblTerminationDate = new Label();
-            GrpContact = new GroupBox();
-            comboBox1 = new ComboBox();
-            label1 = new Label();
-            label2 = new Label();
-            textBox1 = new TextBox();
-            label3 = new Label();
-            textBox2 = new TextBox();
-            label4 = new Label();
-            textBox3 = new TextBox();
+            GrpContactData = new GroupBox();
+            TxtbBusinessPhone = new TextBox();
+            LblBusinessPhone = new Label();
+            LblMobilePhone = new Label();
+            TxtbMobilePhone = new TextBox();
+            LblEmail = new Label();
+            TxtbEmail = new TextBox();
             GrpBusinessAddress = new GroupBox();
             LblBusinessCity = new Label();
             TxtbBusinessCity = new TextBox();
@@ -80,12 +78,19 @@
             TxtbBusinessStreet = new TextBox();
             LblBusinessPostalCode = new Label();
             TxtbBusinessPostalCode = new TextBox();
-            GrpApprenticeship = new GroupBox();
+            GrpApprentice = new GroupBox();
+            LblApprenticeshipYears = new Label();
+            TxtbApprenticeshipYears = new TextBox();
+            LblCurrAppYear = new Label();
+            TxtbCurrAppYear = new TextBox();
+            ChkbIsApprentice = new CheckBox();
+            BtnSave = new Button();
             GrpPersonalData.SuspendLayout();
             GrpPrivateAddress.SuspendLayout();
-            GrpEmploymentInfo.SuspendLayout();
-            GrpContact.SuspendLayout();
+            GrpEmployeeInfo.SuspendLayout();
+            GrpContactData.SuspendLayout();
             GrpBusinessAddress.SuspendLayout();
+            GrpApprentice.SuspendLayout();
             SuspendLayout();
             // 
             // LblEmployeeInfos
@@ -96,13 +101,13 @@
             LblEmployeeInfos.Name = "LblEmployeeInfos";
             LblEmployeeInfos.Size = new Size(1615, 70);
             LblEmployeeInfos.TabIndex = 9;
-            LblEmployeeInfos.Text = "MA-Nr. Name Vorname";
+            LblEmployeeInfos.Text = "MA-Nr. Name Vorname (mittels Code)";
             LblEmployeeInfos.TextAlign = ContentAlignment.BottomCenter;
             // 
             // TxtbFirstName
             // 
             TxtbFirstName.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            TxtbFirstName.Location = new Point(938, 119);
+            TxtbFirstName.Location = new Point(203, 152);
             TxtbFirstName.Margin = new Padding(5, 4, 5, 4);
             TxtbFirstName.Name = "TxtbFirstName";
             TxtbFirstName.Size = new Size(240, 32);
@@ -112,7 +117,7 @@
             // LblDateOfBirth
             // 
             LblDateOfBirth.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            LblDateOfBirth.Location = new Point(28, 53);
+            LblDateOfBirth.Location = new Point(27, 206);
             LblDateOfBirth.Name = "LblDateOfBirth";
             LblDateOfBirth.Size = new Size(170, 35);
             LblDateOfBirth.TabIndex = 17;
@@ -121,25 +126,25 @@
             // LblFirstName
             // 
             LblFirstName.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            LblFirstName.Location = new Point(822, 122);
+            LblFirstName.Location = new Point(27, 155);
             LblFirstName.Name = "LblFirstName";
-            LblFirstName.Size = new Size(130, 35);
+            LblFirstName.Size = new Size(170, 35);
             LblFirstName.TabIndex = 16;
             LblFirstName.Text = "Vorname";
             // 
             // LblLastName
             // 
             LblLastName.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            LblLastName.Location = new Point(382, 122);
+            LblLastName.Location = new Point(27, 104);
             LblLastName.Name = "LblLastName";
-            LblLastName.Size = new Size(130, 35);
+            LblLastName.Size = new Size(170, 35);
             LblLastName.TabIndex = 15;
             LblLastName.Text = "Nachname";
             // 
             // TxtbLastName
             // 
             TxtbLastName.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            TxtbLastName.Location = new Point(520, 119);
+            TxtbLastName.Location = new Point(203, 101);
             TxtbLastName.Margin = new Padding(5, 4, 5, 4);
             TxtbLastName.Name = "TxtbLastName";
             TxtbLastName.Size = new Size(240, 32);
@@ -149,7 +154,7 @@
             // LblGender
             // 
             LblGender.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            LblGender.Location = new Point(28, 104);
+            LblGender.Location = new Point(541, 53);
             LblGender.Name = "LblGender";
             LblGender.Size = new Size(170, 35);
             LblGender.TabIndex = 20;
@@ -159,7 +164,7 @@
             // 
             CombGender.DropDownStyle = ComboBoxStyle.DropDownList;
             CombGender.FormattingEnabled = true;
-            CombGender.Location = new Point(204, 103);
+            CombGender.Location = new Point(717, 52);
             CombGender.Name = "CombGender";
             CombGender.Size = new Size(240, 29);
             CombGender.TabIndex = 21;
@@ -167,7 +172,7 @@
             // TxtbSocialSecNr
             // 
             TxtbSocialSecNr.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            TxtbSocialSecNr.Location = new Point(204, 152);
+            TxtbSocialSecNr.Location = new Point(717, 152);
             TxtbSocialSecNr.Margin = new Padding(5, 4, 5, 4);
             TxtbSocialSecNr.Name = "TxtbSocialSecNr";
             TxtbSocialSecNr.Size = new Size(240, 32);
@@ -177,7 +182,7 @@
             // LblSocialSecNr
             // 
             LblSocialSecNr.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            LblSocialSecNr.Location = new Point(28, 155);
+            LblSocialSecNr.Location = new Point(541, 155);
             LblSocialSecNr.Name = "LblSocialSecNr";
             LblSocialSecNr.Size = new Size(170, 35);
             LblSocialSecNr.TabIndex = 22;
@@ -186,7 +191,7 @@
             // LblEmployeeNr
             // 
             LblEmployeeNr.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            LblEmployeeNr.Location = new Point(52, 122);
+            LblEmployeeNr.Location = new Point(28, 53);
             LblEmployeeNr.Name = "LblEmployeeNr";
             LblEmployeeNr.Size = new Size(170, 32);
             LblEmployeeNr.TabIndex = 27;
@@ -195,7 +200,7 @@
             // TxtbEmployeeNr
             // 
             TxtbEmployeeNr.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            TxtbEmployeeNr.Location = new Point(229, 119);
+            TxtbEmployeeNr.Location = new Point(203, 50);
             TxtbEmployeeNr.Margin = new Padding(5, 4, 5, 4);
             TxtbEmployeeNr.Name = "TxtbEmployeeNr";
             TxtbEmployeeNr.Size = new Size(110, 32);
@@ -206,7 +211,7 @@
             // 
             CombNationality.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
             CombNationality.FormattingEnabled = true;
-            CombNationality.Location = new Point(203, 204);
+            CombNationality.Location = new Point(716, 209);
             CombNationality.Name = "CombNationality";
             CombNationality.Size = new Size(240, 29);
             CombNationality.TabIndex = 29;
@@ -214,7 +219,7 @@
             // LblNationality
             // 
             LblNationality.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            LblNationality.Location = new Point(28, 206);
+            LblNationality.Location = new Point(541, 211);
             LblNationality.Name = "LblNationality";
             LblNationality.Size = new Size(170, 35);
             LblNationality.TabIndex = 28;
@@ -222,51 +227,74 @@
             // 
             // GrpPersonalData
             // 
+            GrpPersonalData.Controls.Add(CombSalutation);
+            GrpPersonalData.Controls.Add(LblSalutation);
             GrpPersonalData.Controls.Add(DtpDateOfBirth);
             GrpPersonalData.Controls.Add(LblDateOfBirth);
             GrpPersonalData.Controls.Add(CombNationality);
             GrpPersonalData.Controls.Add(LblNationality);
+            GrpPersonalData.Controls.Add(TxtbFirstName);
+            GrpPersonalData.Controls.Add(LblEmployeeNr);
+            GrpPersonalData.Controls.Add(LblFirstName);
+            GrpPersonalData.Controls.Add(TxtbEmployeeNr);
+            GrpPersonalData.Controls.Add(TxtbLastName);
+            GrpPersonalData.Controls.Add(LblLastName);
             GrpPersonalData.Controls.Add(LblGender);
             GrpPersonalData.Controls.Add(CombGender);
             GrpPersonalData.Controls.Add(LblSocialSecNr);
             GrpPersonalData.Controls.Add(TxtbSocialSecNr);
-            GrpPersonalData.Location = new Point(43, 219);
+            GrpPersonalData.Location = new Point(43, 122);
             GrpPersonalData.Name = "GrpPersonalData";
-            GrpPersonalData.Size = new Size(502, 250);
+            GrpPersonalData.Size = new Size(1010, 260);
             GrpPersonalData.TabIndex = 30;
             GrpPersonalData.TabStop = false;
             GrpPersonalData.Text = "GRUNDDATEN";
             // 
+            // CombSalutation
+            // 
+            CombSalutation.DropDownStyle = ComboBoxStyle.DropDownList;
+            CombSalutation.FormattingEnabled = true;
+            CombSalutation.Location = new Point(717, 103);
+            CombSalutation.Name = "CombSalutation";
+            CombSalutation.Size = new Size(240, 29);
+            CombSalutation.TabIndex = 30;
+            // 
+            // LblSalutation
+            // 
+            LblSalutation.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            LblSalutation.Location = new Point(541, 104);
+            LblSalutation.Name = "LblSalutation";
+            LblSalutation.Size = new Size(170, 35);
+            LblSalutation.TabIndex = 26;
+            LblSalutation.Text = "Anrede";
+            // 
+            // DtpDateOfBirth
+            // 
+            DtpDateOfBirth.Format = DateTimePickerFormat.Short;
+            DtpDateOfBirth.Location = new Point(203, 206);
+            DtpDateOfBirth.Name = "DtpDateOfBirth";
+            DtpDateOfBirth.Size = new Size(240, 30);
+            DtpDateOfBirth.TabIndex = 35;
+            // 
             // GrpPrivateAddress
             // 
-            GrpPrivateAddress.Controls.Add(CombSalutation);
-            GrpPrivateAddress.Controls.Add(LblSalutation);
             GrpPrivateAddress.Controls.Add(LblPrivateCity);
             GrpPrivateAddress.Controls.Add(TxtbPrivateCity);
             GrpPrivateAddress.Controls.Add(LblPrivateStreet);
             GrpPrivateAddress.Controls.Add(TxtbPrivateStreet);
             GrpPrivateAddress.Controls.Add(LblPrivatePostalCode);
             GrpPrivateAddress.Controls.Add(TxtbPrivatePostalCode);
-            GrpPrivateAddress.Location = new Point(1059, 219);
+            GrpPrivateAddress.Location = new Point(551, 411);
             GrpPrivateAddress.Name = "GrpPrivateAddress";
-            GrpPrivateAddress.Size = new Size(502, 250);
+            GrpPrivateAddress.Size = new Size(502, 198);
             GrpPrivateAddress.TabIndex = 31;
             GrpPrivateAddress.TabStop = false;
             GrpPrivateAddress.Text = "PRIVATADRESSE";
             // 
-            // LblSalutation
-            // 
-            LblSalutation.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            LblSalutation.Location = new Point(34, 53);
-            LblSalutation.Name = "LblSalutation";
-            LblSalutation.Size = new Size(170, 35);
-            LblSalutation.TabIndex = 26;
-            LblSalutation.Text = "Anrede";
-            // 
             // LblPrivateCity
             // 
             LblPrivateCity.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            LblPrivateCity.Location = new Point(34, 206);
+            LblPrivateCity.Location = new Point(34, 155);
             LblPrivateCity.Name = "LblPrivateCity";
             LblPrivateCity.Size = new Size(170, 35);
             LblPrivateCity.TabIndex = 24;
@@ -275,7 +303,7 @@
             // TxtbPrivateCity
             // 
             TxtbPrivateCity.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            TxtbPrivateCity.Location = new Point(211, 203);
+            TxtbPrivateCity.Location = new Point(211, 152);
             TxtbPrivateCity.Margin = new Padding(5, 4, 5, 4);
             TxtbPrivateCity.Name = "TxtbPrivateCity";
             TxtbPrivateCity.Size = new Size(240, 32);
@@ -285,7 +313,7 @@
             // LblPrivateStreet
             // 
             LblPrivateStreet.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            LblPrivateStreet.Location = new Point(34, 104);
+            LblPrivateStreet.Location = new Point(34, 53);
             LblPrivateStreet.Name = "LblPrivateStreet";
             LblPrivateStreet.Size = new Size(170, 35);
             LblPrivateStreet.TabIndex = 17;
@@ -294,7 +322,7 @@
             // TxtbPrivateStreet
             // 
             TxtbPrivateStreet.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            TxtbPrivateStreet.Location = new Point(211, 101);
+            TxtbPrivateStreet.Location = new Point(211, 50);
             TxtbPrivateStreet.Margin = new Padding(5, 4, 5, 4);
             TxtbPrivateStreet.Name = "TxtbPrivateStreet";
             TxtbPrivateStreet.Size = new Size(240, 32);
@@ -304,7 +332,7 @@
             // LblPrivatePostalCode
             // 
             LblPrivatePostalCode.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            LblPrivatePostalCode.Location = new Point(34, 155);
+            LblPrivatePostalCode.Location = new Point(34, 104);
             LblPrivatePostalCode.Name = "LblPrivatePostalCode";
             LblPrivatePostalCode.Size = new Size(170, 35);
             LblPrivatePostalCode.TabIndex = 22;
@@ -313,31 +341,85 @@
             // TxtbPrivatePostalCode
             // 
             TxtbPrivatePostalCode.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            TxtbPrivatePostalCode.Location = new Point(210, 152);
+            TxtbPrivatePostalCode.Location = new Point(210, 101);
             TxtbPrivatePostalCode.Margin = new Padding(5, 4, 5, 4);
             TxtbPrivatePostalCode.Name = "TxtbPrivatePostalCode";
             TxtbPrivatePostalCode.Size = new Size(240, 32);
             TxtbPrivatePostalCode.TabIndex = 23;
             TxtbPrivatePostalCode.Text = "...";
             // 
-            // GrpEmploymentInfo
+            // GrpEmployeeInfo
             // 
-            GrpEmploymentInfo.Controls.Add(DtpTerminationDate);
-            GrpEmploymentInfo.Controls.Add(LblTerminationDate);
-            GrpEmploymentInfo.Controls.Add(DtpHireDate);
-            GrpEmploymentInfo.Controls.Add(LblHireDate);
-            GrpEmploymentInfo.Controls.Add(CombManagementLevel);
-            GrpEmploymentInfo.Controls.Add(CombDepartment);
-            GrpEmploymentInfo.Controls.Add(LblManagementLevel);
-            GrpEmploymentInfo.Controls.Add(LblDepartment);
-            GrpEmploymentInfo.Controls.Add(LblJobTitle);
-            GrpEmploymentInfo.Controls.Add(TxtbJobTitle);
-            GrpEmploymentInfo.Location = new Point(43, 515);
-            GrpEmploymentInfo.Name = "GrpEmploymentInfo";
-            GrpEmploymentInfo.Size = new Size(502, 301);
-            GrpEmploymentInfo.TabIndex = 32;
-            GrpEmploymentInfo.TabStop = false;
-            GrpEmploymentInfo.Text = "ANSTELLUNG";
+            GrpEmployeeInfo.Controls.Add(DtpTerminationDate);
+            GrpEmployeeInfo.Controls.Add(LblTerminationDate);
+            GrpEmployeeInfo.Controls.Add(DtpHireDate);
+            GrpEmployeeInfo.Controls.Add(LblHireDate);
+            GrpEmployeeInfo.Controls.Add(CombManagementLevel);
+            GrpEmployeeInfo.Controls.Add(CombDepartment);
+            GrpEmployeeInfo.Controls.Add(LblManagementLevel);
+            GrpEmployeeInfo.Controls.Add(LblDepartment);
+            GrpEmployeeInfo.Controls.Add(LblJobTitle);
+            GrpEmployeeInfo.Controls.Add(TxtbJobTitle);
+            GrpEmployeeInfo.Location = new Point(43, 411);
+            GrpEmployeeInfo.Name = "GrpEmployeeInfo";
+            GrpEmployeeInfo.Size = new Size(502, 301);
+            GrpEmployeeInfo.TabIndex = 32;
+            GrpEmployeeInfo.TabStop = false;
+            GrpEmployeeInfo.Text = "ANSTELLUNG";
+            // 
+            // DtpTerminationDate
+            // 
+            DtpTerminationDate.Checked = false;
+            DtpTerminationDate.Format = DateTimePickerFormat.Short;
+            DtpTerminationDate.Location = new Point(203, 252);
+            DtpTerminationDate.Name = "DtpTerminationDate";
+            DtpTerminationDate.ShowCheckBox = true;
+            DtpTerminationDate.Size = new Size(240, 30);
+            DtpTerminationDate.TabIndex = 36;
+            // 
+            // LblTerminationDate
+            // 
+            LblTerminationDate.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            LblTerminationDate.Location = new Point(27, 247);
+            LblTerminationDate.Name = "LblTerminationDate";
+            LblTerminationDate.Size = new Size(170, 35);
+            LblTerminationDate.TabIndex = 35;
+            LblTerminationDate.Text = "Austritt";
+            // 
+            // DtpHireDate
+            // 
+            DtpHireDate.Format = DateTimePickerFormat.Short;
+            DtpHireDate.Location = new Point(203, 203);
+            DtpHireDate.Name = "DtpHireDate";
+            DtpHireDate.Size = new Size(240, 30);
+            DtpHireDate.TabIndex = 34;
+            // 
+            // LblHireDate
+            // 
+            LblHireDate.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            LblHireDate.Location = new Point(29, 206);
+            LblHireDate.Name = "LblHireDate";
+            LblHireDate.Size = new Size(170, 35);
+            LblHireDate.TabIndex = 33;
+            LblHireDate.Text = "Eintritt";
+            // 
+            // CombManagementLevel
+            // 
+            CombManagementLevel.DropDownStyle = ComboBoxStyle.DropDownList;
+            CombManagementLevel.FormattingEnabled = true;
+            CombManagementLevel.Location = new Point(205, 154);
+            CombManagementLevel.Name = "CombManagementLevel";
+            CombManagementLevel.Size = new Size(240, 29);
+            CombManagementLevel.TabIndex = 32;
+            // 
+            // CombDepartment
+            // 
+            CombDepartment.DropDownStyle = ComboBoxStyle.DropDownList;
+            CombDepartment.FormattingEnabled = true;
+            CombDepartment.Location = new Point(204, 52);
+            CombDepartment.Name = "CombDepartment";
+            CombDepartment.Size = new Size(240, 29);
+            CombDepartment.TabIndex = 31;
             // 
             // LblManagementLevel
             // 
@@ -376,168 +458,77 @@
             TxtbJobTitle.TabIndex = 23;
             TxtbJobTitle.Text = "...";
             // 
-            // CombSalutation
+            // GrpContactData
             // 
-            CombSalutation.DropDownStyle = ComboBoxStyle.DropDownList;
-            CombSalutation.FormattingEnabled = true;
-            CombSalutation.Location = new Point(210, 52);
-            CombSalutation.Name = "CombSalutation";
-            CombSalutation.Size = new Size(240, 29);
-            CombSalutation.TabIndex = 30;
+            GrpContactData.Controls.Add(TxtbBusinessPhone);
+            GrpContactData.Controls.Add(LblBusinessPhone);
+            GrpContactData.Controls.Add(LblMobilePhone);
+            GrpContactData.Controls.Add(TxtbMobilePhone);
+            GrpContactData.Controls.Add(LblEmail);
+            GrpContactData.Controls.Add(TxtbEmail);
+            GrpContactData.Location = new Point(1059, 122);
+            GrpContactData.Name = "GrpContactData";
+            GrpContactData.Size = new Size(502, 260);
+            GrpContactData.TabIndex = 32;
+            GrpContactData.TabStop = false;
+            GrpContactData.Text = "KONTAKTDATEN";
             // 
-            // CombDepartment
+            // TxtbBusinessPhone
             // 
-            CombDepartment.DropDownStyle = ComboBoxStyle.DropDownList;
-            CombDepartment.FormattingEnabled = true;
-            CombDepartment.Location = new Point(204, 52);
-            CombDepartment.Name = "CombDepartment";
-            CombDepartment.Size = new Size(240, 29);
-            CombDepartment.TabIndex = 31;
+            TxtbBusinessPhone.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            TxtbBusinessPhone.Location = new Point(210, 49);
+            TxtbBusinessPhone.Margin = new Padding(5, 4, 5, 4);
+            TxtbBusinessPhone.Name = "TxtbBusinessPhone";
+            TxtbBusinessPhone.Size = new Size(240, 32);
+            TxtbBusinessPhone.TabIndex = 27;
+            TxtbBusinessPhone.Text = "...";
             // 
-            // CombManagementLevel
+            // LblBusinessPhone
             // 
-            CombManagementLevel.DropDownStyle = ComboBoxStyle.DropDownList;
-            CombManagementLevel.FormattingEnabled = true;
-            CombManagementLevel.Location = new Point(205, 154);
-            CombManagementLevel.Name = "CombManagementLevel";
-            CombManagementLevel.Size = new Size(240, 29);
-            CombManagementLevel.TabIndex = 32;
+            LblBusinessPhone.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            LblBusinessPhone.Location = new Point(34, 53);
+            LblBusinessPhone.Name = "LblBusinessPhone";
+            LblBusinessPhone.Size = new Size(170, 35);
+            LblBusinessPhone.TabIndex = 26;
+            LblBusinessPhone.Text = "Telefon";
             // 
-            // LblHireDate
+            // LblMobilePhone
             // 
-            LblHireDate.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            LblHireDate.Location = new Point(29, 206);
-            LblHireDate.Name = "LblHireDate";
-            LblHireDate.Size = new Size(170, 35);
-            LblHireDate.TabIndex = 33;
-            LblHireDate.Text = "Eintritt";
+            LblMobilePhone.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            LblMobilePhone.Location = new Point(34, 104);
+            LblMobilePhone.Name = "LblMobilePhone";
+            LblMobilePhone.Size = new Size(170, 35);
+            LblMobilePhone.TabIndex = 17;
+            LblMobilePhone.Text = "Mobile";
             // 
-            // DtpHireDate
+            // TxtbMobilePhone
             // 
-            DtpHireDate.Format = DateTimePickerFormat.Short;
-            DtpHireDate.Location = new Point(203, 203);
-            DtpHireDate.Name = "DtpHireDate";
-            DtpHireDate.Size = new Size(240, 30);
-            DtpHireDate.TabIndex = 34;
+            TxtbMobilePhone.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            TxtbMobilePhone.Location = new Point(211, 101);
+            TxtbMobilePhone.Margin = new Padding(5, 4, 5, 4);
+            TxtbMobilePhone.Name = "TxtbMobilePhone";
+            TxtbMobilePhone.Size = new Size(240, 32);
+            TxtbMobilePhone.TabIndex = 19;
+            TxtbMobilePhone.Text = "...";
             // 
-            // DtpDateOfBirth
+            // LblEmail
             // 
-            DtpDateOfBirth.Format = DateTimePickerFormat.Short;
-            DtpDateOfBirth.Location = new Point(204, 53);
-            DtpDateOfBirth.Name = "DtpDateOfBirth";
-            DtpDateOfBirth.Size = new Size(240, 30);
-            DtpDateOfBirth.TabIndex = 35;
+            LblEmail.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            LblEmail.Location = new Point(34, 155);
+            LblEmail.Name = "LblEmail";
+            LblEmail.Size = new Size(170, 35);
+            LblEmail.TabIndex = 22;
+            LblEmail.Text = "E-Mail";
             // 
-            // DtpTerminationDate
+            // TxtbEmail
             // 
-            DtpTerminationDate.Checked = false;
-            DtpTerminationDate.Format = DateTimePickerFormat.Short;
-            DtpTerminationDate.Location = new Point(203, 252);
-            DtpTerminationDate.Name = "DtpTerminationDate";
-            DtpTerminationDate.ShowCheckBox = true;
-            DtpTerminationDate.Size = new Size(240, 30);
-            DtpTerminationDate.TabIndex = 36;
-            // 
-            // LblTerminationDate
-            // 
-            LblTerminationDate.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            LblTerminationDate.Location = new Point(27, 247);
-            LblTerminationDate.Name = "LblTerminationDate";
-            LblTerminationDate.Size = new Size(170, 35);
-            LblTerminationDate.TabIndex = 35;
-            LblTerminationDate.Text = "Austritt";
-            // 
-            // GrpContact
-            // 
-            GrpContact.Controls.Add(comboBox1);
-            GrpContact.Controls.Add(label1);
-            GrpContact.Controls.Add(label2);
-            GrpContact.Controls.Add(textBox1);
-            GrpContact.Controls.Add(label3);
-            GrpContact.Controls.Add(textBox2);
-            GrpContact.Controls.Add(label4);
-            GrpContact.Controls.Add(textBox3);
-            GrpContact.Location = new Point(551, 219);
-            GrpContact.Name = "GrpContact";
-            GrpContact.Size = new Size(502, 250);
-            GrpContact.TabIndex = 32;
-            GrpContact.TabStop = false;
-            GrpContact.Text = "KONTAKTDATEN";
-            // 
-            // comboBox1
-            // 
-            comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(210, 52);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(240, 29);
-            comboBox1.TabIndex = 30;
-            // 
-            // label1
-            // 
-            label1.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label1.Location = new Point(34, 53);
-            label1.Name = "label1";
-            label1.Size = new Size(170, 35);
-            label1.TabIndex = 26;
-            label1.Text = "Anrede";
-            // 
-            // label2
-            // 
-            label2.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label2.Location = new Point(34, 206);
-            label2.Name = "label2";
-            label2.Size = new Size(170, 35);
-            label2.TabIndex = 24;
-            label2.Text = "Ort";
-            // 
-            // textBox1
-            // 
-            textBox1.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            textBox1.Location = new Point(211, 203);
-            textBox1.Margin = new Padding(5, 4, 5, 4);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(240, 32);
-            textBox1.TabIndex = 25;
-            textBox1.Text = "...";
-            // 
-            // label3
-            // 
-            label3.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label3.Location = new Point(34, 104);
-            label3.Name = "label3";
-            label3.Size = new Size(170, 35);
-            label3.TabIndex = 17;
-            label3.Text = "Strasse und Nr.";
-            // 
-            // textBox2
-            // 
-            textBox2.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            textBox2.Location = new Point(211, 101);
-            textBox2.Margin = new Padding(5, 4, 5, 4);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(240, 32);
-            textBox2.TabIndex = 19;
-            textBox2.Text = "...";
-            // 
-            // label4
-            // 
-            label4.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label4.Location = new Point(34, 155);
-            label4.Name = "label4";
-            label4.Size = new Size(170, 35);
-            label4.TabIndex = 22;
-            label4.Text = "Postleitzahl";
-            // 
-            // textBox3
-            // 
-            textBox3.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            textBox3.Location = new Point(210, 152);
-            textBox3.Margin = new Padding(5, 4, 5, 4);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(240, 32);
-            textBox3.TabIndex = 23;
-            textBox3.Text = "...";
+            TxtbEmail.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            TxtbEmail.Location = new Point(210, 152);
+            TxtbEmail.Margin = new Padding(5, 4, 5, 4);
+            TxtbEmail.Name = "TxtbEmail";
+            TxtbEmail.Size = new Size(240, 32);
+            TxtbEmail.TabIndex = 23;
+            TxtbEmail.Text = "...";
             // 
             // GrpBusinessAddress
             // 
@@ -547,9 +538,9 @@
             GrpBusinessAddress.Controls.Add(TxtbBusinessStreet);
             GrpBusinessAddress.Controls.Add(LblBusinessPostalCode);
             GrpBusinessAddress.Controls.Add(TxtbBusinessPostalCode);
-            GrpBusinessAddress.Location = new Point(1059, 515);
+            GrpBusinessAddress.Location = new Point(1059, 411);
             GrpBusinessAddress.Name = "GrpBusinessAddress";
-            GrpBusinessAddress.Size = new Size(502, 250);
+            GrpBusinessAddress.Size = new Size(502, 198);
             GrpBusinessAddress.TabIndex = 32;
             GrpBusinessAddress.TabStop = false;
             GrpBusinessAddress.Text = "GESCHÄFTSADRESSE";
@@ -611,32 +602,91 @@
             TxtbBusinessPostalCode.TabIndex = 23;
             TxtbBusinessPostalCode.Text = "...";
             // 
-            // GrpApprenticeship
+            // GrpApprentice
             // 
-            GrpApprenticeship.Location = new Point(551, 515);
-            GrpApprenticeship.Name = "GrpApprenticeship";
-            GrpApprenticeship.Size = new Size(502, 250);
-            GrpApprenticeship.TabIndex = 33;
-            GrpApprenticeship.TabStop = false;
-            GrpApprenticeship.Text = "AUSBILDUNG";
+            GrpApprentice.Controls.Add(LblApprenticeshipYears);
+            GrpApprentice.Controls.Add(TxtbApprenticeshipYears);
+            GrpApprentice.Controls.Add(LblCurrAppYear);
+            GrpApprentice.Controls.Add(TxtbCurrAppYear);
+            GrpApprentice.Location = new Point(43, 773);
+            GrpApprentice.Name = "GrpApprentice";
+            GrpApprentice.Size = new Size(502, 150);
+            GrpApprentice.TabIndex = 33;
+            GrpApprentice.TabStop = false;
+            GrpApprentice.Text = "AUSBILDUNG";
+            GrpApprentice.Visible = false;
+            // 
+            // LblApprenticeshipYears
+            // 
+            LblApprenticeshipYears.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            LblApprenticeshipYears.Location = new Point(27, 49);
+            LblApprenticeshipYears.Name = "LblApprenticeshipYears";
+            LblApprenticeshipYears.Size = new Size(170, 35);
+            LblApprenticeshipYears.TabIndex = 24;
+            LblApprenticeshipYears.Text = "Total Lehrjahre";
+            // 
+            // TxtbApprenticeshipYears
+            // 
+            TxtbApprenticeshipYears.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            TxtbApprenticeshipYears.Location = new Point(204, 46);
+            TxtbApprenticeshipYears.Margin = new Padding(5, 4, 5, 4);
+            TxtbApprenticeshipYears.Name = "TxtbApprenticeshipYears";
+            TxtbApprenticeshipYears.Size = new Size(240, 32);
+            TxtbApprenticeshipYears.TabIndex = 25;
+            TxtbApprenticeshipYears.Text = "...";
+            // 
+            // LblCurrAppYear
+            // 
+            LblCurrAppYear.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            LblCurrAppYear.Location = new Point(27, 100);
+            LblCurrAppYear.Name = "LblCurrAppYear";
+            LblCurrAppYear.Size = new Size(170, 35);
+            LblCurrAppYear.TabIndex = 26;
+            LblCurrAppYear.Text = "Aktuelles Jahr";
+            // 
+            // TxtbCurrAppYear
+            // 
+            TxtbCurrAppYear.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            TxtbCurrAppYear.Location = new Point(203, 97);
+            TxtbCurrAppYear.Margin = new Padding(5, 4, 5, 4);
+            TxtbCurrAppYear.Name = "TxtbCurrAppYear";
+            TxtbCurrAppYear.Size = new Size(240, 32);
+            TxtbCurrAppYear.TabIndex = 27;
+            TxtbCurrAppYear.Text = "...";
+            // 
+            // ChkbIsApprentice
+            // 
+            ChkbIsApprentice.AutoSize = true;
+            ChkbIsApprentice.Location = new Point(43, 731);
+            ChkbIsApprentice.Name = "ChkbIsApprentice";
+            ChkbIsApprentice.Size = new Size(124, 25);
+            ChkbIsApprentice.TabIndex = 0;
+            ChkbIsApprentice.Text = "LERNENDE";
+            ChkbIsApprentice.UseVisualStyleBackColor = true;
+            ChkbIsApprentice.CheckedChanged += ChkbIsApprentice_CheckedChanged;
+            // 
+            // BtnSave
+            // 
+            BtnSave.Location = new Point(1449, 36);
+            BtnSave.Name = "BtnSave";
+            BtnSave.Size = new Size(112, 34);
+            BtnSave.TabIndex = 34;
+            BtnSave.Text = "Speichern";
+            BtnSave.UseVisualStyleBackColor = true;
             // 
             // EmployeeDetailForm
             // 
             AutoScaleDimensions = new SizeF(11F, 21F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1615, 840);
-            Controls.Add(GrpApprenticeship);
+            ClientSize = new Size(1615, 769);
+            Controls.Add(BtnSave);
+            Controls.Add(ChkbIsApprentice);
+            Controls.Add(GrpApprentice);
             Controls.Add(GrpBusinessAddress);
-            Controls.Add(GrpContact);
-            Controls.Add(GrpEmploymentInfo);
+            Controls.Add(GrpContactData);
+            Controls.Add(GrpEmployeeInfo);
             Controls.Add(GrpPrivateAddress);
             Controls.Add(GrpPersonalData);
-            Controls.Add(LblEmployeeNr);
-            Controls.Add(TxtbEmployeeNr);
-            Controls.Add(TxtbFirstName);
-            Controls.Add(LblFirstName);
-            Controls.Add(LblLastName);
-            Controls.Add(TxtbLastName);
             Controls.Add(LblEmployeeInfos);
             Name = "EmployeeDetailForm";
             Text = "Mitarbeitende - Details";
@@ -644,12 +694,14 @@
             GrpPersonalData.PerformLayout();
             GrpPrivateAddress.ResumeLayout(false);
             GrpPrivateAddress.PerformLayout();
-            GrpEmploymentInfo.ResumeLayout(false);
-            GrpEmploymentInfo.PerformLayout();
-            GrpContact.ResumeLayout(false);
-            GrpContact.PerformLayout();
+            GrpEmployeeInfo.ResumeLayout(false);
+            GrpEmployeeInfo.PerformLayout();
+            GrpContactData.ResumeLayout(false);
+            GrpContactData.PerformLayout();
             GrpBusinessAddress.ResumeLayout(false);
             GrpBusinessAddress.PerformLayout();
+            GrpApprentice.ResumeLayout(false);
+            GrpApprentice.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -657,7 +709,6 @@
         #endregion
 
         private Label LblEmployeeInfos;
-        private TextBox TxtbDateOfBirth;
         private TextBox TxtbFirstName;
         private Label LblDateOfBirth;
         private Label LblFirstName;
@@ -679,7 +730,7 @@
         private TextBox TxtbPrivatePostalCode;
         private Label LblPrivateCity;
         private TextBox TxtbPrivateCity;
-        private GroupBox GrpEmploymentInfo;
+        private GroupBox GrpEmployeeInfo;
         private Label LblManagementLevel;
         private Label LblDepartment;
         private Label LblJobTitle;
@@ -693,15 +744,12 @@
         private DateTimePicker DtpDateOfBirth;
         private DateTimePicker DtpTerminationDate;
         private Label LblTerminationDate;
-        private GroupBox GrpContact;
-        private ComboBox comboBox1;
-        private Label label1;
-        private Label label2;
-        private TextBox textBox1;
-        private Label label3;
-        private TextBox textBox2;
-        private Label label4;
-        private TextBox textBox3;
+        private GroupBox GrpContactData;
+        private Label LblBusinessPhone;
+        private Label LblMobilePhone;
+        private TextBox TxtbMobilePhone;
+        private Label LblEmail;
+        private TextBox TxtbEmail;
         private GroupBox GrpBusinessAddress;
         private Label LblBusinessCity;
         private TextBox TxtbBusinessCity;
@@ -709,6 +757,13 @@
         private TextBox TxtbBusinessStreet;
         private Label LblBusinessPostalCode;
         private TextBox TxtbBusinessPostalCode;
-        private GroupBox GrpApprenticeship;
+        private GroupBox GrpApprentice;
+        private TextBox TxtbBusinessPhone;
+        private CheckBox ChkbIsApprentice;
+        private Label LblApprenticeshipYears;
+        private TextBox TxtbApprenticeshipYears;
+        private Label LblCurrAppYear;
+        private TextBox TxtbCurrAppYear;
+        private Button BtnSave;
     }
 }
