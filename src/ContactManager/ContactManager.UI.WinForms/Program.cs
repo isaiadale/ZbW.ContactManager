@@ -1,3 +1,5 @@
+using ContactManager.UI.WinForms.Forms;
+
 namespace ContactManager.UI.WinForms
 {
     internal static class Program
@@ -12,6 +14,7 @@ namespace ContactManager.UI.WinForms
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
             Application.Run(new MainForm());
+            // Application.Run(new EmployeeDetailForm()); // Nur zum Testen einkommentieren
         }
     }
 }
