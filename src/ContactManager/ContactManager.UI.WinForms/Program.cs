@@ -43,7 +43,7 @@ namespace ContactManager.UI.WinForms
             }
 
             Application.Run(new MainForm(contacts));
-            // Application.Run(new EmployeeDetailForm()); // Nur zum Testen einkommentieren
+            // Application.Run(new EmployeeDetailForm(contacts)); // Nur zum Testen einkommentieren
         }
     }
 }
