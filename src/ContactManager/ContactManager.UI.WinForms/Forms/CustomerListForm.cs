@@ -3,9 +3,12 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using ContactManager.Business;
+using ContactManager.Model;
+using ContactManager.Model.Enums;
 using ContactManager.UI.WinForms.Base;
 
 namespace ContactManager.UI.WinForms.Forms
@@ -33,7 +36,7 @@ namespace ContactManager.UI.WinForms.Forms
             InitializeComponent();
             _contacts = contacts;
         }
-                      
+
         private void BtnReturnToHome_Click(object sender, EventArgs e)
         {
             // Schliesst dieses Fenster; MainForm erscheint automatisch wieder (FormClosed-Event)
