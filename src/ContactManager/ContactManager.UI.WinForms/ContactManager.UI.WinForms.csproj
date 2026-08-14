@@ -13,6 +13,9 @@
   <ItemGroup>
     <ProjectReference Include="..\ContactManager.Business\ContactManager.Business.csproj" />
     <ProjectReference Include="..\ContactManager.Model\ContactManager.Model.csproj" />
+    <!-- Nur für den Composition Root in Program.cs: dort wird die konkrete Ablage
+         (JsonContactRepository) gewählt. Alle Formulare kennen ausschliesslich die Fassade. -->
+    <ProjectReference Include="..\ContactManager.Persistence.Json\ContactManager.Persistence.Json.csproj" />
   </ItemGroup>
 
 </Project>

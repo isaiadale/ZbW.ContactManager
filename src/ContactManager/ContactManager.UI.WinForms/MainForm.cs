@@ -1,15 +1,33 @@
+ï»¿using ContactManager.Business;
 using ContactManager.UI.WinForms.Base;
 using ContactManager.UI.WinForms.Forms;
 
 namespace ContactManager.UI.WinForms
 
 {
+    /// <summary>
+    /// Startseite der Anwendung. Zeigt die Kachel-Navigation und Ã¶ffnet von dort die
+    /// beiden Listenformulare, an die sie die Fassade der Business-Schicht weiterreicht.
+    /// </summary>
     public partial class MainForm : BaseForm
     {
-        public MainForm()
+        // Zugang zur Business-Schicht. Wird in Program.Main einmalig erzeugt und von hier
+        // an alle Folgefenster weitergegeben, damit alle auf denselben Daten arbeiten.
+        private readonly ContactManagerFacade _contacts;
+
+        /// <summary>
+        /// Erzeugt die Startseite.
+        /// </summary>
+        /// <param name="contacts">Die Fassade der Business-Schicht, Ã¼ber die alle Daten laufen.</param>
+        /// <exception cref="ArgumentNullException">Wird geworfen, wenn <paramref name="contacts"/> <c>null</c> ist.</exception>
+        public MainForm(ContactManagerFacade contacts)
         {
+            ArgumentNullException.ThrowIfNull(contacts);
+
             InitializeComponent();
-            // Kacheln gemäss der selbst erstellten Farbpalette
+            _contacts = contacts;
+
+            // Kacheln gemÃ¤ss der selbst erstellten Farbpalette
             PnlCustomerTile.BackColor = AppColors.Primary;
             PnlEmployeeTile.BackColor = AppColors.Primary;
 
@@ -29,10 +47,10 @@ namespace ContactManager.UI.WinForms
 
         private void LblCustomerTile_Click(object sender, EventArgs e)
         {
-            // Fenster wird geöffnet - sofern noch nicht geöffnet oder bereits geschlossen
+            // Fenster wird geÃ¶ffnet - sofern noch nicht geÃ¶ffnet oder bereits geschlossen
             if (_customerListForm == null || _customerListForm.IsDisposed)
             {
-                _customerListForm = new CustomerListForm();
+                _customerListForm = new CustomerListForm(_contacts);
 
                 // Reagiert, sobald das Kundschaft-Fenster geschlossen wird
                 _customerListForm.FormClosed += CustomerListForm_Closed;
@@ -51,10 +69,10 @@ namespace ContactManager.UI.WinForms
 
         private void LblEmployeeTile_Click(object sender, EventArgs e)
         {
-            // Fenster wird geöffnet - sofern noch nicht geöffnet oder bereits geschlossen
+            // Fenster wird geÃ¶ffnet - sofern noch nicht geÃ¶ffnet oder bereits geschlossen
             if (_employeeListForm == null || _employeeListForm.IsDisposed)
             {
-                _employeeListForm = new EmployeeListForm();
+                _employeeListForm = new EmployeeListForm(_contacts);
 
                 // Reagiert, sobald das Kundschaft-Fenster geschlossen wird
                 _employeeListForm.FormClosed += EmployeeListForm_Closed;
