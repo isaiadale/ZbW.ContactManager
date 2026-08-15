@@ -34,6 +34,11 @@ namespace ContactManager.UI.WinForms.Forms
 
             InitializeComponent();
             _contacts = contacts;
+
+            // Bewusst hier statt im Designer verdrahtet: Der Designer gehört den
+            // Kolleg*innen, jede Änderung daran erzeugt unnötige Merge-Konflikte.
+            BtnAddEmployee.Click += BtnAddEmployee_Click;
+            DgvEmployeeList.CellDoubleClick += DgvEmployeeList_CellDoubleClick;
         }
 
         /// <summary>
@@ -91,6 +96,53 @@ namespace ContactManager.UI.WinForms.Forms
             // GetAll() liefert IReadOnlyList (und enthält Lernende gleich mit);
             // als DataSource taugt nur eine echte Liste.
             DgvEmployeeList.DataSource = _contacts.Employees.GetAll().ToList();
+        }
+
+        // Öffnet das Detailformular im Erfassungsmodus.
+        private void BtnAddEmployee_Click(object? sender, EventArgs e)
+        {
+            ShowDetail(null);
+        }
+
+        // Öffnet die doppelt angeklickte Zeile im Bearbeitungsmodus.
+        private void DgvEmployeeList_CellDoubleClick(object? sender, DataGridViewCellEventArgs e)
+        {
+            // Ein Doppelklick auf die Spaltenüberschrift meldet RowIndex -1; ohne diese
+            // Prüfung würde der Zugriff auf Rows[-1] die Anwendung beenden.
+            if (e.RowIndex < 0)
+            {
+                return;
+            }
+
+            // DataBoundItem ist genau das Objekt aus dem Datenstamm, an das gebunden wurde -
+            // inklusive Id. Genau deshalb ist die Liste an Employee gebunden und nicht an
+            // eine eigene Anzeigeklasse.
+            if (DgvEmployeeList.Rows[e.RowIndex].DataBoundItem is not Employee employee)
+            {
+                return;
+            }
+
+            ShowDetail(employee);
+        }
+
+        /// <summary>
+        /// Zeigt das Detailformular modal an und baut die Liste danach neu auf.
+        /// </summary>
+        /// <param name="employee">Die zu bearbeitende Person, oder <c>null</c> für eine Neuerfassung.</param>
+        private void ShowDetail(Employee? employee)
+        {
+            // ShowDialog gibt das Fenster - anders als Show/Close - nicht selbst frei;
+            // ohne using bliebe bei jedem Öffnen ein Formular im Speicher zurück.
+            using (EmployeeDetailForm detail = new EmployeeDetailForm(_contacts, employee))
+            {
+                // Owner setzen, damit das Detailfenster nicht hinter der Liste verschwindet.
+                detail.ShowDialog(this);
+            }
+
+            // Bewusst ohne Prüfung auf DialogResult.OK: Das Detailformular schliesst auch
+            // dann, wenn der Datensatz zwischenzeitlich gelöscht wurde (DialogResult.Cancel) -
+            // gerade dann muss die Liste neu geladen werden.
+            LoadEmployees();
         }
 
         private void BtnReturnToHome_Click(object sender, EventArgs e)
