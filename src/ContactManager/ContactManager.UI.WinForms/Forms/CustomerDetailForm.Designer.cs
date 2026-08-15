@@ -36,6 +36,7 @@
             LblCustomerNr = new Label();
             TxtbCustomerNr = new TextBox();
             GrpPersonalData = new GroupBox();
+            CombStatus = new ComboBox();
             LblStatus = new Label();
             TxtbTitle = new TextBox();
             LblTitle = new Label();
@@ -46,7 +47,6 @@
             LblCity = new Label();
             TxtbCity = new TextBox();
             LblStreet = new Label();
-            TxtbStreet = new TextBox();
             LblPostalCode = new Label();
             TxtbPostalCode = new TextBox();
             GrpContactData = new GroupBox();
@@ -57,10 +57,15 @@
             LblEmail = new Label();
             TxtbEmail = new TextBox();
             BtnSave = new Button();
-            CombStatus = new ComboBox();
+            GrpProtocolNotes = new GroupBox();
+            DgvEmployeeList = new DataGridView();
+            ColDateTime = new DataGridViewTextBoxColumn();
+            ColText = new DataGridViewTextBoxColumn();
             GrpPersonalData.SuspendLayout();
             GrpAddress.SuspendLayout();
             GrpContactData.SuspendLayout();
+            GrpProtocolNotes.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)DgvEmployeeList).BeginInit();
             SuspendLayout();
             // 
             // LblCustomerInfos
@@ -156,6 +161,7 @@
             TxtbCustomerNr.Name = "TxtbCustomerNr";
             TxtbCustomerNr.Size = new Size(110, 32);
             TxtbCustomerNr.TabIndex = 26;
+            TxtbCustomerNr.TabStop = false;
             TxtbCustomerNr.Text = "...";
             // 
             // GrpPersonalData
@@ -182,6 +188,15 @@
             GrpPersonalData.TabIndex = 30;
             GrpPersonalData.TabStop = false;
             GrpPersonalData.Text = "GRUNDDATEN";
+            // 
+            // CombStatus
+            // 
+            CombStatus.DropDownStyle = ComboBoxStyle.DropDownList;
+            CombStatus.FormattingEnabled = true;
+            CombStatus.Location = new Point(717, 200);
+            CombStatus.Name = "CombStatus";
+            CombStatus.Size = new Size(240, 29);
+            CombStatus.TabIndex = 37;
             // 
             // LblStatus
             // 
@@ -242,7 +257,6 @@
             GrpAddress.Controls.Add(LblCity);
             GrpAddress.Controls.Add(TxtbCity);
             GrpAddress.Controls.Add(LblStreet);
-            GrpAddress.Controls.Add(TxtbStreet);
             GrpAddress.Controls.Add(LblPostalCode);
             GrpAddress.Controls.Add(TxtbPostalCode);
             GrpAddress.Location = new Point(43, 411);
@@ -279,16 +293,6 @@
             LblStreet.Size = new Size(170, 35);
             LblStreet.TabIndex = 17;
             LblStreet.Text = "Strasse und Nr.";
-            // 
-            // TxtbStreet
-            // 
-            TxtbStreet.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            TxtbStreet.Location = new Point(211, 50);
-            TxtbStreet.Margin = new Padding(5, 4, 5, 4);
-            TxtbStreet.Name = "TxtbStreet";
-            TxtbStreet.Size = new Size(240, 32);
-            TxtbStreet.TabIndex = 19;
-            TxtbStreet.Text = "...";
             // 
             // LblPostalCode
             // 
@@ -390,20 +394,49 @@
             BtnSave.Text = "Speichern";
             BtnSave.UseVisualStyleBackColor = true;
             // 
-            // CombStatus
+            // GrpProtocolNotes
             // 
-            CombStatus.DropDownStyle = ComboBoxStyle.DropDownList;
-            CombStatus.FormattingEnabled = true;
-            CombStatus.Location = new Point(717, 200);
-            CombStatus.Name = "CombStatus";
-            CombStatus.Size = new Size(240, 29);
-            CombStatus.TabIndex = 37;
+            GrpProtocolNotes.Controls.Add(DgvEmployeeList);
+            GrpProtocolNotes.Location = new Point(554, 411);
+            GrpProtocolNotes.Name = "GrpProtocolNotes";
+            GrpProtocolNotes.Size = new Size(1010, 198);
+            GrpProtocolNotes.TabIndex = 38;
+            GrpProtocolNotes.TabStop = false;
+            GrpProtocolNotes.Text = "PROTOKOLLIERUNG";
+            // 
+            // DgvEmployeeList
+            // 
+            DgvEmployeeList.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            DgvEmployeeList.Columns.AddRange(new DataGridViewColumn[] { ColDateTime, ColText });
+            DgvEmployeeList.Location = new Point(30, 30);
+            DgvEmployeeList.Margin = new Padding(5, 4, 5, 4);
+            DgvEmployeeList.Name = "DgvEmployeeList";
+            DgvEmployeeList.RowHeadersWidth = 62;
+            DgvEmployeeList.Size = new Size(944, 154);
+            DgvEmployeeList.TabIndex = 8;
+            // 
+            // ColDateTime
+            // 
+            ColDateTime.HeaderText = "Erstellung";
+            ColDateTime.MinimumWidth = 8;
+            ColDateTime.Name = "ColDateTime";
+            ColDateTime.ReadOnly = true;
+            ColDateTime.Width = 120;
+            // 
+            // ColText
+            // 
+            ColText.HeaderText = "Text";
+            ColText.MinimumWidth = 8;
+            ColText.Name = "ColText";
+            ColText.ReadOnly = true;
+            ColText.Width = 760;
             // 
             // CustomerDetailForm
             // 
             AutoScaleDimensions = new SizeF(11F, 21F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1615, 660);
+            Controls.Add(GrpProtocolNotes);
             Controls.Add(BtnSave);
             Controls.Add(GrpContactData);
             Controls.Add(GrpAddress);
@@ -417,6 +450,8 @@
             GrpAddress.PerformLayout();
             GrpContactData.ResumeLayout(false);
             GrpContactData.PerformLayout();
+            GrpProtocolNotes.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)DgvEmployeeList).EndInit();
             ResumeLayout(false);
         }
         #endregion
@@ -438,7 +473,6 @@
         private DateTimePicker DtpDateOfBirth;
         private GroupBox GrpAddress;
         private Label LblStreet;
-        private TextBox TxtbStreet;
         private Label LblPostalCode;
         private TextBox TxtbPostalCode;
         private Label LblCity;
@@ -453,5 +487,9 @@
         private Button BtnSave;
         private Label LblStatus;
         private ComboBox CombStatus;
+        private GroupBox GrpProtocolNotes;
+        private DataGridView DgvEmployeeList;
+        private DataGridViewTextBoxColumn ColDateTime;
+        private DataGridViewTextBoxColumn ColText;
     }
 }

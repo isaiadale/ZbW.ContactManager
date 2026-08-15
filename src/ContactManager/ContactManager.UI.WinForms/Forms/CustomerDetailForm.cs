@@ -38,7 +38,7 @@ namespace ContactManager.UI.WinForms.Forms
                 TxtbBusinessPhone, TxtbMobilePhone, TxtbEmail,
 
                 // Adresse
-                TxtbStreet, TxtbPostalCode, TxtbCity
+                TxtbProtocolNotes, TxtbPostalCode, TxtbCity
             };
 
             // Weist jedem Control im Array die Tab-Reihenfolge entsprechend seiner Position zu.

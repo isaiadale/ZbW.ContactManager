@@ -54,7 +54,7 @@
             // BtnAddEmployee
             // 
             BtnAddEmployee.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            BtnAddEmployee.Location = new Point(1044, 122);
+            BtnAddEmployee.Location = new Point(1044, 119);
             BtnAddEmployee.Margin = new Padding(5, 4, 5, 4);
             BtnAddEmployee.Name = "BtnAddEmployee";
             BtnAddEmployee.Size = new Size(292, 43);

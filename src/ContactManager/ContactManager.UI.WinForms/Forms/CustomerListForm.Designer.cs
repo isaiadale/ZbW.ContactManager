@@ -65,7 +65,7 @@
             // BtnAddCustomer
             // 
             BtnAddCustomer.Font = new Font("Century Gothic", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            BtnAddCustomer.Location = new Point(1050, 122);
+            BtnAddCustomer.Location = new Point(1050, 119);
             BtnAddCustomer.Margin = new Padding(5, 4, 5, 4);
             BtnAddCustomer.Name = "BtnAddCustomer";
             BtnAddCustomer.Size = new Size(251, 43);
