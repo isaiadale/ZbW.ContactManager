@@ -123,6 +123,7 @@ namespace ContactManager.UI.WinForms.Forms
             // Anstellung
             SelectOrAdd(CombDepartment, employee.Department);
             TxtbJobTitle.Text = employee.JobTitle ?? string.Empty;
+            TxtbEmploymentLevel.Text = employee.EmploymentLevel?.ToString() ?? string.Empty;
             CombManagementLevel.SelectedItem = employee.ManagementLevel;
             WriteDate(DtpHireDate, employee.HireDate);
             WriteDate(DtpTerminationDate, employee.TerminationDate);
@@ -130,7 +131,7 @@ namespace ContactManager.UI.WinForms.Forms
             WriteAddress(employee.HomeAddress, TxtbPrivateStreet, TxtbPrivatePostalCode, TxtbPrivateCity);
             WriteAddress(employee.BusinessAddress, TxtbBusinessStreet, TxtbBusinessPostalCode, TxtbBusinessCity);
 
-            // Ausbildung: Ein bestehender Mitarbeiter kann nachträglich nicht zum Lernenden
+            // Ausbildung: Ein bestehende Mitarbeiterin kann nachträglich nicht zu Lernenden
             // werden (und umgekehrt) — das wäre ein Typwechsel, den die Business-Schicht
             // bewusst nicht unterstützt. Die Checkbox zeigt hier also nur noch an.
             if (employee is Apprentice apprentice)
@@ -201,10 +202,9 @@ namespace ContactManager.UI.WinForms.Forms
             employee.ManagementLevel = CombManagementLevel.SelectedItem is int level ? level : null;
             employee.HireDate = ReadDate(DtpHireDate);
             employee.TerminationDate = ReadDate(DtpTerminationDate);
+            employee.EmploymentLevel = ReadOptionalInt(TxtbEmploymentLevel);
 
-            // TODO: EmploymentLevel binden, sobald das Control existiert (Lücke 2 in PLAN.md).
-            employee.EmploymentLevel = _employee?.EmploymentLevel;
-
+            // Adressen
             employee.HomeAddress = ReadAddress(TxtbPrivateStreet, TxtbPrivatePostalCode, TxtbPrivateCity);
             employee.BusinessAddress = ReadAddress(TxtbBusinessStreet, TxtbBusinessPostalCode, TxtbBusinessCity);
 

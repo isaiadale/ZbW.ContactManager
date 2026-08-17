@@ -31,16 +31,6 @@
             BtnAddEmployee = new Button();
             TxtbEmployeeNrSearch = new TextBox();
             DgvEmployeeList = new DataGridView();
-            LblEmployeeListTitle = new Label();
-            LblEmployeeNr = new Label();
-            LblLastName = new Label();
-            LblFirstName = new Label();
-            BtnReturnToHome = new Button();
-            LblDateOfBirth = new Label();
-            TxtbFirstNameSearch = new TextBox();
-            TxtbLblLastNameSearch = new TextBox();
-            TxtbDateOfBirthSearch = new TextBox();
-            BtnDeleteEmployee = new Button();
             ColSelect = new DataGridViewCheckBoxColumn();
             ColEmployeeNumber = new DataGridViewTextBoxColumn();
             ColLastname = new DataGridViewTextBoxColumn();
@@ -50,6 +40,16 @@
             ColEmail = new DataGridViewTextBoxColumn();
             ColDepartment = new DataGridViewTextBoxColumn();
             ColJobTitle = new DataGridViewTextBoxColumn();
+            LblEmployeeListTitle = new Label();
+            LblEmployeeNr = new Label();
+            LblLastName = new Label();
+            LblFirstName = new Label();
+            BtnReturnToHome = new Button();
+            LblDateOfBirth = new Label();
+            TxtbFirstNameSearch = new TextBox();
+            TxtbLastNameSearch = new TextBox();
+            TxtbDateOfBirthSearch = new TextBox();
+            BtnDeleteEmployee = new Button();
             ((System.ComponentModel.ISupportInitialize)DgvEmployeeList).BeginInit();
             SuspendLayout();
             // 
@@ -72,7 +72,6 @@
             TxtbEmployeeNrSearch.Name = "TxtbEmployeeNrSearch";
             TxtbEmployeeNrSearch.Size = new Size(240, 32);
             TxtbEmployeeNrSearch.TabIndex = 4;
-            TxtbEmployeeNrSearch.Text = "...";
             // 
             // DgvEmployeeList
             // 
@@ -86,106 +85,6 @@
             DgvEmployeeList.Size = new Size(1309, 278);
             DgvEmployeeList.TabIndex = 7;
             DgvEmployeeList.CellClick += DgvEmployeeList_CellClick;
-            // 
-            // LblEmployeeListTitle
-            // 
-            LblEmployeeListTitle.Dock = DockStyle.Top;
-            LblEmployeeListTitle.Font = new Font("Century Gothic", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            LblEmployeeListTitle.Location = new Point(0, 0);
-            LblEmployeeListTitle.Name = "LblEmployeeListTitle";
-            LblEmployeeListTitle.Size = new Size(1413, 70);
-            LblEmployeeListTitle.TabIndex = 8;
-            LblEmployeeListTitle.Text = "Übersicht Mitarbeitende";
-            LblEmployeeListTitle.TextAlign = ContentAlignment.BottomCenter;
-            // 
-            // LblEmployeeNr
-            // 
-            LblEmployeeNr.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            LblEmployeeNr.Location = new Point(52, 122);
-            LblEmployeeNr.Name = "LblEmployeeNr";
-            LblEmployeeNr.Size = new Size(170, 32);
-            LblEmployeeNr.TabIndex = 9;
-            LblEmployeeNr.Text = "MA-Nummer";
-            // 
-            // LblLastName
-            // 
-            LblLastName.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            LblLastName.Location = new Point(52, 175);
-            LblLastName.Name = "LblLastName";
-            LblLastName.Size = new Size(170, 32);
-            LblLastName.TabIndex = 10;
-            LblLastName.Text = "Nachname";
-            // 
-            // LblFirstName
-            // 
-            LblFirstName.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            LblFirstName.Location = new Point(52, 228);
-            LblFirstName.Name = "LblFirstName";
-            LblFirstName.Size = new Size(170, 32);
-            LblFirstName.TabIndex = 11;
-            LblFirstName.Text = "Vorname";
-            // 
-            // BtnReturnToHome
-            // 
-            BtnReturnToHome.Font = new Font("Century Gothic", 8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            BtnReturnToHome.Location = new Point(25, 27);
-            BtnReturnToHome.Margin = new Padding(5, 4, 5, 4);
-            BtnReturnToHome.Name = "BtnReturnToHome";
-            BtnReturnToHome.Size = new Size(192, 43);
-            BtnReturnToHome.TabIndex = 21;
-            BtnReturnToHome.Text = "Zurück (ev. mit Icon)";
-            BtnReturnToHome.UseVisualStyleBackColor = true;
-            BtnReturnToHome.Click += BtnReturnToHome_Click;
-            // 
-            // LblDateOfBirth
-            // 
-            LblDateOfBirth.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            LblDateOfBirth.Location = new Point(52, 281);
-            LblDateOfBirth.Name = "LblDateOfBirth";
-            LblDateOfBirth.Size = new Size(170, 32);
-            LblDateOfBirth.TabIndex = 22;
-            LblDateOfBirth.Text = "Geburtsdatum";
-            // 
-            // TxtbFirstNameSearch
-            // 
-            TxtbFirstNameSearch.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            TxtbFirstNameSearch.Location = new Point(229, 226);
-            TxtbFirstNameSearch.Margin = new Padding(5, 4, 5, 4);
-            TxtbFirstNameSearch.Name = "TxtbFirstNameSearch";
-            TxtbFirstNameSearch.Size = new Size(240, 32);
-            TxtbFirstNameSearch.TabIndex = 23;
-            TxtbFirstNameSearch.Text = "...";
-            // 
-            // TxtbLblLastNameSearch
-            // 
-            TxtbLblLastNameSearch.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            TxtbLblLastNameSearch.Location = new Point(229, 172);
-            TxtbLblLastNameSearch.Margin = new Padding(5, 4, 5, 4);
-            TxtbLblLastNameSearch.Name = "TxtbLblLastNameSearch";
-            TxtbLblLastNameSearch.Size = new Size(240, 32);
-            TxtbLblLastNameSearch.TabIndex = 13;
-            TxtbLblLastNameSearch.Text = "...";
-            // 
-            // TxtbDateOfBirthSearch
-            // 
-            TxtbDateOfBirthSearch.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            TxtbDateOfBirthSearch.Location = new Point(229, 278);
-            TxtbDateOfBirthSearch.Margin = new Padding(5, 4, 5, 4);
-            TxtbDateOfBirthSearch.Name = "TxtbDateOfBirthSearch";
-            TxtbDateOfBirthSearch.Size = new Size(240, 32);
-            TxtbDateOfBirthSearch.TabIndex = 24;
-            TxtbDateOfBirthSearch.Text = "...";
-            // 
-            // BtnDeleteEmployee
-            // 
-            BtnDeleteEmployee.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            BtnDeleteEmployee.Location = new Point(52, 638);
-            BtnDeleteEmployee.Margin = new Padding(5, 4, 5, 4);
-            BtnDeleteEmployee.Name = "BtnDeleteEmployee";
-            BtnDeleteEmployee.Size = new Size(146, 43);
-            BtnDeleteEmployee.TabIndex = 25;
-            BtnDeleteEmployee.Text = "Löschen";
-            BtnDeleteEmployee.UseVisualStyleBackColor = true;
             // 
             // ColSelect
             // 
@@ -259,6 +158,103 @@
             ColJobTitle.Resizable = DataGridViewTriState.False;
             ColJobTitle.Width = 150;
             // 
+            // LblEmployeeListTitle
+            // 
+            LblEmployeeListTitle.Dock = DockStyle.Top;
+            LblEmployeeListTitle.Font = new Font("Century Gothic", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            LblEmployeeListTitle.Location = new Point(0, 0);
+            LblEmployeeListTitle.Name = "LblEmployeeListTitle";
+            LblEmployeeListTitle.Size = new Size(1413, 70);
+            LblEmployeeListTitle.TabIndex = 8;
+            LblEmployeeListTitle.Text = "Übersicht Mitarbeitende";
+            LblEmployeeListTitle.TextAlign = ContentAlignment.BottomCenter;
+            // 
+            // LblEmployeeNr
+            // 
+            LblEmployeeNr.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            LblEmployeeNr.Location = new Point(52, 122);
+            LblEmployeeNr.Name = "LblEmployeeNr";
+            LblEmployeeNr.Size = new Size(170, 32);
+            LblEmployeeNr.TabIndex = 9;
+            LblEmployeeNr.Text = "MA-Nummer";
+            // 
+            // LblLastName
+            // 
+            LblLastName.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            LblLastName.Location = new Point(52, 175);
+            LblLastName.Name = "LblLastName";
+            LblLastName.Size = new Size(170, 32);
+            LblLastName.TabIndex = 10;
+            LblLastName.Text = "Nachname";
+            // 
+            // LblFirstName
+            // 
+            LblFirstName.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            LblFirstName.Location = new Point(52, 228);
+            LblFirstName.Name = "LblFirstName";
+            LblFirstName.Size = new Size(170, 32);
+            LblFirstName.TabIndex = 11;
+            LblFirstName.Text = "Vorname";
+            // 
+            // BtnReturnToHome
+            // 
+            BtnReturnToHome.Font = new Font("Century Gothic", 8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            BtnReturnToHome.Location = new Point(25, 27);
+            BtnReturnToHome.Margin = new Padding(5, 4, 5, 4);
+            BtnReturnToHome.Name = "BtnReturnToHome";
+            BtnReturnToHome.Size = new Size(192, 43);
+            BtnReturnToHome.TabIndex = 21;
+            BtnReturnToHome.Text = "Zurück (ev. mit Icon)";
+            BtnReturnToHome.UseVisualStyleBackColor = true;
+            BtnReturnToHome.Click += BtnReturnToHome_Click;
+            // 
+            // LblDateOfBirth
+            // 
+            LblDateOfBirth.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            LblDateOfBirth.Location = new Point(52, 281);
+            LblDateOfBirth.Name = "LblDateOfBirth";
+            LblDateOfBirth.Size = new Size(170, 32);
+            LblDateOfBirth.TabIndex = 22;
+            LblDateOfBirth.Text = "Geburtsdatum";
+            // 
+            // TxtbFirstNameSearch
+            // 
+            TxtbFirstNameSearch.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            TxtbFirstNameSearch.Location = new Point(229, 226);
+            TxtbFirstNameSearch.Margin = new Padding(5, 4, 5, 4);
+            TxtbFirstNameSearch.Name = "TxtbFirstNameSearch";
+            TxtbFirstNameSearch.Size = new Size(240, 32);
+            TxtbFirstNameSearch.TabIndex = 23;
+            // 
+            // TxtbLastNameSearch
+            // 
+            TxtbLastNameSearch.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            TxtbLastNameSearch.Location = new Point(229, 172);
+            TxtbLastNameSearch.Margin = new Padding(5, 4, 5, 4);
+            TxtbLastNameSearch.Name = "TxtbLastNameSearch";
+            TxtbLastNameSearch.Size = new Size(240, 32);
+            TxtbLastNameSearch.TabIndex = 13;
+            // 
+            // TxtbDateOfBirthSearch
+            // 
+            TxtbDateOfBirthSearch.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            TxtbDateOfBirthSearch.Location = new Point(229, 278);
+            TxtbDateOfBirthSearch.Margin = new Padding(5, 4, 5, 4);
+            TxtbDateOfBirthSearch.Name = "TxtbDateOfBirthSearch";
+            TxtbDateOfBirthSearch.Size = new Size(240, 32);
+            TxtbDateOfBirthSearch.TabIndex = 24;
+            // 
+            // BtnDeleteEmployee
+            // 
+            BtnDeleteEmployee.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            BtnDeleteEmployee.Location = new Point(52, 638);
+            BtnDeleteEmployee.Margin = new Padding(5, 4, 5, 4);
+            BtnDeleteEmployee.Name = "BtnDeleteEmployee";
+            BtnDeleteEmployee.Size = new Size(146, 43);
+            BtnDeleteEmployee.TabIndex = 25;
+            BtnDeleteEmployee.Text = "Löschen";
+            BtnDeleteEmployee.UseVisualStyleBackColor = true;
+            // 
             // EmployeeListForm
             // 
             AutoScaleDimensions = new SizeF(11F, 21F);
@@ -266,7 +262,7 @@
             ClientSize = new Size(1413, 694);
             Controls.Add(BtnDeleteEmployee);
             Controls.Add(TxtbDateOfBirthSearch);
-            Controls.Add(TxtbLblLastNameSearch);
+            Controls.Add(TxtbLastNameSearch);
             Controls.Add(LblDateOfBirth);
             Controls.Add(BtnReturnToHome);
             Controls.Add(TxtbFirstNameSearch);
@@ -298,7 +294,7 @@
         private Button BtnReturnToHome;
         private Label LblDateOfBirth;
         private TextBox TxtbFirstNameSearch;
-        private TextBox TxtbLblLastNameSearch;
+        private TextBox TxtbLastNameSearch;
         private Button BtnDeleteEmployee;
         private DataGridViewCheckBoxColumn ColSelect;
         private DataGridViewTextBoxColumn ColEmployeeNumber;

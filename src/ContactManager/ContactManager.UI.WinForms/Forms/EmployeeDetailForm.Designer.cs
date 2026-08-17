@@ -284,7 +284,7 @@
             DtpDateOfBirth.Name = "DtpDateOfBirth";
             DtpDateOfBirth.Size = new Size(240, 30);
             DtpDateOfBirth.TabIndex = 35;
-            DtpDateOfBirth.Value = new DateTime(2033, 1, 1, 0, 0, 0, 0);
+            DtpDateOfBirth.Value = new DateTime(3333, 1, 1, 0, 0, 0, 0);
             // 
             // GrpPrivateAddress
             // 
