@@ -61,6 +61,7 @@
             DgvEmployeeList = new DataGridView();
             ColDateTime = new DataGridViewTextBoxColumn();
             ColText = new DataGridViewTextBoxColumn();
+            TxtbProtocolNotes = new TextBox();
             GrpPersonalData.SuspendLayout();
             GrpAddress.SuspendLayout();
             GrpContactData.SuspendLayout();
@@ -254,6 +255,7 @@
             // 
             // GrpAddress
             // 
+            GrpAddress.Controls.Add(TxtbProtocolNotes);
             GrpAddress.Controls.Add(LblCity);
             GrpAddress.Controls.Add(TxtbCity);
             GrpAddress.Controls.Add(LblStreet);
@@ -431,6 +433,16 @@
             ColText.ReadOnly = true;
             ColText.Width = 760;
             // 
+            // TxtbProtocolNotes
+            // 
+            TxtbProtocolNotes.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            TxtbProtocolNotes.Location = new Point(210, 50);
+            TxtbProtocolNotes.Margin = new Padding(5, 4, 5, 4);
+            TxtbProtocolNotes.Name = "TxtbProtocolNotes";
+            TxtbProtocolNotes.Size = new Size(240, 32);
+            TxtbProtocolNotes.TabIndex = 26;
+            TxtbProtocolNotes.Text = "...";
+            // 
             // CustomerDetailForm
             // 
             AutoScaleDimensions = new SizeF(11F, 21F);
@@ -491,5 +503,6 @@
         private DataGridView DgvEmployeeList;
         private DataGridViewTextBoxColumn ColDateTime;
         private DataGridViewTextBoxColumn ColText;
+        private TextBox TxtbProtocolNotes;
     }
 }

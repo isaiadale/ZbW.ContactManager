@@ -31,6 +31,7 @@
             LblCustomerListTitle = new Label();
             BtnAddCustomer = new Button();
             DgvCustomerList = new DataGridView();
+            ColSelect = new DataGridViewCheckBoxColumn();
             ColCustomerNumber = new DataGridViewTextBoxColumn();
             ColLastname = new DataGridViewTextBoxColumn();
             ColFirstName = new DataGridViewTextBoxColumn();
@@ -48,6 +49,7 @@
             BtnReturnToHome = new Button();
             TxtbDateOfBirthSearch = new TextBox();
             LblDateOfBirth = new Label();
+            BtnDeleteCustomer = new Button();
             ((System.ComponentModel.ISupportInitialize)DgvCustomerList).BeginInit();
             SuspendLayout();
             // 
@@ -57,7 +59,7 @@
             LblCustomerListTitle.Font = new Font("Century Gothic", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
             LblCustomerListTitle.Location = new Point(0, 0);
             LblCustomerListTitle.Name = "LblCustomerListTitle";
-            LblCustomerListTitle.Size = new Size(1388, 70);
+            LblCustomerListTitle.Size = new Size(1413, 70);
             LblCustomerListTitle.TabIndex = 1;
             LblCustomerListTitle.Text = "Übersicht Kundschaft";
             LblCustomerListTitle.TextAlign = ContentAlignment.BottomCenter;
@@ -65,7 +67,7 @@
             // BtnAddCustomer
             // 
             BtnAddCustomer.Font = new Font("Century Gothic", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            BtnAddCustomer.Location = new Point(1050, 119);
+            BtnAddCustomer.Location = new Point(1069, 119);
             BtnAddCustomer.Margin = new Padding(5, 4, 5, 4);
             BtnAddCustomer.Name = "BtnAddCustomer";
             BtnAddCustomer.Size = new Size(251, 43);
@@ -76,19 +78,29 @@
             // DgvCustomerList
             // 
             DgvCustomerList.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            DgvCustomerList.Columns.AddRange(new DataGridViewColumn[] { ColCustomerNumber, ColLastname, ColFirstName, ColTitle, ColDateOfBirth, ColPhone, ColEmail, ColStatus });
+            DgvCustomerList.Columns.AddRange(new DataGridViewColumn[] { ColSelect, ColCustomerNumber, ColLastname, ColFirstName, ColTitle, ColDateOfBirth, ColPhone, ColEmail, ColStatus });
             DgvCustomerList.Location = new Point(87, 350);
             DgvCustomerList.Margin = new Padding(5, 4, 5, 4);
             DgvCustomerList.Name = "DgvCustomerList";
+            DgvCustomerList.RowHeadersVisible = false;
             DgvCustomerList.RowHeadersWidth = 62;
-            DgvCustomerList.Size = new Size(1214, 278);
+            DgvCustomerList.Size = new Size(1239, 278);
             DgvCustomerList.TabIndex = 5;
+            DgvCustomerList.CellClick += DgvCustomerList_CellClick;
+            // 
+            // ColSelect
+            // 
+            ColSelect.HeaderText = "";
+            ColSelect.MinimumWidth = 8;
+            ColSelect.Name = "ColSelect";
+            ColSelect.Width = 30;
             // 
             // ColCustomerNumber
             // 
             ColCustomerNumber.HeaderText = "KD-Nr.";
             ColCustomerNumber.MinimumWidth = 8;
             ColCustomerNumber.Name = "ColCustomerNumber";
+            ColCustomerNumber.Resizable = DataGridViewTriState.False;
             ColCustomerNumber.Width = 80;
             // 
             // ColLastname
@@ -96,20 +108,23 @@
             ColLastname.HeaderText = "Nachname";
             ColLastname.MinimumWidth = 8;
             ColLastname.Name = "ColLastname";
-            ColLastname.Width = 160;
+            ColLastname.Resizable = DataGridViewTriState.False;
+            ColLastname.Width = 180;
             // 
             // ColFirstName
             // 
             ColFirstName.HeaderText = "Vorname";
             ColFirstName.MinimumWidth = 8;
             ColFirstName.Name = "ColFirstName";
-            ColFirstName.Width = 160;
+            ColFirstName.Resizable = DataGridViewTriState.False;
+            ColFirstName.Width = 180;
             // 
             // ColTitle
             // 
             ColTitle.HeaderText = "Titel";
             ColTitle.MinimumWidth = 8;
             ColTitle.Name = "ColTitle";
+            ColTitle.Resizable = DataGridViewTriState.False;
             ColTitle.Width = 150;
             // 
             // ColDateOfBirth
@@ -117,6 +132,7 @@
             ColDateOfBirth.HeaderText = "Geburtsdatum";
             ColDateOfBirth.MinimumWidth = 8;
             ColDateOfBirth.Name = "ColDateOfBirth";
+            ColDateOfBirth.Resizable = DataGridViewTriState.False;
             ColDateOfBirth.Width = 150;
             // 
             // ColPhone
@@ -124,6 +140,7 @@
             ColPhone.HeaderText = "Telefon";
             ColPhone.MinimumWidth = 8;
             ColPhone.Name = "ColPhone";
+            ColPhone.Resizable = DataGridViewTriState.False;
             ColPhone.Width = 150;
             // 
             // ColEmail
@@ -131,13 +148,15 @@
             ColEmail.HeaderText = "E-Mail";
             ColEmail.MinimumWidth = 8;
             ColEmail.Name = "ColEmail";
-            ColEmail.Width = 220;
+            ColEmail.Resizable = DataGridViewTriState.False;
+            ColEmail.Width = 235;
             // 
             // ColStatus
             // 
             ColStatus.HeaderText = "Status";
             ColStatus.MinimumWidth = 8;
             ColStatus.Name = "ColStatus";
+            ColStatus.Resizable = DataGridViewTriState.False;
             ColStatus.Width = 80;
             // 
             // TxtbFirstNameSearch
@@ -228,11 +247,23 @@
             LblDateOfBirth.TabIndex = 21;
             LblDateOfBirth.Text = "Geburtsdatum";
             // 
+            // BtnDeleteCustomer
+            // 
+            BtnDeleteCustomer.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            BtnDeleteCustomer.Location = new Point(87, 638);
+            BtnDeleteCustomer.Margin = new Padding(5, 4, 5, 4);
+            BtnDeleteCustomer.Name = "BtnDeleteCustomer";
+            BtnDeleteCustomer.Size = new Size(146, 43);
+            BtnDeleteCustomer.TabIndex = 26;
+            BtnDeleteCustomer.Text = "Löschen";
+            BtnDeleteCustomer.UseVisualStyleBackColor = true;
+            // 
             // CustomerListForm
             // 
             AutoScaleDimensions = new SizeF(11F, 21F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1388, 654);
+            ClientSize = new Size(1413, 694);
+            Controls.Add(BtnDeleteCustomer);
             Controls.Add(TxtbDateOfBirthSearch);
             Controls.Add(LblDateOfBirth);
             Controls.Add(BtnReturnToHome);
@@ -258,14 +289,6 @@
         private Label LblCustomerListTitle;
         private Button BtnAddCustomer;
         private DataGridView DgvCustomerList;
-        private DataGridViewTextBoxColumn ColCustomerNumber;
-        private DataGridViewTextBoxColumn ColLastname;
-        private DataGridViewTextBoxColumn ColFirstName;
-        private DataGridViewTextBoxColumn ColTitle;
-        private DataGridViewTextBoxColumn ColDateOfBirth;
-        private DataGridViewTextBoxColumn ColPhone;
-        private DataGridViewTextBoxColumn ColEmail;
-        private DataGridViewTextBoxColumn ColStatus;
         private TextBox TxtbFirstNameSearch;
         private TextBox TxtbLastNameSearch;
         private Label LblFirstName;
@@ -275,5 +298,15 @@
         private Button BtnReturnToHome;
         private TextBox TxtbDateOfBirthSearch;
         private Label LblDateOfBirth;
+        private Button BtnDeleteCustomer;
+        private DataGridViewCheckBoxColumn ColSelect;
+        private DataGridViewTextBoxColumn ColCustomerNumber;
+        private DataGridViewTextBoxColumn ColLastname;
+        private DataGridViewTextBoxColumn ColFirstName;
+        private DataGridViewTextBoxColumn ColTitle;
+        private DataGridViewTextBoxColumn ColDateOfBirth;
+        private DataGridViewTextBoxColumn ColPhone;
+        private DataGridViewTextBoxColumn ColEmail;
+        private DataGridViewTextBoxColumn ColStatus;
     }
 }

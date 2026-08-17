@@ -31,14 +31,6 @@
             BtnAddEmployee = new Button();
             TxtbEmployeeNrSearch = new TextBox();
             DgvEmployeeList = new DataGridView();
-            ColEmployeeNumber = new DataGridViewTextBoxColumn();
-            ColLastname = new DataGridViewTextBoxColumn();
-            ColFirstName = new DataGridViewTextBoxColumn();
-            ColDateOfBirth = new DataGridViewTextBoxColumn();
-            ColPhone = new DataGridViewTextBoxColumn();
-            ColEmail = new DataGridViewTextBoxColumn();
-            ColDepartment = new DataGridViewTextBoxColumn();
-            ColJobTitle = new DataGridViewTextBoxColumn();
             LblEmployeeListTitle = new Label();
             LblEmployeeNr = new Label();
             LblLastName = new Label();
@@ -48,13 +40,23 @@
             TxtbFirstNameSearch = new TextBox();
             TxtbLblLastNameSearch = new TextBox();
             TxtbDateOfBirthSearch = new TextBox();
+            BtnDeleteEmployee = new Button();
+            ColSelect = new DataGridViewCheckBoxColumn();
+            ColEmployeeNumber = new DataGridViewTextBoxColumn();
+            ColLastname = new DataGridViewTextBoxColumn();
+            ColFirstName = new DataGridViewTextBoxColumn();
+            ColDateOfBirth = new DataGridViewTextBoxColumn();
+            ColPhone = new DataGridViewTextBoxColumn();
+            ColEmail = new DataGridViewTextBoxColumn();
+            ColDepartment = new DataGridViewTextBoxColumn();
+            ColJobTitle = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)DgvEmployeeList).BeginInit();
             SuspendLayout();
             // 
             // BtnAddEmployee
             // 
             BtnAddEmployee.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            BtnAddEmployee.Location = new Point(1044, 119);
+            BtnAddEmployee.Location = new Point(1069, 119);
             BtnAddEmployee.Margin = new Padding(5, 4, 5, 4);
             BtnAddEmployee.Name = "BtnAddEmployee";
             BtnAddEmployee.Size = new Size(292, 43);
@@ -75,69 +77,15 @@
             // DgvEmployeeList
             // 
             DgvEmployeeList.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            DgvEmployeeList.Columns.AddRange(new DataGridViewColumn[] { ColEmployeeNumber, ColLastname, ColFirstName, ColDateOfBirth, ColPhone, ColEmail, ColDepartment, ColJobTitle });
+            DgvEmployeeList.Columns.AddRange(new DataGridViewColumn[] { ColSelect, ColEmployeeNumber, ColLastname, ColFirstName, ColDateOfBirth, ColPhone, ColEmail, ColDepartment, ColJobTitle });
             DgvEmployeeList.Location = new Point(52, 350);
             DgvEmployeeList.Margin = new Padding(5, 4, 5, 4);
             DgvEmployeeList.Name = "DgvEmployeeList";
+            DgvEmployeeList.RowHeadersVisible = false;
             DgvEmployeeList.RowHeadersWidth = 62;
-            DgvEmployeeList.Size = new Size(1284, 278);
+            DgvEmployeeList.Size = new Size(1309, 278);
             DgvEmployeeList.TabIndex = 7;
-            // 
-            // ColEmployeeNumber
-            // 
-            ColEmployeeNumber.HeaderText = "MA-Nr.";
-            ColEmployeeNumber.MinimumWidth = 8;
-            ColEmployeeNumber.Name = "ColEmployeeNumber";
-            ColEmployeeNumber.Width = 80;
-            // 
-            // ColLastname
-            // 
-            ColLastname.HeaderText = "Nachname";
-            ColLastname.MinimumWidth = 8;
-            ColLastname.Name = "ColLastname";
-            ColLastname.Width = 160;
-            // 
-            // ColFirstName
-            // 
-            ColFirstName.HeaderText = "Vorname";
-            ColFirstName.MinimumWidth = 8;
-            ColFirstName.Name = "ColFirstName";
-            ColFirstName.Width = 160;
-            // 
-            // ColDateOfBirth
-            // 
-            ColDateOfBirth.HeaderText = "Geburtsdatum";
-            ColDateOfBirth.MinimumWidth = 8;
-            ColDateOfBirth.Name = "ColDateOfBirth";
-            ColDateOfBirth.Width = 150;
-            // 
-            // ColPhone
-            // 
-            ColPhone.HeaderText = "Telefon";
-            ColPhone.MinimumWidth = 8;
-            ColPhone.Name = "ColPhone";
-            ColPhone.Width = 150;
-            // 
-            // ColEmail
-            // 
-            ColEmail.HeaderText = "E-Mail";
-            ColEmail.MinimumWidth = 8;
-            ColEmail.Name = "ColEmail";
-            ColEmail.Width = 220;
-            // 
-            // ColDepartment
-            // 
-            ColDepartment.HeaderText = "Abteilung";
-            ColDepartment.MinimumWidth = 8;
-            ColDepartment.Name = "ColDepartment";
-            ColDepartment.Width = 150;
-            // 
-            // ColJobTitle
-            // 
-            ColJobTitle.HeaderText = "Rolle";
-            ColJobTitle.MinimumWidth = 8;
-            ColJobTitle.Name = "ColJobTitle";
-            ColJobTitle.Width = 150;
+            DgvEmployeeList.CellClick += DgvEmployeeList_CellClick;
             // 
             // LblEmployeeListTitle
             // 
@@ -145,7 +93,7 @@
             LblEmployeeListTitle.Font = new Font("Century Gothic", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
             LblEmployeeListTitle.Location = new Point(0, 0);
             LblEmployeeListTitle.Name = "LblEmployeeListTitle";
-            LblEmployeeListTitle.Size = new Size(1388, 70);
+            LblEmployeeListTitle.Size = new Size(1413, 70);
             LblEmployeeListTitle.TabIndex = 8;
             LblEmployeeListTitle.Text = "Übersicht Mitarbeitende";
             LblEmployeeListTitle.TextAlign = ContentAlignment.BottomCenter;
@@ -228,11 +176,95 @@
             TxtbDateOfBirthSearch.TabIndex = 24;
             TxtbDateOfBirthSearch.Text = "...";
             // 
+            // BtnDeleteEmployee
+            // 
+            BtnDeleteEmployee.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            BtnDeleteEmployee.Location = new Point(52, 638);
+            BtnDeleteEmployee.Margin = new Padding(5, 4, 5, 4);
+            BtnDeleteEmployee.Name = "BtnDeleteEmployee";
+            BtnDeleteEmployee.Size = new Size(146, 43);
+            BtnDeleteEmployee.TabIndex = 25;
+            BtnDeleteEmployee.Text = "Löschen";
+            BtnDeleteEmployee.UseVisualStyleBackColor = true;
+            // 
+            // ColSelect
+            // 
+            ColSelect.HeaderText = "";
+            ColSelect.MinimumWidth = 8;
+            ColSelect.Name = "ColSelect";
+            ColSelect.Resizable = DataGridViewTriState.False;
+            ColSelect.Width = 30;
+            // 
+            // ColEmployeeNumber
+            // 
+            ColEmployeeNumber.HeaderText = "MA-Nr.";
+            ColEmployeeNumber.MinimumWidth = 8;
+            ColEmployeeNumber.Name = "ColEmployeeNumber";
+            ColEmployeeNumber.Resizable = DataGridViewTriState.False;
+            ColEmployeeNumber.Width = 80;
+            // 
+            // ColLastname
+            // 
+            ColLastname.HeaderText = "Nachname";
+            ColLastname.MinimumWidth = 8;
+            ColLastname.Name = "ColLastname";
+            ColLastname.Resizable = DataGridViewTriState.False;
+            ColLastname.Width = 180;
+            // 
+            // ColFirstName
+            // 
+            ColFirstName.HeaderText = "Vorname";
+            ColFirstName.MinimumWidth = 8;
+            ColFirstName.Name = "ColFirstName";
+            ColFirstName.Resizable = DataGridViewTriState.False;
+            ColFirstName.Width = 180;
+            // 
+            // ColDateOfBirth
+            // 
+            ColDateOfBirth.HeaderText = "Geburtsdatum";
+            ColDateOfBirth.MinimumWidth = 8;
+            ColDateOfBirth.Name = "ColDateOfBirth";
+            ColDateOfBirth.Resizable = DataGridViewTriState.False;
+            ColDateOfBirth.Width = 150;
+            // 
+            // ColPhone
+            // 
+            ColPhone.HeaderText = "Telefon";
+            ColPhone.MinimumWidth = 8;
+            ColPhone.Name = "ColPhone";
+            ColPhone.Resizable = DataGridViewTriState.False;
+            ColPhone.Width = 150;
+            // 
+            // ColEmail
+            // 
+            ColEmail.HeaderText = "E-Mail";
+            ColEmail.MinimumWidth = 8;
+            ColEmail.Name = "ColEmail";
+            ColEmail.Resizable = DataGridViewTriState.False;
+            ColEmail.Width = 235;
+            // 
+            // ColDepartment
+            // 
+            ColDepartment.HeaderText = "Abteilung";
+            ColDepartment.MinimumWidth = 8;
+            ColDepartment.Name = "ColDepartment";
+            ColDepartment.Resizable = DataGridViewTriState.False;
+            ColDepartment.Width = 150;
+            // 
+            // ColJobTitle
+            // 
+            ColJobTitle.HeaderText = "Rolle";
+            ColJobTitle.MinimumWidth = 8;
+            ColJobTitle.Name = "ColJobTitle";
+            ColJobTitle.Resizable = DataGridViewTriState.False;
+            ColJobTitle.Width = 150;
+            // 
             // EmployeeListForm
             // 
             AutoScaleDimensions = new SizeF(11F, 21F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1388, 654);
+            ClientSize = new Size(1413, 694);
+            Controls.Add(BtnDeleteEmployee);
             Controls.Add(TxtbDateOfBirthSearch);
             Controls.Add(TxtbLblLastNameSearch);
             Controls.Add(LblDateOfBirth);
@@ -259,14 +291,6 @@
         private TextBox TxtbEmployeeNrSearch;
         private DataGridView DgvEmployeeList;
         private Label LblEmployeeListTitle;
-        private DataGridViewTextBoxColumn ColEmployeeNumber;
-        private DataGridViewTextBoxColumn ColLastname;
-        private DataGridViewTextBoxColumn ColFirstName;
-        private DataGridViewTextBoxColumn ColDateOfBirth;
-        private DataGridViewTextBoxColumn ColPhone;
-        private DataGridViewTextBoxColumn ColEmail;
-        private DataGridViewTextBoxColumn ColDepartment;
-        private DataGridViewTextBoxColumn ColJobTitle;
         private Label LblEmployeeNr;
         private Label LblLastName;
         private Label LblFirstName;
@@ -275,5 +299,15 @@
         private Label LblDateOfBirth;
         private TextBox TxtbFirstNameSearch;
         private TextBox TxtbLblLastNameSearch;
+        private Button BtnDeleteEmployee;
+        private DataGridViewCheckBoxColumn ColSelect;
+        private DataGridViewTextBoxColumn ColEmployeeNumber;
+        private DataGridViewTextBoxColumn ColLastname;
+        private DataGridViewTextBoxColumn ColFirstName;
+        private DataGridViewTextBoxColumn ColDateOfBirth;
+        private DataGridViewTextBoxColumn ColPhone;
+        private DataGridViewTextBoxColumn ColEmail;
+        private DataGridViewTextBoxColumn ColDepartment;
+        private DataGridViewTextBoxColumn ColJobTitle;
     }
 }
