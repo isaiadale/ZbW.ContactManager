@@ -111,5 +111,20 @@ namespace ContactManager.UI.WinForms.Forms
             // Schliesst dieses Fenster; MainForm erscheint automatisch wieder (FormClosed-Event)
             this.Close();
         }
+
+        private void DgvCustomerList_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            // Ermöglicht das Umschalten der Checkbox mit nur einem Klick, statt zwei
+            if (e.RowIndex >= 0 && DgvCustomerList.Columns[e.ColumnIndex].Name == "ColSelect")
+            {
+                DataGridViewCheckBoxCell checkboxCell =
+                    (DataGridViewCheckBoxCell)DgvCustomerList.Rows[e.RowIndex].Cells["ColSelect"];
+
+                checkboxCell.Value = !(bool)(checkboxCell.Value ?? false);
+
+                // Zelle sofort verlassen, damit der neue Wert übernommen wird
+                DgvCustomerList.EndEdit();
+            }
+        }
     }
 }
