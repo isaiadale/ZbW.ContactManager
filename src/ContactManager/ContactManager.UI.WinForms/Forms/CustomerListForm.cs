@@ -35,6 +35,8 @@ namespace ContactManager.UI.WinForms.Forms
 
             InitializeComponent();
             _contacts = contacts;
+
+            
         }
 
         /// <summary>

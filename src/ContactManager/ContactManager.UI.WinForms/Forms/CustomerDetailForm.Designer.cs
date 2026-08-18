@@ -44,6 +44,7 @@
             LblSalutation = new Label();
             DtpDateOfBirth = new DateTimePicker();
             GrpAddress = new GroupBox();
+            TxtbStreet = new TextBox();
             LblCity = new Label();
             TxtbCity = new TextBox();
             LblStreet = new Label();
@@ -58,15 +59,14 @@
             TxtbEmail = new TextBox();
             BtnSave = new Button();
             GrpProtocolNotes = new GroupBox();
-            DgvEmployeeList = new DataGridView();
+            DgvProtocolNotes = new DataGridView();
             ColDateTime = new DataGridViewTextBoxColumn();
             ColText = new DataGridViewTextBoxColumn();
-            TxtbProtocolNotes = new TextBox();
             GrpPersonalData.SuspendLayout();
             GrpAddress.SuspendLayout();
             GrpContactData.SuspendLayout();
             GrpProtocolNotes.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)DgvEmployeeList).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)DgvProtocolNotes).BeginInit();
             SuspendLayout();
             // 
             // LblCustomerInfos
@@ -255,7 +255,7 @@
             // 
             // GrpAddress
             // 
-            GrpAddress.Controls.Add(TxtbProtocolNotes);
+            GrpAddress.Controls.Add(TxtbStreet);
             GrpAddress.Controls.Add(LblCity);
             GrpAddress.Controls.Add(TxtbCity);
             GrpAddress.Controls.Add(LblStreet);
@@ -267,6 +267,16 @@
             GrpAddress.TabIndex = 31;
             GrpAddress.TabStop = false;
             GrpAddress.Text = "ADRESSE";
+            // 
+            // TxtbStreet
+            // 
+            TxtbStreet.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            TxtbStreet.Location = new Point(210, 50);
+            TxtbStreet.Margin = new Padding(5, 4, 5, 4);
+            TxtbStreet.Name = "TxtbStreet";
+            TxtbStreet.Size = new Size(240, 32);
+            TxtbStreet.TabIndex = 26;
+            TxtbStreet.Text = "...";
             // 
             // LblCity
             // 
@@ -398,7 +408,7 @@
             // 
             // GrpProtocolNotes
             // 
-            GrpProtocolNotes.Controls.Add(DgvEmployeeList);
+            GrpProtocolNotes.Controls.Add(DgvProtocolNotes);
             GrpProtocolNotes.Location = new Point(554, 411);
             GrpProtocolNotes.Name = "GrpProtocolNotes";
             GrpProtocolNotes.Size = new Size(1010, 198);
@@ -406,16 +416,16 @@
             GrpProtocolNotes.TabStop = false;
             GrpProtocolNotes.Text = "PROTOKOLLIERUNG";
             // 
-            // DgvEmployeeList
+            // DgvProtocolNotes
             // 
-            DgvEmployeeList.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            DgvEmployeeList.Columns.AddRange(new DataGridViewColumn[] { ColDateTime, ColText });
-            DgvEmployeeList.Location = new Point(30, 30);
-            DgvEmployeeList.Margin = new Padding(5, 4, 5, 4);
-            DgvEmployeeList.Name = "DgvEmployeeList";
-            DgvEmployeeList.RowHeadersWidth = 62;
-            DgvEmployeeList.Size = new Size(944, 154);
-            DgvEmployeeList.TabIndex = 8;
+            DgvProtocolNotes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            DgvProtocolNotes.Columns.AddRange(new DataGridViewColumn[] { ColDateTime, ColText });
+            DgvProtocolNotes.Location = new Point(30, 30);
+            DgvProtocolNotes.Margin = new Padding(5, 4, 5, 4);
+            DgvProtocolNotes.Name = "DgvProtocolNotes";
+            DgvProtocolNotes.RowHeadersWidth = 62;
+            DgvProtocolNotes.Size = new Size(944, 154);
+            DgvProtocolNotes.TabIndex = 8;
             // 
             // ColDateTime
             // 
@@ -432,16 +442,6 @@
             ColText.Name = "ColText";
             ColText.ReadOnly = true;
             ColText.Width = 760;
-            // 
-            // TxtbProtocolNotes
-            // 
-            TxtbProtocolNotes.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            TxtbProtocolNotes.Location = new Point(210, 50);
-            TxtbProtocolNotes.Margin = new Padding(5, 4, 5, 4);
-            TxtbProtocolNotes.Name = "TxtbProtocolNotes";
-            TxtbProtocolNotes.Size = new Size(240, 32);
-            TxtbProtocolNotes.TabIndex = 26;
-            TxtbProtocolNotes.Text = "...";
             // 
             // CustomerDetailForm
             // 
@@ -463,7 +463,7 @@
             GrpContactData.ResumeLayout(false);
             GrpContactData.PerformLayout();
             GrpProtocolNotes.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)DgvEmployeeList).EndInit();
+            ((System.ComponentModel.ISupportInitialize)DgvProtocolNotes).EndInit();
             ResumeLayout(false);
         }
         #endregion
@@ -500,9 +500,9 @@
         private Label LblStatus;
         private ComboBox CombStatus;
         private GroupBox GrpProtocolNotes;
-        private DataGridView DgvEmployeeList;
+        private DataGridView DgvProtocolNotes;
         private DataGridViewTextBoxColumn ColDateTime;
         private DataGridViewTextBoxColumn ColText;
-        private TextBox TxtbProtocolNotes;
+        private TextBox TxtbStreet;
     }
 }
