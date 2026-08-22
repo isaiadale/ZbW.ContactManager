@@ -10,6 +10,7 @@ namespace ContactManager.Model.Enums
     public enum Salutation
     {
         Mr = 1,
-        Mrs = 2
+        Mrs = 2,
+        None = 3
     }
 }

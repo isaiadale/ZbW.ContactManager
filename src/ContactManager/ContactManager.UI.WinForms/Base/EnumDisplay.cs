@@ -44,6 +44,7 @@ namespace ContactManager.UI.WinForms.Base
         {
             Salutation.Mr => "Herr",
             Salutation.Mrs => "Frau",
+            Salutation.None => "Keine Anrede",
             _ => salutation.ToString()
         };
     }

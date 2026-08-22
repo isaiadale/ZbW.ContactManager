@@ -10,6 +10,7 @@ using ContactManager.Business.Exceptions;
 using ContactManager.Model;
 using ContactManager.Model.Enums;
 using ContactManager.UI.WinForms.Base;
+using System.Linq;
 
 namespace ContactManager.UI.WinForms.Forms
 {
@@ -61,7 +62,7 @@ namespace ContactManager.UI.WinForms.Forms
             SetGroupTabOrder();
 
             // Formular startet eingeklappt, da "Lernende" standardmässig nicht aktiviert ist.
-            this.ClientSize = new Size(this.ClientSize.Width, 825);
+            this.ClientSize = new Size(this.ClientSize.Width, 840);
             TxtbEmployeeNr.ReadOnly = true;
 
             // Bewusst hier statt im Designer verdrahtet: Der Designer gehört den
@@ -80,7 +81,6 @@ namespace ContactManager.UI.WinForms.Forms
             base.OnLoad(e);
 
             FillComboBoxes();
-            PrepareDatePickers();
             ClearInputs();
 
             if (_employee is null)
@@ -252,7 +252,7 @@ namespace ContactManager.UI.WinForms.Forms
         {
             GrpApprentice.Visible = ChkbIsApprentice.Checked;
             // Formularhöhe anpassen, damit Platz für die Ausbildungs-Box entsteht
-            this.ClientSize = new Size(this.ClientSize.Width, ChkbIsApprentice.Checked ? 990 : 825);
+            this.ClientSize = new Size(this.ClientSize.Width, ChkbIsApprentice.Checked ? 1000 : 840);
         }
 
         /// <summary>
@@ -274,18 +274,43 @@ namespace ContactManager.UI.WinForms.Forms
                 CombManagementLevel.Items.Add(level);
             }
             CombManagementLevel.SelectedIndex = -1;
+
+            // Feste Abteilungsliste, analog zur Kaderstufe direkt hier definiert.
+            CombDepartment.Items.Clear();
+            CombDepartment.Items.AddRange(new object[]
+            {
+                "IT", "Verkauf", "Finanzen", "HR", "Produktion", "Marketing", "Geschäftsleitung"
+            });
+            CombDepartment.SelectedIndex = -1;
+
+            // Länderliste für die Nationalität. .NET kennt bereits alle Länder über CultureInfo
+            // (eine Sprachregion pro Land, z. B. "de-CH" für Schweiz) - deshalb keine eigene,
+            // manuell gepflegte Liste nötig. RegionInfo liefert daraus den ausgeschriebenen
+            // Ländernamen in der aktuellen Sprache (bei uns Deutsch, dank Windows-Spracheinstellung).
+            string[] nationalities = System.Globalization.CultureInfo
+                .GetCultures(System.Globalization.CultureTypes.SpecificCultures)
+                .Select(culture => new System.Globalization.RegionInfo(culture.Name).DisplayName)
+                .Distinct()
+                .OrderBy(name => name)
+                .ToArray();
+
+            // Vorschlagsliste für die Autovervollständigung; freie Eingabe bleibt weiterhin möglich.
+            CombNationality.AutoCompleteSource = AutoCompleteSource.CustomSource;
+            CombNationality.AutoCompleteCustomSource = new AutoCompleteStringCollection();
+            CombNationality.AutoCompleteCustomSource.AddRange(nationalities);
+            CombNationality.Validating += CombNationality_Validating;
         }
 
-        /// <summary>
-        /// Erlaubt den Datumsfeldern den Zustand "nicht gesetzt". Ein DateTimePicker hat
-        /// sonst immer ein Datum — jede Person bekäme beim Erfassen ungefragt das heutige.
-        /// Die Checkbox im Control bedeutet damit "Wert erfasst".
-        /// </summary>
-        private void PrepareDatePickers()
+        // Verhindert erfundene Länder: Eingabe muss exakt einem Listeneintrag entsprechen.
+        private void CombNationality_Validating(object sender, CancelEventArgs e)
         {
-            DtpDateOfBirth.ShowCheckBox = true;
-            DtpHireDate.ShowCheckBox = true;
-            DtpTerminationDate.ShowCheckBox = true;
+            if (CombNationality.Text.Length > 0 &&
+                !CombNationality.AutoCompleteCustomSource.Cast<string>().Contains(CombNationality.Text))
+            {
+                MessageBox.Show("Bitte ein gültiges Land aus der Liste auswählen.",
+                    "Ungültige Eingabe", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                CombNationality.Text = string.Empty;
+            }
         }
 
         /// <summary>
@@ -301,13 +326,16 @@ namespace ContactManager.UI.WinForms.Forms
                 TxtbJobTitle,
                 TxtbPrivateStreet, TxtbPrivatePostalCode, TxtbPrivateCity,
                 TxtbBusinessStreet, TxtbBusinessPostalCode, TxtbBusinessCity,
-                TxtbApprenticeshipYears, TxtbCurrAppYear
+                TxtbApprenticeshipYears, TxtbCurrAppYear,TxtbEmploymentLevel
             };
 
             foreach (TextBox input in inputs)
             {
                 input.Text = string.Empty;
             }
+
+            // AHV-Nummer beginnt immer mit dem Schweizer Ländercode 756
+            TxtbSocialSecNr.Text = "756";
 
             CombGender.SelectedIndex = -1;
             CombSalutation.SelectedIndex = -1;
@@ -333,7 +361,7 @@ namespace ContactManager.UI.WinForms.Forms
                 TxtbBusinessPhone, TxtbMobilePhone, TxtbEmail,
 
                 // Anstellung
-                CombDepartment, TxtbJobTitle, CombManagementLevel, DtpHireDate, DtpTerminationDate,
+                CombDepartment, TxtbJobTitle, CombManagementLevel,TxtbEmploymentLevel, DtpHireDate, DtpTerminationDate,
 
                 // Privatadresse
                 TxtbPrivateStreet, TxtbPrivatePostalCode, TxtbPrivateCity,
@@ -549,6 +577,22 @@ namespace ContactManager.UI.WinForms.Forms
             }
 
             box.SelectedItem = value;
+        }
+
+        // Erlaubt nur Ziffern und Steuerzeichen (z. B. Rücktaste) in der AHV-Nummer.
+        private void TxtbSocialSecNr_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        // Cursor ans Ende setzen, damit "756" nicht überschrieben wird, sondern man direkt weitertippt.
+        private void TxtbSocialSecNr_Enter(object sender, EventArgs e)
+        {
+            TxtbSocialSecNr.SelectionStart = TxtbSocialSecNr.Text.Length;
+            TxtbSocialSecNr.SelectionLength = 0;
         }
     }
 }

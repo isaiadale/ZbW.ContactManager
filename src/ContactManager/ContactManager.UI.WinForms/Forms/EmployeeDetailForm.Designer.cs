@@ -54,7 +54,10 @@
             LblPrivatePostalCode = new Label();
             TxtbPrivatePostalCode = new TextBox();
             GrpEmployeeInfo = new GroupBox();
+            LblEmploymentLevelPercent = new Label();
+            TxtbEmploymentLevel = new TextBox();
             DtpTerminationDate = new DateTimePicker();
+            LblEmploymentLevel = new Label();
             LblTerminationDate = new Label();
             DtpHireDate = new DateTimePicker();
             LblHireDate = new Label();
@@ -174,10 +177,13 @@
             TxtbSocialSecNr.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
             TxtbSocialSecNr.Location = new Point(717, 152);
             TxtbSocialSecNr.Margin = new Padding(5, 4, 5, 4);
+            TxtbSocialSecNr.MaxLength = 13;
             TxtbSocialSecNr.Name = "TxtbSocialSecNr";
             TxtbSocialSecNr.Size = new Size(240, 32);
             TxtbSocialSecNr.TabIndex = 23;
-            TxtbSocialSecNr.Text = "...";
+            TxtbSocialSecNr.Text = "756";
+            TxtbSocialSecNr.Enter += TxtbSocialSecNr_Enter;
+            TxtbSocialSecNr.KeyPress += TxtbSocialSecNr_KeyPress;
             // 
             // LblSocialSecNr
             // 
@@ -205,6 +211,7 @@
             TxtbEmployeeNr.Name = "TxtbEmployeeNr";
             TxtbEmployeeNr.Size = new Size(110, 32);
             TxtbEmployeeNr.TabIndex = 26;
+            TxtbEmployeeNr.TabStop = false;
             TxtbEmployeeNr.Text = "...";
             // 
             // CombNationality
@@ -272,9 +279,12 @@
             // 
             DtpDateOfBirth.Format = DateTimePickerFormat.Short;
             DtpDateOfBirth.Location = new Point(203, 206);
+            DtpDateOfBirth.MaxDate = new DateTime(3333, 12, 31, 0, 0, 0, 0);
+            DtpDateOfBirth.MinDate = new DateTime(1900, 1, 1, 0, 0, 0, 0);
             DtpDateOfBirth.Name = "DtpDateOfBirth";
             DtpDateOfBirth.Size = new Size(240, 30);
             DtpDateOfBirth.TabIndex = 35;
+            DtpDateOfBirth.Value = new DateTime(2033, 1, 1, 0, 0, 0, 0);
             // 
             // GrpPrivateAddress
             // 
@@ -350,7 +360,10 @@
             // 
             // GrpEmployeeInfo
             // 
+            GrpEmployeeInfo.Controls.Add(LblEmploymentLevelPercent);
+            GrpEmployeeInfo.Controls.Add(TxtbEmploymentLevel);
             GrpEmployeeInfo.Controls.Add(DtpTerminationDate);
+            GrpEmployeeInfo.Controls.Add(LblEmploymentLevel);
             GrpEmployeeInfo.Controls.Add(LblTerminationDate);
             GrpEmployeeInfo.Controls.Add(DtpHireDate);
             GrpEmployeeInfo.Controls.Add(LblHireDate);
@@ -362,25 +375,54 @@
             GrpEmployeeInfo.Controls.Add(TxtbJobTitle);
             GrpEmployeeInfo.Location = new Point(43, 411);
             GrpEmployeeInfo.Name = "GrpEmployeeInfo";
-            GrpEmployeeInfo.Size = new Size(502, 301);
+            GrpEmployeeInfo.Size = new Size(502, 361);
             GrpEmployeeInfo.TabIndex = 32;
             GrpEmployeeInfo.TabStop = false;
             GrpEmployeeInfo.Text = "ANSTELLUNG";
             // 
+            // LblEmploymentLevelPercent
+            // 
+            LblEmploymentLevelPercent.AutoSize = true;
+            LblEmploymentLevelPercent.Location = new Point(262, 209);
+            LblEmploymentLevelPercent.Name = "LblEmploymentLevelPercent";
+            LblEmploymentLevelPercent.Size = new Size(24, 21);
+            LblEmploymentLevelPercent.TabIndex = 38;
+            LblEmploymentLevelPercent.Text = "%";
+            // 
+            // TxtbEmploymentLevel
+            // 
+            TxtbEmploymentLevel.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            TxtbEmploymentLevel.Location = new Point(203, 204);
+            TxtbEmploymentLevel.Margin = new Padding(5, 4, 5, 4);
+            TxtbEmploymentLevel.MaxLength = 3;
+            TxtbEmploymentLevel.Name = "TxtbEmploymentLevel";
+            TxtbEmploymentLevel.Size = new Size(55, 32);
+            TxtbEmploymentLevel.TabIndex = 37;
+            TxtbEmploymentLevel.Text = "...";
+            // 
             // DtpTerminationDate
             // 
-            DtpTerminationDate.Checked = false;
             DtpTerminationDate.Format = DateTimePickerFormat.Short;
-            DtpTerminationDate.Location = new Point(203, 252);
+            DtpTerminationDate.Location = new Point(203, 307);
             DtpTerminationDate.Name = "DtpTerminationDate";
             DtpTerminationDate.ShowCheckBox = true;
             DtpTerminationDate.Size = new Size(240, 30);
             DtpTerminationDate.TabIndex = 36;
+            DtpTerminationDate.Value = new DateTime(3333, 1, 1, 9, 49, 0, 0);
+            // 
+            // LblEmploymentLevel
+            // 
+            LblEmploymentLevel.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            LblEmploymentLevel.Location = new Point(27, 207);
+            LblEmploymentLevel.Name = "LblEmploymentLevel";
+            LblEmploymentLevel.Size = new Size(170, 35);
+            LblEmploymentLevel.TabIndex = 36;
+            LblEmploymentLevel.Text = "Stellenprozent";
             // 
             // LblTerminationDate
             // 
             LblTerminationDate.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            LblTerminationDate.Location = new Point(27, 247);
+            LblTerminationDate.Location = new Point(27, 302);
             LblTerminationDate.Name = "LblTerminationDate";
             LblTerminationDate.Size = new Size(170, 35);
             LblTerminationDate.TabIndex = 35;
@@ -389,15 +431,17 @@
             // DtpHireDate
             // 
             DtpHireDate.Format = DateTimePickerFormat.Short;
-            DtpHireDate.Location = new Point(203, 203);
+            DtpHireDate.Location = new Point(203, 258);
+            DtpHireDate.MinDate = new DateTime(1950, 1, 1, 0, 0, 0, 0);
             DtpHireDate.Name = "DtpHireDate";
             DtpHireDate.Size = new Size(240, 30);
             DtpHireDate.TabIndex = 34;
+            DtpHireDate.Value = new DateTime(3333, 1, 1, 9, 49, 0, 0);
             // 
             // LblHireDate
             // 
             LblHireDate.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            LblHireDate.Location = new Point(29, 206);
+            LblHireDate.Location = new Point(29, 261);
             LblHireDate.Name = "LblHireDate";
             LblHireDate.Size = new Size(170, 35);
             LblHireDate.TabIndex = 33;
@@ -608,7 +652,7 @@
             GrpApprentice.Controls.Add(TxtbApprenticeshipYears);
             GrpApprentice.Controls.Add(LblCurrAppYear);
             GrpApprentice.Controls.Add(TxtbCurrAppYear);
-            GrpApprentice.Location = new Point(43, 773);
+            GrpApprentice.Location = new Point(43, 839);
             GrpApprentice.Name = "GrpApprentice";
             GrpApprentice.Size = new Size(502, 150);
             GrpApprentice.TabIndex = 33;
@@ -657,7 +701,7 @@
             // ChkbIsApprentice
             // 
             ChkbIsApprentice.AutoSize = true;
-            ChkbIsApprentice.Location = new Point(43, 731);
+            ChkbIsApprentice.Location = new Point(43, 797);
             ChkbIsApprentice.Name = "ChkbIsApprentice";
             ChkbIsApprentice.Size = new Size(124, 25);
             ChkbIsApprentice.TabIndex = 0;
@@ -678,7 +722,7 @@
             // 
             AutoScaleDimensions = new SizeF(11F, 21F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1615, 769);
+            ClientSize = new Size(1615, 1044);
             Controls.Add(BtnSave);
             Controls.Add(ChkbIsApprentice);
             Controls.Add(GrpApprentice);
@@ -765,5 +809,8 @@
         private Label LblCurrAppYear;
         private TextBox TxtbCurrAppYear;
         private Button BtnSave;
+        private TextBox TxtbEmploymentLevel;
+        private Label LblEmploymentLevel;
+        private Label LblEmploymentLevelPercent;
     }
 }
