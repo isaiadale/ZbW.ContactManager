@@ -108,6 +108,7 @@ namespace ContactManager.UI.WinForms.Forms
             ControlBinding.SelectEnum(CombGender, customer.Gender);
             ControlBinding.SelectEnum(CombSalutation, customer.Salutation);
             TxtbTitle.Text = customer.Title ?? string.Empty;
+            ControlBinding.SelectEnum<Status>(CombStatus, customer.PersonStatus);
 
             // Kontaktdaten
             TxtbBusinessPhone.Text = customer.BusinessPhone ?? string.Empty;
@@ -130,11 +131,14 @@ namespace ContactManager.UI.WinForms.Forms
             // deshalb nur hier, in der Objekterzeugung, setzen.
             Guid id = _customer?.Id ?? Guid.NewGuid();
 
-            // Der Status ist Pflichtfeld, hat aber noch kein Control. Beim Bearbeiten wird
-            // der bestehende Status beibehalten — sonst würde jedes Speichern einen
-            // deaktivierten Kunden stillschweigend wieder aktivieren.
-            // TODO: an Status-Control binden, sobald vorhanden.
-            Status status = _customer?.PersonStatus ?? Status.Active;
+            // Der Status ist Pflichtfeld. CombStatus ist eine DropDownList und wird beim
+            // Öffnen vorbelegt, hat also immer eine Auswahl; die beiden Rückfallwerte
+            // greifen nur, falls das je nicht mehr gilt. Der bestehende Status geht dabei
+            // vor Status.Active — sonst würde ein Fehlgriff einen deaktivierten Kunden
+            // stillschweigend wieder aktivieren.
+            Status status = ControlBinding.ReadEnum<Status>(CombStatus)
+                ?? _customer?.PersonStatus
+                ?? Status.Active;
 
             var customer = new Customer
             {
@@ -207,6 +211,7 @@ namespace ContactManager.UI.WinForms.Forms
             // und der Compiler sonst nicht weiss, welche der Überladungen gemeint ist.
             ControlBinding.FillEnumCombo<Gender>(CombGender, EnumDisplay.ToText);
             ControlBinding.FillEnumCombo<Salutation>(CombSalutation, EnumDisplay.ToText);
+            ControlBinding.FillEnumCombo<Status>(CombStatus, EnumDisplay.ToText);
         }
 
         /// <summary>
@@ -230,6 +235,11 @@ namespace ContactManager.UI.WinForms.Forms
             CombGender.SelectedIndex = -1;
             CombSalutation.SelectedIndex = -1;
 
+            // Anders als Geschlecht und Anrede ist der Status kein optionales Feld: Ein
+            // neuer Kunde ist per Voreinstellung aktiv. Leer lassen ginge nicht, die
+            // DropDownList kennt keine Eingabe von Hand.
+            ControlBinding.SelectEnum<Status>(CombStatus, Status.Active);
+
             DtpDateOfBirth.Checked = false;
         }
 
@@ -240,6 +250,7 @@ namespace ContactManager.UI.WinForms.Forms
             {
                 // Grunddaten
                 TxtbLastName, TxtbFirstName, DtpDateOfBirth, CombGender, CombSalutation, TxtbTitle,
+                CombStatus,
 
                 // Kontaktdaten
                 TxtbBusinessPhone, TxtbMobilePhone, TxtbEmail,

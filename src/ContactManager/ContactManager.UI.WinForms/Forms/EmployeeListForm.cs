@@ -288,10 +288,30 @@ namespace ContactManager.UI.WinForms.Forms
             }
 
             // Delete speichert pro Aufruf automatisch - kein zusätzlicher Speicherschritt nötig.
+            // Der Fehlerfall wird gezählt statt sofort gemeldet: Bei mehreren Ausgewählten
+            // sollen die übrigen trotzdem gelöscht werden, statt beim ersten Fehler stehen
+            // zu bleiben.
+            int notFound = 0;
+
             foreach (Employee employee in selected)
             {
-                _contacts.Employees.Delete(employee.Id);
+                try
+                {
+                    _contacts.Employees.Delete(employee.Id);
+                }
+                catch (KeyNotFoundException)
+                {
+                    notFound++;
+                }
             }
+
+            if (notFound > 0)
+            {
+                MessageBox.Show(
+                    $"{notFound} der ausgewählten Datensätze waren nicht mehr erfasst und wurden übersprungen.",
+                    "Datensatz nicht gefunden", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+
             // Liste neu aufbauen, damit die gelöschten Personen sofort verschwinden.
             LoadEmployees();
         }
