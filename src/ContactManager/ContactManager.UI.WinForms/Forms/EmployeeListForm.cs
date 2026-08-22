@@ -117,12 +117,12 @@ namespace ContactManager.UI.WinForms.Forms
         private void PrepareSearchInputs()
         {
             TxtbEmployeeNrSearch.Text = string.Empty;
-            TxtbLblLastNameSearch.Text = string.Empty;
+            TxtbLastNameSearch.Text = string.Empty;
             TxtbFirstNameSearch.Text = string.Empty;
             TxtbDateOfBirthSearch.Text = string.Empty;
 
             TxtbEmployeeNrSearch.PlaceholderText = "z. B. 1001";
-            TxtbLblLastNameSearch.PlaceholderText = "z. B. Muster";
+            TxtbLastNameSearch.PlaceholderText = "z. B. Muster";
             TxtbFirstNameSearch.PlaceholderText = "z. B. Anna";
             TxtbDateOfBirthSearch.PlaceholderText = "TT.MM.JJJJ";
 
@@ -130,7 +130,7 @@ namespace ContactManager.UI.WinForms.Forms
             // ein TextChanged aus - die Liste würde sonst viermal aufgebaut, noch bevor sie
             // das erste Mal gebraucht wird.
             TxtbEmployeeNrSearch.TextChanged += SearchInput_TextChanged;
-            TxtbLblLastNameSearch.TextChanged += SearchInput_TextChanged;
+            TxtbLastNameSearch.TextChanged += SearchInput_TextChanged;
             TxtbFirstNameSearch.TextChanged += SearchInput_TextChanged;
             TxtbDateOfBirthSearch.TextChanged += SearchInput_TextChanged;
         }
@@ -170,7 +170,7 @@ namespace ContactManager.UI.WinForms.Forms
         private SearchCriteria BuildSearchCriteria() => new SearchCriteria
         {
             FirstName = ReadOptionalText(TxtbFirstNameSearch),
-            LastName = ReadOptionalText(TxtbLblLastNameSearch),
+            LastName = ReadOptionalText(TxtbLastNameSearch),
             DateOfBirth = ReadOptionalDate(TxtbDateOfBirthSearch),
             Number = ReadOptionalInt(TxtbEmployeeNrSearch),
 
@@ -288,7 +288,7 @@ namespace ContactManager.UI.WinForms.Forms
 
         // Löscht alle über die Checkbox ausgewählten Personen, nach Sicherheitsabfrage.
         private void BtnDeleteEmployee_Click(object sender, EventArgs e)
-        {            
+        {
             // Alle Zeilen sammeln, deren Checkbox-Spalte angehakt ist.
             List<Employee> selected = new List<Employee>();
 
