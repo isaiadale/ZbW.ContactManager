@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Text.Json.Serialization;
 
 namespace ContactManager.Model
 {
@@ -12,8 +13,10 @@ namespace ContactManager.Model
     {
         /// <summary>
         /// Automatisch hochgezählte Mitarbeiternummer, die von der Business-Schicht vergeben wird.
-        /// Von ausserhalb des Models nur lesbar.
+        /// Von ausserhalb des Models nur lesbar; beim Laden aus der JSON-Datei setzt der
+        /// Serializer den nicht-öffentlichen Setter direkt (siehe <see cref="JsonIncludeAttribute"/>).
         /// </summary>
+        [JsonInclude]
         public int EmployeeNumber { get; private set; }
 
         /// <summary>Abteilung, der der Mitarbeiter angehört; optional.</summary>

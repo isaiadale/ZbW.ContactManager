@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Text.Json.Serialization;
 using ContactManager.Model.Enums;
 
 namespace ContactManager.Model
@@ -13,8 +14,10 @@ namespace ContactManager.Model
     {
         /// <summary>
         /// Automatisch hochgezählte Kundennummer, die von der Business-Schicht vergeben wird.
-        /// Von ausserhalb des Models nur lesbar.
+        /// Von ausserhalb des Models nur lesbar; beim Laden aus der JSON-Datei setzt der
+        /// Serializer den nicht-öffentlichen Setter direkt (siehe <see cref="JsonIncludeAttribute"/>).
         /// </summary>
+        [JsonInclude]
         public int CustomerNumber { get; private set; }
 
         /// <summary>Akademischer oder beruflicher Titel (z. B. "Dr."); optional.</summary>
