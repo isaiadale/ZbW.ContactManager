@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using ContactManager.Business;
+using ContactManager.Business.Search;
 using ContactManager.Model;
 using ContactManager.UI.WinForms.Base;
 
@@ -42,7 +43,8 @@ namespace ContactManager.UI.WinForms.Forms
         }
 
         /// <summary>
-        /// Richtet die Tabelle ein und lädt die Mitarbeitenden, sobald das Fenster erscheint.
+        /// Richtet Tabelle und Suchfelder ein und lädt die Mitarbeitenden, sobald das Fenster
+        /// erscheint.
         /// Bewusst hier statt im Konstruktor: Zu diesem Zeitpunkt sind alle Controls
         /// erzeugt, und ein Fehler beim Laden trifft ein bereits sichtbares Fenster.
         /// </summary>
@@ -52,6 +54,7 @@ namespace ContactManager.UI.WinForms.Forms
             base.OnLoad(e);
 
             ConfigureGrid();
+            PrepareSearchInputs();
             LoadEmployees();
         }
 
@@ -88,15 +91,113 @@ namespace ContactManager.UI.WinForms.Forms
         }
 
         /// <summary>
-        /// Baut die Anzeige aus dem aktuellen Datenstamm neu auf. Einziger Ort, an dem die
-        /// Tabelle befüllt wird - nach jeder Änderung genügt ein erneuter Aufruf.
+        /// Leert die Suchfelder und beschriftet sie mit einem Platzhalter. Nötig, weil im
+        /// Designer wörtlich "..." als Text hinterlegt ist - ungeleert würde die Liste beim
+        /// Öffnen nach dem Vornamen "..." suchen und leer bleiben. Der Platzhalter des
+        /// Datumsfelds nennt zugleich das erwartete Format.
+        /// </summary>
+        private void PrepareSearchInputs()
+        {
+            TxtbEmployeeNrSearch.Text = string.Empty;
+            TxtbLblLastNameSearch.Text = string.Empty;
+            TxtbFirstNameSearch.Text = string.Empty;
+            TxtbDateOfBirthSearch.Text = string.Empty;
+
+            TxtbEmployeeNrSearch.PlaceholderText = "z. B. 1001";
+            TxtbLblLastNameSearch.PlaceholderText = "z. B. Muster";
+            TxtbFirstNameSearch.PlaceholderText = "z. B. Anna";
+            TxtbDateOfBirthSearch.PlaceholderText = "TT.MM.JJJJ";
+
+            // Erst jetzt verdrahtet und nicht im Konstruktor: Das Leeren oben löst selbst
+            // ein TextChanged aus - die Liste würde sonst viermal aufgebaut, noch bevor sie
+            // das erste Mal gebraucht wird.
+            TxtbEmployeeNrSearch.TextChanged += SearchInput_TextChanged;
+            TxtbLblLastNameSearch.TextChanged += SearchInput_TextChanged;
+            TxtbFirstNameSearch.TextChanged += SearchInput_TextChanged;
+            TxtbDateOfBirthSearch.TextChanged += SearchInput_TextChanged;
+        }
+
+        // Wertet die Suchkriterien laufend aus: Jede Änderung an einem Suchfeld baut die
+        // Liste sofort neu auf. Kommt später ein Such-Button dazu, wandert derselbe Aufruf
+        // auf dessen Click-Ereignis und diese vier Verdrahtungen entfallen.
+        private void SearchInput_TextChanged(object? sender, EventArgs e)
+        {
+            LoadEmployees();
+        }
+
+        /// <summary>
+        /// Baut die Anzeige aus dem aktuellen Datenstamm neu auf und wendet dabei die
+        /// eingegebenen Suchkriterien an. Einziger Ort, an dem die Tabelle befüllt wird -
+        /// nach jeder Änderung genügt ein erneuter Aufruf. Sind keine Kriterien erfasst,
+        /// liefert die Suche alle Personen; ein Sonderfall "ohne Filter" ist deshalb unnötig.
         /// </summary>
         private void LoadEmployees()
         {
-            // GetAll() liefert IReadOnlyList (und enthält Lernende gleich mit);
-            // als DataSource taugt nur eine echte Liste.
-            DgvEmployeeList.DataSource = _contacts.Employees.GetAll().ToList();
+            IReadOnlyList<Person> matches = _contacts.Search.Search(BuildSearchCriteria());
+
+            // Search() durchsucht Kunden und Mitarbeitende gemeinsam und liefert deshalb
+            // Person; die Spalten dieser Liste sind aber an Employee-Properties gebunden.
+            // OfType wirft die Kunden weg und behält Lernende (Apprentice erbt Employee).
+            // Ausserdem taugt als DataSource nur eine echte Liste, daher ToList().
+            DgvEmployeeList.DataSource = matches.OfType<Employee>().ToList();
         }
+
+        /// <summary>
+        /// Liest die Suchfelder aus und baut daraus die Kriterien für die Business-Schicht.
+        /// Leere und unvollständige Eingaben ergeben <c>null</c> und werden von der Suche
+        /// ignoriert - während des Tippens ist jede Eingabe zwischenzeitlich unvollständig,
+        /// eine Fehlermeldung pro Tastendruck wäre unbrauchbar.
+        /// </summary>
+        /// <returns>Die aktuell im Formular erfassten Suchkriterien.</returns>
+        private SearchCriteria BuildSearchCriteria() => new SearchCriteria
+        {
+            FirstName = ReadOptionalText(TxtbFirstNameSearch),
+            LastName = ReadOptionalText(TxtbLblLastNameSearch),
+            DateOfBirth = ReadOptionalDate(TxtbDateOfBirthSearch),
+            Number = ReadOptionalInt(TxtbEmployeeNrSearch),
+
+            // Type bleibt bewusst null: ContactType.Employee schliesst Lernende aus
+            // (person is Employee and not Apprentice) - sie würden aus der Liste fallen,
+            // sobald ein Suchfeld ausgefüllt ist. Die Eingrenzung auf Mitarbeitende
+            // übernimmt stattdessen das OfType<Employee> in LoadEmployees().
+            Type = null
+        };
+
+        // ---------------------------------------------------------------------------
+        // Kleine Lesehilfen für die Suchfelder. Statisch, weil sie nur mit ihrem
+        // Parameter arbeiten und keinen Zustand des Formulars kennen.
+        // ---------------------------------------------------------------------------
+
+        /// <summary>
+        /// Liest ein Suchfeld als Text. Leere oder nur aus Leerzeichen bestehende Eingaben
+        /// werden zu <c>null</c>, damit das Kriterium nicht angewendet wird.
+        /// </summary>
+        /// <param name="box">Das auszulesende Suchfeld.</param>
+        /// <returns>Der bereinigte Suchbegriff oder <c>null</c>.</returns>
+        private static string? ReadOptionalText(TextBox box) =>
+            string.IsNullOrWhiteSpace(box.Text) ? null : box.Text.Trim();
+
+        /// <summary>
+        /// Liest ein Suchfeld als ganze Zahl. Bewusst <c>TryParse</c> statt <c>Parse</c>:
+        /// Eine Fehleingabe darf die Anwendung nicht beenden.
+        /// </summary>
+        /// <param name="box">Das auszulesende Suchfeld.</param>
+        /// <returns>Die eingegebene Zahl oder <c>null</c>, wenn das Feld leer oder keine Zahl ist.</returns>
+        private static int? ReadOptionalInt(TextBox box) =>
+            int.TryParse(box.Text.Trim(), out int value) ? value : null;
+
+        /// <summary>
+        /// Liest ein Suchfeld als Datum. Die Muster sind fest vorgegeben, damit die Suche
+        /// unabhängig davon funktioniert, welche Kultur Windows meldet - <c>TryParse</c>
+        /// ohne Angabe würde "31.12.1990" auf einem englischen System nicht erkennen.
+        /// </summary>
+        /// <param name="box">Das auszulesende Suchfeld.</param>
+        /// <returns>Das eingegebene Datum oder <c>null</c>, wenn die Eingabe (noch) keinem Muster entspricht.</returns>
+        private static DateOnly? ReadOptionalDate(TextBox box) =>
+            DateOnly.TryParseExact(box.Text.Trim(), SearchDateFormats, out DateOnly value) ? value : null;
+
+        // Im Formular wird das Datum schweizerisch geschrieben - mit und ohne führende Null.
+        private static readonly string[] SearchDateFormats = { "dd.MM.yyyy", "d.M.yyyy" };
 
         // Öffnet das Detailformular im Erfassungsmodus.
         private void BtnAddEmployee_Click(object? sender, EventArgs e)
