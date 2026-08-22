@@ -24,6 +24,10 @@ namespace ContactManager.UI.WinForms.Forms
         // Fenster auf demselben, einmalig geladenen Datenstamm arbeiten.
         private readonly ContactManagerFacade _contacts;
 
+        // Verwaltet die Häkchen der Spalte ColSelect. Wird erst in ConfigureGrid erzeugt,
+        // weil die Spalte davor noch nicht fertig eingerichtet ist.
+        private GridSelection? _selection;
+
         /// <summary>
         /// Erzeugt die Mitarbeiterübersicht.
         /// </summary>
@@ -98,14 +102,26 @@ namespace ContactManager.UI.WinForms.Forms
             ColDepartment.DataPropertyName = nameof(Employee.Department);
             ColJobTitle.DataPropertyName = nameof(Employee.JobTitle);
 
-            // Die Liste ist reine Anzeige; geändert wird im Detailformular. Ohne ReadOnly
-            // liessen sich Zellen direkt bearbeiten - die Änderung landete im Model, aber
-            // nie auf der Platte, weil dabei kein Service aufgerufen wird.
-            DgvEmployeeList.ReadOnly = true;
+            // Die Datenspalten sind reine Anzeige; geändert wird im Detailformular. Ohne
+            // ReadOnly liessen sich Zellen direkt bearbeiten - die Änderung landete im
+            // Model, aber nie auf der Platte, weil dabei kein Service aufgerufen wird.
+            //
+            // Gesperrt wird bewusst Spalte für Spalte statt über DgvEmployeeList.ReadOnly:
+            // Steht das ganze Grid auf ReadOnly, zeichnet WinForms auch die Checkbox-Zellen
+            // von ColSelect deaktiviert - die Spalte sieht dann leer aus und die
+            // Mehrfachauswahl ist nicht bedienbar. ColSelect nimmt GridSelection wieder aus
+            // der Sperre heraus.
+            foreach (DataGridViewColumn column in DgvEmployeeList.Columns)
+            {
+                column.ReadOnly = true;
+            }
+
             DgvEmployeeList.AllowUserToAddRows = false;
             DgvEmployeeList.AllowUserToDeleteRows = false;
             DgvEmployeeList.MultiSelect = false;
             DgvEmployeeList.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+
+            _selection = new GridSelection(DgvEmployeeList, ColSelect);
         }
 
         /// <summary>
@@ -158,6 +174,12 @@ namespace ContactManager.UI.WinForms.Forms
             // OfType wirft die Kunden weg und behält Lernende (Apprentice erbt Employee).
             // Ausserdem taugt als DataSource nur eine echte Liste, daher ToList().
             DgvEmployeeList.DataSource = matches.OfType<Employee>().ToList();
+
+            // Die Checkbox-Spalte ist ungebunden: Ihre Werte überleben das Setzen der
+            // DataSource nicht. Ohne diesen Aufruf wäre die Auswahl nach jedem Tastendruck
+            // im Suchfeld still verschwunden - und die Zellen stünden auf null statt false,
+            // womit WinForms gar keine Checkbox zeichnet.
+            _selection?.Refresh();
         }
 
         /// <summary>
@@ -234,36 +256,22 @@ namespace ContactManager.UI.WinForms.Forms
             this.Close();
         }
 
+        // Das Umschalten der Checkbox erledigt seit der Einführung von GridSelection
+        // WinForms selbst: ColSelect ist eine editierbare Spalte, ein Klick genügt, und
+        // CommitEdit schreibt den Wert sofort fest. Das frühere programmatische Umschalten
+        // an dieser Stelle würde den Klick ein zweites Mal umdrehen und sich damit selbst
+        // aufheben. Die Methode bleibt leer stehen, weil das CellClick-Ereignis im Designer
+        // verdrahtet ist - und der gehört den Kolleg*innen.
         private void DgvEmployeeList_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            // Ermöglicht das Umschalten der Checkbox mit nur einem Klick, statt zwei
-            if (e.RowIndex >= 0 && DgvEmployeeList.Columns[e.ColumnIndex].Name == "ColSelect")
-            {
-                DataGridViewCheckBoxCell checkboxCell =
-                    (DataGridViewCheckBoxCell)DgvEmployeeList.Rows[e.RowIndex].Cells["ColSelect"];
-
-                checkboxCell.Value = !(bool)(checkboxCell.Value ?? false);
-
-                // Zelle sofort verlassen, damit der neue Wert übernommen wird
-                DgvEmployeeList.EndEdit();
-            }
-
         }
 
         // Löscht alle über die Checkbox ausgewählten Personen, nach Sicherheitsabfrage.
         private void BtnDeleteEmployee_Click(object sender, EventArgs e)
         {
-            // Alle Zeilen sammeln, deren Checkbox-Spalte angehakt ist.
-            List<Employee> selected = new List<Employee>();
-
-            foreach (DataGridViewRow row in DgvEmployeeList.Rows)
-            {
-                if (row.Cells["ColSelect"].Value is bool isChecked && isChecked &&
-                    row.DataBoundItem is Employee employee)
-                {
-                    selected.Add(employee);
-                }
-            }
+            // Bewusst nur die sichtbaren Zeilen: Bei aktiver Suche soll genau das gelöscht
+            // werden, was man auch sieht.
+            IReadOnlyList<Employee> selected = _selection?.GetSelected<Employee>() ?? new List<Employee>();
 
             // Ohne Auswahl gibt es nichts zu löschen.
             if (selected.Count == 0)
@@ -303,6 +311,10 @@ namespace ContactManager.UI.WinForms.Forms
                 {
                     notFound++;
                 }
+
+                // In beiden Fällen ist der Eintrag weg - das Häkchen darf nicht als
+                // gemerkte Auswahl liegen bleiben.
+                _selection?.Forget(employee.Id);
             }
 
             if (notFound > 0)
