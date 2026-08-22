@@ -40,6 +40,24 @@ namespace ContactManager.UI.WinForms.Forms
             // Kolleg*innen, jede Änderung daran erzeugt unnötige Merge-Konflikte.
             BtnAddEmployee.Click += BtnAddEmployee_Click;
             DgvEmployeeList.CellDoubleClick += DgvEmployeeList_CellDoubleClick;
+            BtnDeleteEmployee.Click += BtnDeleteEmployee_Click;
+
+            SetTabOrder();
+        }
+
+        // Setzt die Tab-Reihenfolge für bessere Bedienung mittels Tabstop.
+        private void SetTabOrder()
+        {
+            Control[] orderedControls =
+            {
+                TxtbEmployeeNrSearch, TxtbLastNameSearch, TxtbFirstNameSearch, TxtbDateOfBirthSearch,
+                BtnAddEmployee, DgvEmployeeList, BtnDeleteEmployee, BtnReturnToHome
+    };
+
+            for (int i = 0; i < orderedControls.Length; i++)
+            {
+                orderedControls[i].TabIndex = i;
+            }
         }
 
         /// <summary>
@@ -266,6 +284,52 @@ namespace ContactManager.UI.WinForms.Forms
                 DgvEmployeeList.EndEdit();
             }
 
+        }
+
+        // Löscht alle über die Checkbox ausgewählten Personen, nach Sicherheitsabfrage.
+        private void BtnDeleteEmployee_Click(object sender, EventArgs e)
+        {            
+            // Alle Zeilen sammeln, deren Checkbox-Spalte angehakt ist.
+            List<Employee> selected = new List<Employee>();
+
+            foreach (DataGridViewRow row in DgvEmployeeList.Rows)
+            {
+                if (row.Cells["ColSelect"].Value is bool isChecked && isChecked &&
+                    row.DataBoundItem is Employee employee)
+                {
+                    selected.Add(employee);
+                }
+            }
+
+            // Ohne Auswahl gibt es nichts zu löschen.
+            if (selected.Count == 0)
+            {
+                MessageBox.Show("Bitte mindestens eine Person auswählen.",
+                    "Keine Auswahl", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            // Meldung je nach Anzahl im Singular oder Plural formulieren.
+            string message = selected.Count == 1
+                ? "Soll der ausgewählte Datensatz wirklich gelöscht werden?"
+                : $"Sollen die ausgewählten {selected.Count} Datensätze wirklich gelöscht werden?";
+
+            DialogResult confirm = MessageBox.Show(message, "Löschen bestätigen",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+            // Ohne Bestätigung bleibt alles unverändert.
+            if (confirm != DialogResult.Yes)
+            {
+                return;
+            }
+
+            // Delete speichert pro Aufruf automatisch - kein zusätzlicher Speicherschritt nötig.
+            foreach (Employee employee in selected)
+            {
+                _contacts.Employees.Delete(employee.Id);
+            }
+            // Liste neu aufbauen, damit die gelöschten Personen sofort verschwinden.
+            LoadEmployees();
         }
     }
 }
