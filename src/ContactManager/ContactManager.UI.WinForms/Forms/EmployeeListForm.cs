@@ -169,10 +169,10 @@ namespace ContactManager.UI.WinForms.Forms
         /// <returns>Die aktuell im Formular erfassten Suchkriterien.</returns>
         private SearchCriteria BuildSearchCriteria() => new SearchCriteria
         {
-            FirstName = ReadOptionalText(TxtbFirstNameSearch),
-            LastName = ReadOptionalText(TxtbLastNameSearch),
-            DateOfBirth = ReadOptionalDate(TxtbDateOfBirthSearch),
-            Number = ReadOptionalInt(TxtbEmployeeNrSearch),
+            FirstName = ControlBinding.ReadOptionalText(TxtbFirstNameSearch),
+            LastName = ControlBinding.ReadOptionalText(TxtbLastNameSearch),
+            DateOfBirth = ControlBinding.ReadOptionalDate(TxtbDateOfBirthSearch),
+            Number = ControlBinding.ReadOptionalInt(TxtbEmployeeNrSearch),
 
             // Type bleibt bewusst null: ContactType.Employee schliesst Lernende aus
             // (person is Employee and not Apprentice) - sie würden aus der Liste fallen,
@@ -180,42 +180,6 @@ namespace ContactManager.UI.WinForms.Forms
             // übernimmt stattdessen das OfType<Employee> in LoadEmployees().
             Type = null
         };
-
-        // ---------------------------------------------------------------------------
-        // Kleine Lesehilfen für die Suchfelder. Statisch, weil sie nur mit ihrem
-        // Parameter arbeiten und keinen Zustand des Formulars kennen.
-        // ---------------------------------------------------------------------------
-
-        /// <summary>
-        /// Liest ein Suchfeld als Text. Leere oder nur aus Leerzeichen bestehende Eingaben
-        /// werden zu <c>null</c>, damit das Kriterium nicht angewendet wird.
-        /// </summary>
-        /// <param name="box">Das auszulesende Suchfeld.</param>
-        /// <returns>Der bereinigte Suchbegriff oder <c>null</c>.</returns>
-        private static string? ReadOptionalText(TextBox box) =>
-            string.IsNullOrWhiteSpace(box.Text) ? null : box.Text.Trim();
-
-        /// <summary>
-        /// Liest ein Suchfeld als ganze Zahl. Bewusst <c>TryParse</c> statt <c>Parse</c>:
-        /// Eine Fehleingabe darf die Anwendung nicht beenden.
-        /// </summary>
-        /// <param name="box">Das auszulesende Suchfeld.</param>
-        /// <returns>Die eingegebene Zahl oder <c>null</c>, wenn das Feld leer oder keine Zahl ist.</returns>
-        private static int? ReadOptionalInt(TextBox box) =>
-            int.TryParse(box.Text.Trim(), out int value) ? value : null;
-
-        /// <summary>
-        /// Liest ein Suchfeld als Datum. Die Muster sind fest vorgegeben, damit die Suche
-        /// unabhängig davon funktioniert, welche Kultur Windows meldet - <c>TryParse</c>
-        /// ohne Angabe würde "31.12.1990" auf einem englischen System nicht erkennen.
-        /// </summary>
-        /// <param name="box">Das auszulesende Suchfeld.</param>
-        /// <returns>Das eingegebene Datum oder <c>null</c>, wenn die Eingabe (noch) keinem Muster entspricht.</returns>
-        private static DateOnly? ReadOptionalDate(TextBox box) =>
-            DateOnly.TryParseExact(box.Text.Trim(), SearchDateFormats, out DateOnly value) ? value : null;
-
-        // Im Formular wird das Datum schweizerisch geschrieben - mit und ohne führende Null.
-        private static readonly string[] SearchDateFormats = { "dd.MM.yyyy", "d.M.yyyy" };
 
         // Öffnet das Detailformular im Erfassungsmodus.
         private void BtnAddEmployee_Click(object? sender, EventArgs e)
