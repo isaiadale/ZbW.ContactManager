@@ -62,6 +62,7 @@
             DgvProtocolNotes = new DataGridView();
             ColDateTime = new DataGridViewTextBoxColumn();
             ColText = new DataGridViewTextBoxColumn();
+            btnNewNote = new Button();
             GrpPersonalData.SuspendLayout();
             GrpAddress.SuspendLayout();
             GrpContactData.SuspendLayout();
@@ -443,11 +444,21 @@
             ColText.ReadOnly = true;
             ColText.Width = 760;
             // 
+            // btnNewNote
+            // 
+            btnNewNote.Location = new Point(1387, 637);
+            btnNewNote.Name = "btnNewNote";
+            btnNewNote.Size = new Size(177, 34);
+            btnNewNote.TabIndex = 39;
+            btnNewNote.Text = "neue Notitz";
+            btnNewNote.UseVisualStyleBackColor = true;
+            // 
             // CustomerDetailForm
             // 
             AutoScaleDimensions = new SizeF(11F, 21F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1615, 660);
+            ClientSize = new Size(1615, 727);
+            Controls.Add(btnNewNote);
             Controls.Add(GrpProtocolNotes);
             Controls.Add(BtnSave);
             Controls.Add(GrpContactData);
@@ -504,5 +515,6 @@
         private DataGridViewTextBoxColumn ColDateTime;
         private DataGridViewTextBoxColumn ColText;
         private TextBox TxtbStreet;
+        private Button btnNewNote;
     }
 }

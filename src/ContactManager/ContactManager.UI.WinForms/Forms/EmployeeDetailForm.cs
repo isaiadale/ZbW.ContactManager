@@ -410,5 +410,7 @@ namespace ContactManager.UI.WinForms.Forms
             TxtbSocialSecNr.SelectionStart = TxtbSocialSecNr.Text.Length;
             TxtbSocialSecNr.SelectionLength = 0;
         }
+
+       
     }
 }

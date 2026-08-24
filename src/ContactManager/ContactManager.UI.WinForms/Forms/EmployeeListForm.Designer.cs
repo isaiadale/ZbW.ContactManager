@@ -50,6 +50,7 @@
             TxtbLastNameSearch = new TextBox();
             TxtbDateOfBirthSearch = new TextBox();
             BtnDeleteEmployee = new Button();
+            BtnFilterReset = new Button();
             ((System.ComponentModel.ISupportInitialize)DgvEmployeeList).BeginInit();
             SuspendLayout();
             // 
@@ -199,12 +200,12 @@
             // BtnReturnToHome
             // 
             BtnReturnToHome.Font = new Font("Century Gothic", 8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            BtnReturnToHome.Location = new Point(25, 27);
+            BtnReturnToHome.Location = new Point(52, 27);
             BtnReturnToHome.Margin = new Padding(5, 4, 5, 4);
             BtnReturnToHome.Name = "BtnReturnToHome";
             BtnReturnToHome.Size = new Size(192, 43);
             BtnReturnToHome.TabIndex = 21;
-            BtnReturnToHome.Text = "Zurück (ev. mit Icon)";
+            BtnReturnToHome.Text = "Zurück";
             BtnReturnToHome.UseVisualStyleBackColor = true;
             BtnReturnToHome.Click += BtnReturnToHome_Click;
             // 
@@ -255,11 +256,21 @@
             BtnDeleteEmployee.Text = "Löschen";
             BtnDeleteEmployee.UseVisualStyleBackColor = true;
             // 
+            // BtnFilterReset
+            // 
+            BtnFilterReset.Location = new Point(542, 279);
+            BtnFilterReset.Name = "BtnFilterReset";
+            BtnFilterReset.Size = new Size(243, 34);
+            BtnFilterReset.TabIndex = 28;
+            BtnFilterReset.Text = "Filter zurücksetzten";
+            BtnFilterReset.UseVisualStyleBackColor = true;
+            // 
             // EmployeeListForm
             // 
             AutoScaleDimensions = new SizeF(11F, 21F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1413, 694);
+            Controls.Add(BtnFilterReset);
             Controls.Add(BtnDeleteEmployee);
             Controls.Add(TxtbDateOfBirthSearch);
             Controls.Add(TxtbLastNameSearch);
@@ -305,5 +316,6 @@
         private DataGridViewTextBoxColumn ColEmail;
         private DataGridViewTextBoxColumn ColDepartment;
         private DataGridViewTextBoxColumn ColJobTitle;
+        private Button BtnFilterReset;
     }
 }

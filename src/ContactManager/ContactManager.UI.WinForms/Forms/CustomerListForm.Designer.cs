@@ -50,6 +50,7 @@
             TxtbDateOfBirthSearch = new TextBox();
             LblDateOfBirth = new Label();
             BtnDeleteCustomer = new Button();
+            BtnFilterReset = new Button();
             ((System.ComponentModel.ISupportInitialize)DgvCustomerList).BeginInit();
             SuspendLayout();
             // 
@@ -220,12 +221,12 @@
             // BtnReturnToHome
             // 
             BtnReturnToHome.Font = new Font("Century Gothic", 8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            BtnReturnToHome.Location = new Point(25, 27);
+            BtnReturnToHome.Location = new Point(87, 27);
             BtnReturnToHome.Margin = new Padding(5, 4, 5, 4);
             BtnReturnToHome.Name = "BtnReturnToHome";
             BtnReturnToHome.Size = new Size(192, 43);
             BtnReturnToHome.TabIndex = 20;
-            BtnReturnToHome.Text = "Zurück (ev. mit Icon)";
+            BtnReturnToHome.Text = "Zurück";
             BtnReturnToHome.UseVisualStyleBackColor = true;
             BtnReturnToHome.Click += BtnReturnToHome_Click;
             // 
@@ -259,11 +260,21 @@
             BtnDeleteCustomer.Text = "Löschen";
             BtnDeleteCustomer.UseVisualStyleBackColor = true;
             // 
+            // BtnFilterReset
+            // 
+            BtnFilterReset.Location = new Point(569, 288);
+            BtnFilterReset.Name = "BtnFilterReset";
+            BtnFilterReset.Size = new Size(243, 34);
+            BtnFilterReset.TabIndex = 27;
+            BtnFilterReset.Text = "Filter zurücksetzten";
+            BtnFilterReset.UseVisualStyleBackColor = true;
+            // 
             // CustomerListForm
             // 
             AutoScaleDimensions = new SizeF(11F, 21F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1413, 694);
+            Controls.Add(BtnFilterReset);
             Controls.Add(BtnDeleteCustomer);
             Controls.Add(TxtbDateOfBirthSearch);
             Controls.Add(LblDateOfBirth);
@@ -309,5 +320,6 @@
         private DataGridViewTextBoxColumn ColPhone;
         private DataGridViewTextBoxColumn ColEmail;
         private DataGridViewTextBoxColumn ColStatus;
+        private Button BtnFilterReset;
     }
 }
