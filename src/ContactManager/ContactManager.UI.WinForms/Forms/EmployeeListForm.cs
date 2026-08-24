@@ -45,6 +45,7 @@ namespace ContactManager.UI.WinForms.Forms
             BtnAddEmployee.Click += BtnAddEmployee_Click;
             DgvEmployeeList.CellDoubleClick += DgvEmployeeList_CellDoubleClick;
             BtnDeleteEmployee.Click += BtnDeleteEmployee_Click;
+            DgvEmployeeList.CellFormatting += DgvEmployeeList_CellFormatting;
 
             SetTabOrder();
         }
@@ -326,6 +327,18 @@ namespace ContactManager.UI.WinForms.Forms
 
             // Liste neu aufbauen, damit die gelöschten Personen sofort verschwinden.
             LoadEmployees();
+        }
+
+
+        // DateOnly wird von DataGridView nicht automatisch angezeigt - hier wird entsprechend formatiert.
+        private void DgvEmployeeList_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (DgvEmployeeList.Columns[e.ColumnIndex].Name == "ColDateOfBirth" &&
+                e.Value is DateOnly date)
+            {
+                e.Value = date.ToString("dd.MM.yyyy");
+                e.FormattingApplied = true;
+            }
         }
     }
 }

@@ -131,7 +131,7 @@ namespace ContactManager.UI.WinForms.Forms
             ControlBinding.WriteAddress(employee.HomeAddress, TxtbPrivateStreet, TxtbPrivatePostalCode, TxtbPrivateCity);
             ControlBinding.WriteAddress(employee.BusinessAddress, TxtbBusinessStreet, TxtbBusinessPostalCode, TxtbBusinessCity);
 
-            // Ausbildung: Ein bestehende Mitarbeiterin kann nachträglich nicht zu Lernenden
+            // Ausbildung: Ein bestehender Mitarbeiter kann nachträglich nicht zum Lernenden
             // werden (und umgekehrt) — das wäre ein Typwechsel, den die Business-Schicht
             // bewusst nicht unterstützt. Die Checkbox zeigt hier also nur noch an.
             if (employee is Apprentice apprentice)
