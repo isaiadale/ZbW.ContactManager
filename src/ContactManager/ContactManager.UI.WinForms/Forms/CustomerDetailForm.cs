@@ -63,6 +63,8 @@ namespace ContactManager.UI.WinForms.Forms
             // Bewusst hier statt im Designer verdrahtet: Der Designer gehört den
             // Kolleg*innen, jede Änderung daran erzeugt unnötige Merge-Konflikte.
             BtnSave.Click += BtnSave_Click;
+            btnNewNote.Click += BtnNewNote_Click;
+            DgvProtocolNotes.CellDoubleClick += DgvProtocolNotes_CellDoubleClick;
         }
 
         /// <summary>
@@ -77,16 +79,26 @@ namespace ContactManager.UI.WinForms.Forms
 
             FillComboBoxes();
             ClearInputs();
+            ConfigureNotesGrid();
 
             if (_customer is null)
             {
                 LblCustomerInfos.Text = "Neuen Kunden erfassen";
                 // Die Nummer vergibt die Business-Schicht erst beim Speichern.
                 TxtbCustomerNr.Text = "(neu)";
+
+                // AddNote braucht eine Kunden-Id, die es vor dem ersten Speichern noch
+                // nicht gibt. Der Bereich wird deshalb gesperrt statt beim Klick mit einer
+                // Fehlermeldung zu antworten - so ist schon vor dem Klick sichtbar, dass
+                // hier zuerst der Kunde gespeichert werden muss.
+                GrpProtocolNotes.Text = "PROTOKOLLIERUNG (erst nach dem Speichern)";
+                DgvProtocolNotes.Enabled = false;
+                btnNewNote.Enabled = false;
             }
             else
             {
                 LoadFromModel(_customer);
+                LoadNotes();
             }
 
             TxtbLastName.Focus();
@@ -163,6 +175,104 @@ namespace ContactManager.UI.WinForms.Forms
             customer.Address = ControlBinding.ReadAddress(TxtbStreet, TxtbPostalCode, TxtbCity);
 
             return customer;
+        }
+
+        /// <summary>
+        /// Verbindet die im Designer angelegten Spalten der Notiz-Historie mit den
+        /// Properties von <see cref="ContactNote"/>. Wird genau einmal beim Öffnen des
+        /// Fensters aufgerufen.
+        /// </summary>
+        private void ConfigureNotesGrid()
+        {
+            // Ohne diese Zeile hängt WinForms zusätzlich zu den Designer-Spalten für jede
+            // Property des gebundenen Objekts eine automatisch erzeugte Spalte an.
+            DgvProtocolNotes.AutoGenerateColumns = false;
+
+            // nameof statt Zeichenkette: Ein Tippfehler wäre sonst kein Fehler, sondern
+            // bloss eine stumm leer bleibende Spalte zur Laufzeit.
+            ColDateTime.DataPropertyName = nameof(ContactNote.CreatedAt);
+            ColText.DataPropertyName = nameof(ContactNote.Text);
+
+            // CreatedAt ist ein DateTime und wird - anders als ein DateOnly - von der
+            // DataGridView von selbst angezeigt; nötig ist hier nur das Format. Die im
+            // Designer gesetzte Breite von 120 Pixeln reicht für Datum und Uhrzeit nicht,
+            // deshalb die Korrektur im Code.
+            ColDateTime.DefaultCellStyle.Format = "dd.MM.yyyy HH:mm:ss";
+            ColDateTime.Width = 200;
+
+            // Die Historie ist reine Anzeige: Notizen sind nach dem Erfassen unveränderlich
+            // und werden weder hier noch anderswo bearbeitet oder gelöscht.
+            foreach (DataGridViewColumn column in DgvProtocolNotes.Columns)
+            {
+                column.ReadOnly = true;
+            }
+
+            DgvProtocolNotes.AllowUserToAddRows = false;
+            DgvProtocolNotes.AllowUserToDeleteRows = false;
+            DgvProtocolNotes.MultiSelect = false;
+            DgvProtocolNotes.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            DgvProtocolNotes.RowHeadersVisible = false;
+        }
+
+        /// <summary>
+        /// Baut die Notiz-Historie aus dem aktuellen Datenstamm neu auf. Einziger Ort, an
+        /// dem die Tabelle befüllt wird - nach jeder neuen Notiz genügt ein erneuter Aufruf.
+        /// Die Sortierung (neueste zuerst) liefert bereits die Business-Schicht.
+        /// </summary>
+        private void LoadNotes()
+        {
+            // Im Erfassungsmodus gibt es noch keinen Kunden, dessen Notizen anzuzeigen wären.
+            if (_customer is null)
+            {
+                return;
+            }
+
+            // Als DataSource taugt nur eine echte Liste, daher ToList().
+            DgvProtocolNotes.DataSource = _contacts.Notes.GetNotes(_customer.Id).ToList();
+        }
+
+        // Öffnet das Notizformular im Erfassungsmodus.
+        private void BtnNewNote_Click(object? sender, EventArgs e)
+        {
+            // Im Erfassungsmodus ist der Button deaktiviert; die Prüfung hält den Zustand
+            // auch dann konsistent, wenn das einmal nicht mehr gilt.
+            if (_customer is null)
+            {
+                return;
+            }
+
+            // ShowDialog gibt das Fenster - anders als Show/Close - nicht selbst frei;
+            // ohne using bliebe bei jedem Öffnen ein Formular im Speicher zurück.
+            using (ContactNoteForm note = new ContactNoteForm(_contacts, _customer.Id))
+            {
+                if (note.ShowDialog(this) == DialogResult.OK)
+                {
+                    LoadNotes();
+                }
+            }
+        }
+
+        // Öffnet die doppelt angeklickte Notiz in der reinen Ansicht.
+        private void DgvProtocolNotes_CellDoubleClick(object? sender, DataGridViewCellEventArgs e)
+        {
+            // Ein Doppelklick auf die Spaltenüberschrift meldet RowIndex -1; ohne diese
+            // Prüfung würde der Zugriff auf Rows[-1] die Anwendung beenden.
+            if (e.RowIndex < 0 || _customer is null)
+            {
+                return;
+            }
+
+            if (DgvProtocolNotes.Rows[e.RowIndex].DataBoundItem is not ContactNote note)
+            {
+                return;
+            }
+
+            // Bewusst ohne LoadNotes() danach: In der reinen Ansicht kann sich nichts
+            // geändert haben - Notizen sind nach dem Erfassen unveränderlich.
+            using (ContactNoteForm view = new ContactNoteForm(_contacts, _customer.Id, note))
+            {
+                view.ShowDialog(this);
+            }
         }
 
         // Speichert die Eingaben über die Business-Schicht. Ein Extra-Schritt "auf die
@@ -271,7 +381,7 @@ namespace ContactManager.UI.WinForms.Forms
         {
             Control[] orderedGroups =
             {
-                GrpPersonalData, GrpContactData, GrpAddress
+                GrpPersonalData, GrpContactData, GrpAddress, GrpProtocolNotes
             };
 
             // Weist jeder GroupBox die Tab-Reihenfolge entsprechend ihrer Position zu.

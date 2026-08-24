@@ -6,6 +6,13 @@ using System.Text;
 
 namespace ContactManager.Business.Services
 {
+    /// <summary>
+    /// Geschäftslogik für die Notiz-Historie eines Kunden: Erfassen und Lesen.
+    /// Notizen werden ausschliesslich angehängt und sind nach dem Erfassen
+    /// unveränderlich. Arbeitet auf dem geladenen Datenstamm
+    /// (<see cref="ContactData"/>) und persistiert Änderungen über das
+    /// <see cref="IContactRepository"/>.
+    /// </summary>
     public class ContactNoteService
     {
         private readonly IContactRepository _repo;
@@ -30,18 +37,22 @@ namespace ContactManager.Business.Services
         /// <summary>
         /// Erfasst eine neue Notiz zum angegebenen Kunden und speichert die Änderung.
         /// Die Notiz wird der Historie nur angehängt; bestehende Notizen bleiben unverändert.
+        /// Der Zeitpunkt wird bewusst übergeben statt hier gesetzt: Ein Kontakt wird oft
+        /// nachträglich protokolliert, der Zeitpunkt des Kontakts stimmt dann nicht mit dem
+        /// Zeitpunkt der Erfassung überein.
         /// </summary>
         /// <param name="customerId">Die Id des Kunden, zu dem die Notiz gehört.</param>
         /// <param name="text">Der Notiztext; darf nicht leer sein.</param>
+        /// <param name="createdAt">Der Zeitpunkt (mit Uhrzeit), der für die Notiz festgehalten wird.</param>
         /// <exception cref="ArgumentException">Wird geworfen, wenn <paramref name="text"/> leer ist oder nur Leerzeichen enthält.</exception>
         /// <exception cref="KeyNotFoundException">Wird geworfen, wenn kein Kunde mit dieser Id erfasst ist.</exception>
-        public void AddNote(Guid customerId, string text)
+        public void AddNote(Guid customerId, string text, DateTime createdAt)
         {
             ArgumentException.ThrowIfNullOrWhiteSpace(text);
 
             Customer customer = GetRequiredCustomer(customerId);
 
-            customer.Notes.Add(new ContactNote { Text = text });
+            customer.Notes.Add(new ContactNote { Text = text, CreatedAt = createdAt });
 
             SaveChanges();
         }

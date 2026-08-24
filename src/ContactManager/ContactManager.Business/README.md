@@ -145,11 +145,15 @@ Kundenkontakte werden als **laufende Historie** dokumentiert. Notizen werden nur
 
 | Methode | Rückgabe | Beschreibung |
 |---|---|---|
-| `AddNote(Guid customerId, string text)` | `void` | Hängt eine Notiz mit Zeitstempel an, speichert. |
+| `AddNote(Guid customerId, string text, DateTime createdAt)` | `void` | Hängt eine Notiz mit dem übergebenen Zeitpunkt an, speichert. |
 | `GetNotes(Guid customerId)` | `IReadOnlyList<ContactNote>` | Notizen des Kunden, **neueste zuerst**. |
 
 ```csharp
-contacts.Notes.AddNote(kunde.Id, "Telefonat: Kunde wünscht Rückruf nächste Woche.");
+// Kontakt von jetzt:
+contacts.Notes.AddNote(kunde.Id, "Telefonat: Rückruf nächste Woche.", DateTime.Now);
+
+// Kontakt von gestern, nachträglich erfasst:
+contacts.Notes.AddNote(kunde.Id, "Besuch vor Ort.", new DateTime(2026, 8, 23, 14, 30, 0));
 
 foreach (ContactNote note in contacts.Notes.GetNotes(kunde.Id))
 {
@@ -158,7 +162,10 @@ foreach (ContactNote note in contacts.Notes.GetNotes(kunde.Id))
 ```
 
 > Notizen gibt es nur für **Kunden**, nicht für Mitarbeiter. Ein leerer/leerzeichen-only
-> Notiztext wird abgewiesen (`ArgumentException`).
+> Notiztext wird abgewiesen (`ArgumentException`). Der Notiztext wird **nicht** getrimmt —
+> das erledigt die UI vor dem Aufruf. Der Zeitpunkt ist ein **Pflichtparameter**: Für "jetzt"
+> übergibt die UI `DateTime.Now`, für einen nachträglich protokollierten Kontakt den
+> tatsächlichen Zeitpunkt.
 
 ---
 
@@ -333,7 +340,7 @@ catch (ValidationException ex)
 }
 
 // Notiz dokumentieren
-contacts.Notes.AddNote(kunde.Id, "Erstkontakt am Telefon.");
+contacts.Notes.AddNote(kunde.Id, "Erstkontakt am Telefon.", DateTime.Now);
 
 // Deaktivieren
 contacts.Customers.Deactivate(kunde.Id);
