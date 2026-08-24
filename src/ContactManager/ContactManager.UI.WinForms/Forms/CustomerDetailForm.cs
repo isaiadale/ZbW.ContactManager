@@ -104,10 +104,11 @@ namespace ContactManager.UI.WinForms.Forms
             // Grunddaten
             TxtbLastName.Text = customer.LastName;
             TxtbFirstName.Text = customer.FirstName;
-            WriteDate(DtpDateOfBirth, customer.DateOfBirth);
-            SelectEnum(CombGender, customer.Gender);
-            SelectEnum(CombSalutation, customer.Salutation);
+            ControlBinding.WriteDate(DtpDateOfBirth, customer.DateOfBirth);
+            ControlBinding.SelectEnum(CombGender, customer.Gender);
+            ControlBinding.SelectEnum(CombSalutation, customer.Salutation);
             TxtbTitle.Text = customer.Title ?? string.Empty;
+            ControlBinding.SelectEnum<Status>(CombStatus, customer.PersonStatus);
 
             // Kontaktdaten
             TxtbBusinessPhone.Text = customer.BusinessPhone ?? string.Empty;
@@ -115,7 +116,7 @@ namespace ContactManager.UI.WinForms.Forms
             TxtbEmail.Text = customer.Email ?? string.Empty;
 
             // Adresse
-            WriteAddress(customer.Address, TxtbStreet, TxtbPostalCode, TxtbCity);
+            ControlBinding.WriteAddress(customer.Address, TxtbStreet, TxtbPostalCode, TxtbCity);
         }
 
         /// <summary>
@@ -130,11 +131,14 @@ namespace ContactManager.UI.WinForms.Forms
             // deshalb nur hier, in der Objekterzeugung, setzen.
             Guid id = _customer?.Id ?? Guid.NewGuid();
 
-            // Der Status ist Pflichtfeld, hat aber noch kein Control. Beim Bearbeiten wird
-            // der bestehende Status beibehalten — sonst würde jedes Speichern einen
-            // deaktivierten Kunden stillschweigend wieder aktivieren.
-            // TODO: an Status-Control binden, sobald vorhanden.
-            Status status = _customer?.PersonStatus ?? Status.Active;
+            // Der Status ist Pflichtfeld. CombStatus ist eine DropDownList und wird beim
+            // Öffnen vorbelegt, hat also immer eine Auswahl; die beiden Rückfallwerte
+            // greifen nur, falls das je nicht mehr gilt. Der bestehende Status geht dabei
+            // vor Status.Active — sonst würde ein Fehlgriff einen deaktivierten Kunden
+            // stillschweigend wieder aktivieren.
+            Status status = ControlBinding.ReadEnum<Status>(CombStatus)
+                ?? _customer?.PersonStatus
+                ?? Status.Active;
 
             var customer = new Customer
             {
@@ -145,18 +149,18 @@ namespace ContactManager.UI.WinForms.Forms
             };
 
             // Grunddaten
-            customer.DateOfBirth = ReadDate(DtpDateOfBirth);
-            customer.Gender = ReadEnum<Gender>(CombGender);
-            customer.Salutation = ReadEnum<Salutation>(CombSalutation);
-            customer.Title = ReadOptionalText(TxtbTitle);
+            customer.DateOfBirth = ControlBinding.ReadDate(DtpDateOfBirth);
+            customer.Gender = ControlBinding.ReadEnum<Gender>(CombGender);
+            customer.Salutation = ControlBinding.ReadEnum<Salutation>(CombSalutation);
+            customer.Title = ControlBinding.ReadOptionalText(TxtbTitle);
 
             // Kontaktdaten
-            customer.BusinessPhone = ReadOptionalText(TxtbBusinessPhone);
-            customer.MobilePhone = ReadOptionalText(TxtbMobilePhone);
-            customer.Email = ReadOptionalText(TxtbEmail);
+            customer.BusinessPhone = ControlBinding.ReadOptionalText(TxtbBusinessPhone);
+            customer.MobilePhone = ControlBinding.ReadOptionalText(TxtbMobilePhone);
+            customer.Email = ControlBinding.ReadOptionalText(TxtbEmail);
 
             // Adresse
-            customer.Address = ReadAddress(TxtbStreet, TxtbPostalCode, TxtbCity);
+            customer.Address = ControlBinding.ReadAddress(TxtbStreet, TxtbPostalCode, TxtbCity);
 
             return customer;
         }
@@ -205,8 +209,9 @@ namespace ContactManager.UI.WinForms.Forms
         {
             // Der Typ steht hier explizit, weil EnumDisplay.ToText mehrfach überladen ist
             // und der Compiler sonst nicht weiss, welche der Überladungen gemeint ist.
-            FillEnumCombo<Gender>(CombGender, EnumDisplay.ToText);
-            FillEnumCombo<Salutation>(CombSalutation, EnumDisplay.ToText);
+            ControlBinding.FillEnumCombo<Gender>(CombGender, EnumDisplay.ToText);
+            ControlBinding.FillEnumCombo<Salutation>(CombSalutation, EnumDisplay.ToText);
+            ControlBinding.FillEnumCombo<Status>(CombStatus, EnumDisplay.ToText);
         }
 
         /// <summary>
@@ -230,6 +235,11 @@ namespace ContactManager.UI.WinForms.Forms
             CombGender.SelectedIndex = -1;
             CombSalutation.SelectedIndex = -1;
 
+            // Anders als Geschlecht und Anrede ist der Status kein optionales Feld: Ein
+            // neuer Kunde ist per Voreinstellung aktiv. Leer lassen ginge nicht, die
+            // DropDownList kennt keine Eingabe von Hand.
+            ControlBinding.SelectEnum<Status>(CombStatus, Status.Active);
+
             DtpDateOfBirth.Checked = false;
         }
 
@@ -240,6 +250,7 @@ namespace ContactManager.UI.WinForms.Forms
             {
                 // Grunddaten
                 TxtbLastName, TxtbFirstName, DtpDateOfBirth, CombGender, CombSalutation, TxtbTitle,
+                CombStatus,
 
                 // Kontaktdaten
                 TxtbBusinessPhone, TxtbMobilePhone, TxtbEmail,
@@ -267,156 +278,6 @@ namespace ContactManager.UI.WinForms.Forms
             for (int i = 0; i < orderedGroups.Length; i++)
             {
                 orderedGroups[i].TabIndex = i;
-            }
-        }
-
-        // ---------------------------------------------------------------------------
-        // Kleine Umrechnungshilfen zwischen Control-Werten und Model-Typen.
-        // Statisch, weil sie nur mit ihren Parametern arbeiten und keinen Zustand kennen.
-        // ---------------------------------------------------------------------------
-
-        /// <summary>
-        /// Liest ein optionales Textfeld. Leere oder nur aus Leerzeichen bestehende Eingaben
-        /// werden zu <c>null</c> — das Model unterscheidet "nicht erfasst" von "leerer Text".
-        /// </summary>
-        /// <param name="box">Das auszulesende Textfeld.</param>
-        /// <returns>Der bereinigte Text oder <c>null</c>.</returns>
-        private static string? ReadOptionalText(TextBox box) => ReadOptionalText(box.Text);
-
-        /// <summary>
-        /// Bereinigt einen Eingabetext; leere Eingaben werden zu <c>null</c>.
-        /// </summary>
-        /// <param name="text">Der zu bereinigende Text.</param>
-        /// <returns>Der getrimmte Text oder <c>null</c>.</returns>
-        private static string? ReadOptionalText(string? text) =>
-            string.IsNullOrWhiteSpace(text) ? null : text.Trim();
-
-        /// <summary>
-        /// Liest ein Datum aus einem DateTimePicker; ist dessen Checkbox nicht gesetzt,
-        /// gilt das Datum als nicht erfasst.
-        /// </summary>
-        /// <param name="picker">Das auszulesende Datumsfeld.</param>
-        /// <returns>Das gewählte Datum oder <c>null</c>.</returns>
-        private static DateOnly? ReadDate(DateTimePicker picker) =>
-            picker.Checked ? DateOnly.FromDateTime(picker.Value) : null;
-
-        /// <summary>
-        /// Zeigt ein Datum im DateTimePicker an; <c>null</c> erscheint als leerer,
-        /// nicht angehakter Wert.
-        /// </summary>
-        /// <param name="picker">Das zu setzende Datumsfeld.</param>
-        /// <param name="value">Das anzuzeigende Datum oder <c>null</c>.</param>
-        private static void WriteDate(DateTimePicker picker, DateOnly? value)
-        {
-            if (value is DateOnly date)
-            {
-                picker.Value = date.ToDateTime(TimeOnly.MinValue);
-                picker.Checked = true;
-            }
-            else
-            {
-                picker.Checked = false;
-            }
-        }
-
-        /// <summary>
-        /// Baut aus drei Eingabefeldern eine Adresse. Sind alle drei leer, gilt die Adresse
-        /// als nicht erfasst; ist nur ein Teil ausgefüllt, entsteht die Adresse trotzdem und
-        /// der Validator der Business-Schicht meldet, was fehlt.
-        /// </summary>
-        /// <param name="street">Feld für Strasse und Nummer.</param>
-        /// <param name="postalCode">Feld für die Postleitzahl.</param>
-        /// <param name="city">Feld für den Ort.</param>
-        /// <returns>Die erfasste Adresse oder <c>null</c>.</returns>
-        private static Address? ReadAddress(TextBox street, TextBox postalCode, TextBox city)
-        {
-            string streetValue = street.Text.Trim();
-            string postalCodeValue = postalCode.Text.Trim();
-            string cityValue = city.Text.Trim();
-
-            if (streetValue.Length == 0 && postalCodeValue.Length == 0 && cityValue.Length == 0)
-            {
-                return null;
-            }
-
-            return new Address
-            {
-                Street = streetValue,
-                PostalCode = postalCodeValue,
-                City = cityValue
-            };
-        }
-
-        /// <summary>
-        /// Verteilt eine Adresse auf die drei zugehörigen Eingabefelder.
-        /// </summary>
-        /// <param name="address">Die anzuzeigende Adresse oder <c>null</c>.</param>
-        /// <param name="street">Feld für Strasse und Nummer.</param>
-        /// <param name="postalCode">Feld für die Postleitzahl.</param>
-        /// <param name="city">Feld für den Ort.</param>
-        private static void WriteAddress(Address? address, TextBox street, TextBox postalCode, TextBox city)
-        {
-            street.Text = address?.Street ?? string.Empty;
-            postalCode.Text = address?.PostalCode ?? string.Empty;
-            city.Text = address?.City ?? string.Empty;
-        }
-
-        /// <summary>
-        /// Füllt eine ComboBox mit allen Werten eines Enums und deren deutscher Beschriftung.
-        /// Bewusst über <c>Items</c> statt über <c>DataSource</c>: Nur so bleibt der Zustand
-        /// "nichts ausgewählt" möglich, den die optionalen Felder des Models brauchen.
-        /// </summary>
-        /// <typeparam name="TEnum">Das anzuzeigende Enum.</typeparam>
-        /// <param name="box">Die zu füllende ComboBox.</param>
-        /// <param name="toText">Übersetzt einen Enum-Wert in seine Beschriftung.</param>
-        private static void FillEnumCombo<TEnum>(ComboBox box, Func<TEnum, string> toText)
-            where TEnum : struct, Enum
-        {
-            box.Items.Clear();
-
-            foreach (TEnum value in Enum.GetValues<TEnum>())
-            {
-                box.Items.Add(new ComboItem<TEnum>(value, toText(value)));
-            }
-
-            box.SelectedIndex = -1;
-        }
-
-        /// <summary>
-        /// Liest den ausgewählten Enum-Wert einer ComboBox.
-        /// </summary>
-        /// <typeparam name="TEnum">Das erwartete Enum.</typeparam>
-        /// <param name="box">Die auszulesende ComboBox.</param>
-        /// <returns>Der gewählte Wert oder <c>null</c>, wenn nichts ausgewählt ist.</returns>
-        private static TEnum? ReadEnum<TEnum>(ComboBox box)
-            where TEnum : struct, Enum =>
-            (box.SelectedItem as ComboItem<TEnum>)?.Value;
-
-        /// <summary>
-        /// Wählt den zum Wert passenden Eintrag einer ComboBox aus; <c>null</c> lässt die
-        /// Auswahl leer.
-        /// </summary>
-        /// <typeparam name="TEnum">Das angezeigte Enum.</typeparam>
-        /// <param name="box">Die zu setzende ComboBox.</param>
-        /// <param name="value">Der auszuwählende Wert oder <c>null</c>.</param>
-        private static void SelectEnum<TEnum>(ComboBox box, TEnum? value)
-            where TEnum : struct, Enum
-        {
-            box.SelectedIndex = -1;
-
-            if (value is null)
-            {
-                return;
-            }
-
-            foreach (object? item in box.Items)
-            {
-                if (item is ComboItem<TEnum> comboItem &&
-                    EqualityComparer<TEnum>.Default.Equals(comboItem.Value, value.Value))
-                {
-                    box.SelectedItem = item;
-                    return;
-                }
             }
         }
     }

@@ -109,9 +109,9 @@ namespace ContactManager.UI.WinForms.Forms
             // Grunddaten
             TxtbLastName.Text = employee.LastName;
             TxtbFirstName.Text = employee.FirstName;
-            WriteDate(DtpDateOfBirth, employee.DateOfBirth);
-            SelectEnum(CombGender, employee.Gender);
-            SelectEnum(CombSalutation, employee.Salutation);
+            ControlBinding.WriteDate(DtpDateOfBirth, employee.DateOfBirth);
+            ControlBinding.SelectEnum(CombGender, employee.Gender);
+            ControlBinding.SelectEnum(CombSalutation, employee.Salutation);
             TxtbSocialSecNr.Text = employee.SocialSecurityNumber ?? string.Empty;
             CombNationality.Text = employee.Nationality ?? string.Empty;
 
@@ -121,14 +121,15 @@ namespace ContactManager.UI.WinForms.Forms
             TxtbEmail.Text = employee.Email ?? string.Empty;
 
             // Anstellung
-            SelectOrAdd(CombDepartment, employee.Department);
+            ControlBinding.SelectOrAdd(CombDepartment, employee.Department);
             TxtbJobTitle.Text = employee.JobTitle ?? string.Empty;
+            TxtbEmploymentLevel.Text = employee.EmploymentLevel?.ToString() ?? string.Empty;
             CombManagementLevel.SelectedItem = employee.ManagementLevel;
-            WriteDate(DtpHireDate, employee.HireDate);
-            WriteDate(DtpTerminationDate, employee.TerminationDate);
+            ControlBinding.WriteDate(DtpHireDate, employee.HireDate);
+            ControlBinding.WriteDate(DtpTerminationDate, employee.TerminationDate);
 
-            WriteAddress(employee.HomeAddress, TxtbPrivateStreet, TxtbPrivatePostalCode, TxtbPrivateCity);
-            WriteAddress(employee.BusinessAddress, TxtbBusinessStreet, TxtbBusinessPostalCode, TxtbBusinessCity);
+            ControlBinding.WriteAddress(employee.HomeAddress, TxtbPrivateStreet, TxtbPrivatePostalCode, TxtbPrivateCity);
+            ControlBinding.WriteAddress(employee.BusinessAddress, TxtbBusinessStreet, TxtbBusinessPostalCode, TxtbBusinessCity);
 
             // Ausbildung: Ein bestehender Mitarbeiter kann nachträglich nicht zum Lernenden
             // werden (und umgekehrt) — das wäre ein Typwechsel, den die Business-Schicht
@@ -172,8 +173,8 @@ namespace ContactManager.UI.WinForms.Forms
                     PersonStatus = status,
                     // Nicht-nullable int: Ein leeres Feld ergibt 0, worauf der Validator mit
                     // einer verständlichen deutschen Meldung reagiert.
-                    ApprenticeshipYears = ReadOptionalInt(TxtbApprenticeshipYears) ?? 0,
-                    CurrentApprenticeshipYear = ReadOptionalInt(TxtbCurrAppYear)
+                    ApprenticeshipYears = ControlBinding.ReadOptionalInt(TxtbApprenticeshipYears) ?? 0,
+                    CurrentApprenticeshipYear = ControlBinding.ReadOptionalInt(TxtbCurrAppYear)
                 }
                 : new Employee
                 {
@@ -184,29 +185,28 @@ namespace ContactManager.UI.WinForms.Forms
                 };
 
             // Grunddaten
-            employee.DateOfBirth = ReadDate(DtpDateOfBirth);
-            employee.Gender = ReadEnum<Gender>(CombGender);
-            employee.Salutation = ReadEnum<Salutation>(CombSalutation);
-            employee.SocialSecurityNumber = ReadOptionalText(TxtbSocialSecNr);
-            employee.Nationality = ReadOptionalText(CombNationality.Text);
+            employee.DateOfBirth = ControlBinding.ReadDate(DtpDateOfBirth);
+            employee.Gender = ControlBinding.ReadEnum<Gender>(CombGender);
+            employee.Salutation = ControlBinding.ReadEnum<Salutation>(CombSalutation);
+            employee.SocialSecurityNumber = ControlBinding.ReadOptionalText(TxtbSocialSecNr);
+            employee.Nationality = ControlBinding.ReadOptionalText(CombNationality.Text);
 
             // Kontaktdaten
-            employee.BusinessPhone = ReadOptionalText(TxtbBusinessPhone);
-            employee.MobilePhone = ReadOptionalText(TxtbMobilePhone);
-            employee.Email = ReadOptionalText(TxtbEmail);
+            employee.BusinessPhone = ControlBinding.ReadOptionalText(TxtbBusinessPhone);
+            employee.MobilePhone = ControlBinding.ReadOptionalText(TxtbMobilePhone);
+            employee.Email = ControlBinding.ReadOptionalText(TxtbEmail);
 
             // Anstellung
-            employee.Department = ReadOptionalText(CombDepartment.SelectedItem?.ToString());
-            employee.JobTitle = ReadOptionalText(TxtbJobTitle);
+            employee.Department = ControlBinding.ReadOptionalText(CombDepartment.SelectedItem?.ToString());
+            employee.JobTitle = ControlBinding.ReadOptionalText(TxtbJobTitle);
             employee.ManagementLevel = CombManagementLevel.SelectedItem is int level ? level : null;
-            employee.HireDate = ReadDate(DtpHireDate);
-            employee.TerminationDate = ReadDate(DtpTerminationDate);
+            employee.HireDate = ControlBinding.ReadDate(DtpHireDate);
+            employee.TerminationDate = ControlBinding.ReadDate(DtpTerminationDate);
+            employee.EmploymentLevel = ControlBinding.ReadOptionalInt(TxtbEmploymentLevel);
 
-            // TODO: EmploymentLevel binden, sobald das Control existiert (Lücke 2 in PLAN.md).
-            employee.EmploymentLevel = _employee?.EmploymentLevel;
-
-            employee.HomeAddress = ReadAddress(TxtbPrivateStreet, TxtbPrivatePostalCode, TxtbPrivateCity);
-            employee.BusinessAddress = ReadAddress(TxtbBusinessStreet, TxtbBusinessPostalCode, TxtbBusinessCity);
+            // Adressen
+            employee.HomeAddress = ControlBinding.ReadAddress(TxtbPrivateStreet, TxtbPrivatePostalCode, TxtbPrivateCity);
+            employee.BusinessAddress = ControlBinding.ReadAddress(TxtbBusinessStreet, TxtbBusinessPostalCode, TxtbBusinessCity);
 
             return employee;
         }
@@ -263,8 +263,8 @@ namespace ContactManager.UI.WinForms.Forms
         {
             // Der Typ steht hier explizit, weil EnumDisplay.ToText mehrfach überladen ist
             // und der Compiler sonst nicht weiss, welche der Überladungen gemeint ist.
-            FillEnumCombo<Gender>(CombGender, EnumDisplay.ToText);
-            FillEnumCombo<Salutation>(CombSalutation, EnumDisplay.ToText);
+            ControlBinding.FillEnumCombo<Gender>(CombGender, EnumDisplay.ToText);
+            ControlBinding.FillEnumCombo<Salutation>(CombSalutation, EnumDisplay.ToText);
 
             // Die Kaderstufe reicht laut Business-Regel von 0 bis 5. Die ComboBox ist im
             // Designer leer angelegt, deshalb werden die Werte hier gesetzt.
@@ -393,190 +393,6 @@ namespace ContactManager.UI.WinForms.Forms
             {
                 orderedGroups[i].TabIndex = i;
             }
-        }
-
-        // ---------------------------------------------------------------------------
-        // Kleine Umrechnungshilfen zwischen Control-Werten und Model-Typen.
-        // Statisch, weil sie nur mit ihren Parametern arbeiten und keinen Zustand kennen.
-        // ---------------------------------------------------------------------------
-
-        /// <summary>
-        /// Liest ein optionales Textfeld. Leere oder nur aus Leerzeichen bestehende Eingaben
-        /// werden zu <c>null</c> — das Model unterscheidet "nicht erfasst" von "leerer Text".
-        /// </summary>
-        /// <param name="box">Das auszulesende Textfeld.</param>
-        /// <returns>Der bereinigte Text oder <c>null</c>.</returns>
-        private static string? ReadOptionalText(TextBox box) => ReadOptionalText(box.Text);
-
-        /// <summary>
-        /// Bereinigt einen Eingabetext; leere Eingaben werden zu <c>null</c>.
-        /// </summary>
-        /// <param name="text">Der zu bereinigende Text.</param>
-        /// <returns>Der getrimmte Text oder <c>null</c>.</returns>
-        private static string? ReadOptionalText(string? text) =>
-            string.IsNullOrWhiteSpace(text) ? null : text.Trim();
-
-        /// <summary>
-        /// Liest eine ganze Zahl aus einem Textfeld, ohne bei Buchstaben abzustürzen.
-        /// Bewusst <c>TryParse</c> statt <c>Parse</c>: Eine Fehleingabe darf die Anwendung
-        /// nicht beenden.
-        /// </summary>
-        /// <param name="box">Das auszulesende Textfeld.</param>
-        /// <returns>Die eingegebene Zahl oder <c>null</c>, wenn das Feld leer oder keine Zahl ist.</returns>
-        private static int? ReadOptionalInt(TextBox box) =>
-            int.TryParse(box.Text.Trim(), out int value) ? value : null;
-
-        /// <summary>
-        /// Liest ein Datum aus einem DateTimePicker; ist dessen Checkbox nicht gesetzt,
-        /// gilt das Datum als nicht erfasst.
-        /// </summary>
-        /// <param name="picker">Das auszulesende Datumsfeld.</param>
-        /// <returns>Das gewählte Datum oder <c>null</c>.</returns>
-        private static DateOnly? ReadDate(DateTimePicker picker) =>
-            picker.Checked ? DateOnly.FromDateTime(picker.Value) : null;
-
-        /// <summary>
-        /// Zeigt ein Datum im DateTimePicker an; <c>null</c> erscheint als leerer,
-        /// nicht angehakter Wert.
-        /// </summary>
-        /// <param name="picker">Das zu setzende Datumsfeld.</param>
-        /// <param name="value">Das anzuzeigende Datum oder <c>null</c>.</param>
-        private static void WriteDate(DateTimePicker picker, DateOnly? value)
-        {
-            if (value is DateOnly date)
-            {
-                picker.Value = date.ToDateTime(TimeOnly.MinValue);
-                picker.Checked = true;
-            }
-            else
-            {
-                picker.Checked = false;
-            }
-        }
-
-        /// <summary>
-        /// Baut aus drei Eingabefeldern eine Adresse. Sind alle drei leer, gilt die Adresse
-        /// als nicht erfasst; ist nur ein Teil ausgefüllt, entsteht die Adresse trotzdem und
-        /// der Validator der Business-Schicht meldet, was fehlt.
-        /// </summary>
-        /// <param name="street">Feld für Strasse und Nummer.</param>
-        /// <param name="postalCode">Feld für die Postleitzahl.</param>
-        /// <param name="city">Feld für den Ort.</param>
-        /// <returns>Die erfasste Adresse oder <c>null</c>.</returns>
-        private static Address? ReadAddress(TextBox street, TextBox postalCode, TextBox city)
-        {
-            string streetValue = street.Text.Trim();
-            string postalCodeValue = postalCode.Text.Trim();
-            string cityValue = city.Text.Trim();
-
-            if (streetValue.Length == 0 && postalCodeValue.Length == 0 && cityValue.Length == 0)
-            {
-                return null;
-            }
-
-            return new Address
-            {
-                Street = streetValue,
-                PostalCode = postalCodeValue,
-                City = cityValue
-            };
-        }
-
-        /// <summary>
-        /// Verteilt eine Adresse auf die drei zugehörigen Eingabefelder.
-        /// </summary>
-        /// <param name="address">Die anzuzeigende Adresse oder <c>null</c>.</param>
-        /// <param name="street">Feld für Strasse und Nummer.</param>
-        /// <param name="postalCode">Feld für die Postleitzahl.</param>
-        /// <param name="city">Feld für den Ort.</param>
-        private static void WriteAddress(Address? address, TextBox street, TextBox postalCode, TextBox city)
-        {
-            street.Text = address?.Street ?? string.Empty;
-            postalCode.Text = address?.PostalCode ?? string.Empty;
-            city.Text = address?.City ?? string.Empty;
-        }
-
-        /// <summary>
-        /// Füllt eine ComboBox mit allen Werten eines Enums und deren deutscher Beschriftung.
-        /// Bewusst über <c>Items</c> statt über <c>DataSource</c>: Nur so bleibt der Zustand
-        /// "nichts ausgewählt" möglich, den die optionalen Felder des Models brauchen.
-        /// </summary>
-        /// <typeparam name="TEnum">Das anzuzeigende Enum.</typeparam>
-        /// <param name="box">Die zu füllende ComboBox.</param>
-        /// <param name="toText">Übersetzt einen Enum-Wert in seine Beschriftung.</param>
-        private static void FillEnumCombo<TEnum>(ComboBox box, Func<TEnum, string> toText)
-            where TEnum : struct, Enum
-        {
-            box.Items.Clear();
-
-            foreach (TEnum value in Enum.GetValues<TEnum>())
-            {
-                box.Items.Add(new ComboItem<TEnum>(value, toText(value)));
-            }
-
-            box.SelectedIndex = -1;
-        }
-
-        /// <summary>
-        /// Liest den ausgewählten Enum-Wert einer ComboBox.
-        /// </summary>
-        /// <typeparam name="TEnum">Das erwartete Enum.</typeparam>
-        /// <param name="box">Die auszulesende ComboBox.</param>
-        /// <returns>Der gewählte Wert oder <c>null</c>, wenn nichts ausgewählt ist.</returns>
-        private static TEnum? ReadEnum<TEnum>(ComboBox box)
-            where TEnum : struct, Enum =>
-            (box.SelectedItem as ComboItem<TEnum>)?.Value;
-
-        /// <summary>
-        /// Wählt den zum Wert passenden Eintrag einer ComboBox aus; <c>null</c> lässt die
-        /// Auswahl leer.
-        /// </summary>
-        /// <typeparam name="TEnum">Das angezeigte Enum.</typeparam>
-        /// <param name="box">Die zu setzende ComboBox.</param>
-        /// <param name="value">Der auszuwählende Wert oder <c>null</c>.</param>
-        private static void SelectEnum<TEnum>(ComboBox box, TEnum? value)
-            where TEnum : struct, Enum
-        {
-            box.SelectedIndex = -1;
-
-            if (value is null)
-            {
-                return;
-            }
-
-            foreach (object? item in box.Items)
-            {
-                if (item is ComboItem<TEnum> comboItem &&
-                    EqualityComparer<TEnum>.Default.Equals(comboItem.Value, value.Value))
-                {
-                    box.SelectedItem = item;
-                    return;
-                }
-            }
-        }
-
-        /// <summary>
-        /// Wählt einen Text in einer ComboBox aus und nimmt ihn vorher in die Liste auf,
-        /// falls er dort fehlt. Ohne das ginge ein gespeicherter Wert beim nächsten
-        /// Speichern verloren, nur weil er nicht zur Auswahl steht.
-        /// </summary>
-        /// <param name="box">Die zu setzende ComboBox.</param>
-        /// <param name="value">Der auszuwählende Text oder <c>null</c>.</param>
-        private static void SelectOrAdd(ComboBox box, string? value)
-        {
-            box.SelectedIndex = -1;
-
-            if (string.IsNullOrWhiteSpace(value))
-            {
-                return;
-            }
-
-            if (!box.Items.Contains(value))
-            {
-                box.Items.Add(value);
-            }
-
-            box.SelectedItem = value;
         }
 
         // Erlaubt nur Ziffern und Steuerzeichen (z. B. Rücktaste) in der AHV-Nummer.

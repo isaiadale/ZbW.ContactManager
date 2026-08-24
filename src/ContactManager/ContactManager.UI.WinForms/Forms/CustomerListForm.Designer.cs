@@ -93,6 +93,7 @@
             ColSelect.HeaderText = "";
             ColSelect.MinimumWidth = 8;
             ColSelect.Name = "ColSelect";
+            ColSelect.Resizable = DataGridViewTriState.False;
             ColSelect.Width = 30;
             // 
             // ColCustomerNumber
