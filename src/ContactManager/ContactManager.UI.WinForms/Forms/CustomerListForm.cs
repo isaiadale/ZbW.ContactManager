@@ -46,6 +46,7 @@ namespace ContactManager.UI.WinForms.Forms
             BtnAddCustomer.Click += BtnAddCustomer_Click;
             DgvCustomerList.CellDoubleClick += DgvCustomerList_CellDoubleClick;
             BtnDeleteCustomer.Click += BtnDeleteCustomer_Click;
+            BtnFilterReset.Click += BtnFilterReset_Click;
 
             SetTabOrder();
         }
@@ -268,6 +269,17 @@ namespace ContactManager.UI.WinForms.Forms
         {
             // Schliesst dieses Fenster; MainForm erscheint automatisch wieder (FormClosed-Event)
             this.Close();
+        }
+
+        // Leert alle Suchfelder für eine neue Suche. Das Leeren jedes Felds löst über
+        // SearchInput_TextChanged bereits einen Reload aus - ein zusätzlicher Aufruf von
+        // LoadCustomers() ist deshalb hier nicht nötig, genau wie in PrepareSearchInputs.
+        private void BtnFilterReset_Click(object? sender, EventArgs e)
+        {
+            TxtbCustomerNrSearch.Text = string.Empty;
+            TxtbLastNameSearch.Text = string.Empty;
+            TxtbFirstNameSearch.Text = string.Empty;
+            TxtbDateOfBirthSearch.Text = string.Empty;
         }
 
         // Das Umschalten der Checkbox erledigt seit der Einführung von GridSelection
