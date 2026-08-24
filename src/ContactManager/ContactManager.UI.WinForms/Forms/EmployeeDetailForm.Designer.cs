@@ -88,6 +88,8 @@
             TxtbCurrAppYear = new TextBox();
             ChkbIsApprentice = new CheckBox();
             BtnSave = new Button();
+            LblStatus = new Label();
+            CombStatus = new ComboBox();
             GrpPersonalData.SuspendLayout();
             GrpPrivateAddress.SuspendLayout();
             GrpEmployeeInfo.SuspendLayout();
@@ -360,6 +362,8 @@
             // 
             // GrpEmployeeInfo
             // 
+            GrpEmployeeInfo.Controls.Add(CombStatus);
+            GrpEmployeeInfo.Controls.Add(LblStatus);
             GrpEmployeeInfo.Controls.Add(LblEmploymentLevelPercent);
             GrpEmployeeInfo.Controls.Add(TxtbEmploymentLevel);
             GrpEmployeeInfo.Controls.Add(DtpTerminationDate);
@@ -375,7 +379,7 @@
             GrpEmployeeInfo.Controls.Add(TxtbJobTitle);
             GrpEmployeeInfo.Location = new Point(43, 411);
             GrpEmployeeInfo.Name = "GrpEmployeeInfo";
-            GrpEmployeeInfo.Size = new Size(502, 361);
+            GrpEmployeeInfo.Size = new Size(502, 415);
             GrpEmployeeInfo.TabIndex = 32;
             GrpEmployeeInfo.TabStop = false;
             GrpEmployeeInfo.Text = "ANSTELLUNG";
@@ -652,9 +656,9 @@
             GrpApprentice.Controls.Add(TxtbApprenticeshipYears);
             GrpApprentice.Controls.Add(LblCurrAppYear);
             GrpApprentice.Controls.Add(TxtbCurrAppYear);
-            GrpApprentice.Location = new Point(43, 839);
+            GrpApprentice.Location = new Point(43, 895);
             GrpApprentice.Name = "GrpApprentice";
-            GrpApprentice.Size = new Size(502, 150);
+            GrpApprentice.Size = new Size(502, 149);
             GrpApprentice.TabIndex = 33;
             GrpApprentice.TabStop = false;
             GrpApprentice.Text = "AUSBILDUNG";
@@ -701,7 +705,7 @@
             // ChkbIsApprentice
             // 
             ChkbIsApprentice.AutoSize = true;
-            ChkbIsApprentice.Location = new Point(43, 797);
+            ChkbIsApprentice.Location = new Point(43, 852);
             ChkbIsApprentice.Name = "ChkbIsApprentice";
             ChkbIsApprentice.Size = new Size(124, 25);
             ChkbIsApprentice.TabIndex = 0;
@@ -718,11 +722,29 @@
             BtnSave.Text = "Speichern";
             BtnSave.UseVisualStyleBackColor = true;
             // 
+            // LblStatus
+            // 
+            LblStatus.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            LblStatus.Location = new Point(27, 357);
+            LblStatus.Name = "LblStatus";
+            LblStatus.Size = new Size(170, 35);
+            LblStatus.TabIndex = 39;
+            LblStatus.Text = "Status";
+            // 
+            // CombStatus
+            // 
+            CombStatus.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            CombStatus.FormattingEnabled = true;
+            CombStatus.Location = new Point(203, 357);
+            CombStatus.Name = "CombStatus";
+            CombStatus.Size = new Size(240, 29);
+            CombStatus.TabIndex = 40;
+            // 
             // EmployeeDetailForm
             // 
             AutoScaleDimensions = new SizeF(11F, 21F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1615, 1044);
+            ClientSize = new Size(1615, 1118);
             Controls.Add(BtnSave);
             Controls.Add(ChkbIsApprentice);
             Controls.Add(GrpApprentice);
@@ -812,5 +834,7 @@
         private TextBox TxtbEmploymentLevel;
         private Label LblEmploymentLevel;
         private Label LblEmploymentLevelPercent;
+        private Label LblStatus;
+        private ComboBox CombStatus;
     }
 }
