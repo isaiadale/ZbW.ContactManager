@@ -11,10 +11,10 @@ namespace ContactManager.Business.Search
     /// </summary>
     public class SearchCriteria
     {
-        /// <summary>Filter auf den Vornamen (Teiltreffer); <c>null</c> = Kriterium ignorieren.</summary>
+        /// <summary>Filter auf den Vornamen (Präfix: der Vorname beginnt mit der Eingabe); <c>null</c> = Kriterium ignorieren.</summary>
         public string? FirstName { get; set; }
 
-        /// <summary>Filter auf den Nachnamen (Teiltreffer); <c>null</c> = Kriterium ignorieren.</summary>
+        /// <summary>Filter auf den Nachnamen (Präfix: der Nachname beginnt mit der Eingabe); <c>null</c> = Kriterium ignorieren.</summary>
         public string? LastName { get; set; }
 
         /// <summary>Filter auf das exakte Geburtsdatum; <c>null</c> = Kriterium ignorieren.</summary>

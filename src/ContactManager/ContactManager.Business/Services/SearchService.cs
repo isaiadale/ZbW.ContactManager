@@ -33,8 +33,8 @@ namespace ContactManager.Business.Services
         /// Sucht über alle Personen (Kunden und Mitarbeiter) anhand der angegebenen Kriterien.
         /// Jedes gesetzte Kriterium verengt die Treffermenge; nicht gesetzte (<c>null</c>)
         /// Kriterien werden ignoriert. Sind alle Kriterien <c>null</c>, werden alle Personen
-        /// zurückgegeben. Namensfelder treffen bei Teilübereinstimmung (Gross-/Kleinschreibung
-        /// wird ignoriert), das Geburtsdatum muss exakt übereinstimmen.
+        /// zurückgegeben. Namensfelder treffen, wenn der Name mit der Eingabe beginnt
+        /// (Gross-/Kleinschreibung wird ignoriert), das Geburtsdatum muss exakt übereinstimmen.
         /// </summary>
         /// <param name="criteria">Die anzuwendenden Suchkriterien.</param>
         /// <returns>Alle Personen, die auf sämtliche gesetzten Kriterien passen; ggf. leer.</returns>
@@ -47,10 +47,10 @@ namespace ContactManager.Business.Services
             IEnumerable<Person> results = _customers.Cast<Person>().Concat(_employees);
 
             if (!string.IsNullOrWhiteSpace(criteria.FirstName))
-                results = results.Where(p => p.FirstName.Contains(criteria.FirstName, StringComparison.OrdinalIgnoreCase));
+                results = results.Where(p => p.FirstName.StartsWith(criteria.FirstName, StringComparison.OrdinalIgnoreCase));
 
             if (!string.IsNullOrWhiteSpace(criteria.LastName))
-                results = results.Where(p => p.LastName.Contains(criteria.LastName, StringComparison.OrdinalIgnoreCase));
+                results = results.Where(p => p.LastName.StartsWith(criteria.LastName, StringComparison.OrdinalIgnoreCase));
 
             if (criteria.DateOfBirth is not null)
                 results = results.Where(p => p.DateOfBirth == criteria.DateOfBirth);
