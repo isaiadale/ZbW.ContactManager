@@ -172,7 +172,7 @@ using ContactManager.Business.Search;
 
 var criteria = new SearchCriteria
 {
-    LastName = "mus",                 // Teiltreffer, Gross-/Kleinschreibung egal
+    LastName = "mus",                 // beginnt mit, Gross-/Kleinschreibung egal
     Type = ContactType.Customer       // nur Kunden
     // FirstName, DateOfBirth, Number bleiben null → ignoriert
 };
@@ -184,8 +184,8 @@ IReadOnlyList<Person> treffer = contacts.Search.Search(criteria);
 
 | Feld | Typ | Verhalten |
 |---|---|---|
-| `FirstName` | `string?` | Teiltreffer, case-insensitive |
-| `LastName` | `string?` | Teiltreffer, case-insensitive |
+| `FirstName` | `string?` | Präfix (Name beginnt mit der Eingabe), case-insensitive |
+| `LastName` | `string?` | Präfix (Name beginnt mit der Eingabe), case-insensitive |
 | `DateOfBirth` | `DateOnly?` | exakter Treffer |
 | `Type` | `ContactType?` | `Customer` / `Employee` / `Apprentice` |
 | `Number` | `int?` | Kunden- **oder** Mitarbeiternummer (je nach Typ der Person) |
