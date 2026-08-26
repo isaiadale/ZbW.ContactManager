@@ -47,6 +47,7 @@ Die Fassade stellt vier Services als Properties bereit:
 | `GetAll()` | `IReadOnlyList<Customer>` | Alle Kunden. |
 | `GetById(Guid id)` | `Customer?` | Kunde oder `null`, wenn nicht gefunden. |
 | `GetByNumber(int customerNumber)` | `Customer?` | Kunde oder `null`. |
+| `PeekNextCustomerNumber()` | `int` | Nummer, die das nächste `Add` vergeben würde — **ohne** sie zu verbrauchen. Nur für die Anzeige. |
 | `Add(Customer customer)` | `void` | Erfasst neu, **vergibt die Kundennummer automatisch**, speichert. |
 | `Update(Customer customer)` | `void` | Überträgt Änderungen auf den bestehenden Kunden (per `Id`), speichert. |
 | `Delete(Guid id)` | `void` | Löscht, speichert. |
@@ -82,6 +83,23 @@ contacts.Customers.Add(kunde);
 > ⚠️ **`CustomerNumber` nie selbst setzen** — die Nummer ist von aussen schreibgeschützt
 > und wird beim `Add` automatisch vergeben. Vor dem `Add` ist sie `0`.
 
+### Die künftige Nummer schon beim Erfassen anzeigen
+
+`PeekNextCustomerNumber()` (analog `PeekNextEmployeeNumber()`) meldet, welche Nummer das
+nächste `Add` vergeben würde, **ohne** den Zähler zu erhöhen:
+
+```csharp
+TxtbCustomerNr.Text = $"{contacts.Customers.PeekNextCustomerNumber()} (wird beim Speichern vergeben)";
+```
+
+Bricht die Benutzerin die Erfassung ab, geht dadurch keine Nummer verloren — es entsteht
+keine Lücke in der Nummerierung.
+
+> ⚠️ Der Wert ist eine **Vorschau, keine Reservation.** Sind zwei Erfassungsfenster
+> gleichzeitig offen, zeigen beide dieselbe Nummer; verbindlich vergeben wird sie erst
+> beim `Add`, und nur das erste Speichern bekommt sie. Die Anzeige sollte das kenntlich
+> machen, statt eine feste Nummer zu versprechen.
+
 ### Kunde mutieren
 
 `Update` findet den bestehenden Kunden über seine **`Id`** und kopiert die geänderten
@@ -108,6 +126,7 @@ keinen separaten „ApprenticeService".
 | `GetAll()` | `IReadOnlyList<Employee>` | Alle Mitarbeiter, **inkl. Lernende**. |
 | `GetById(Guid id)` | `Employee?` | Mitarbeiter oder `null`. |
 | `GetByNumber(int employeeNumber)` | `Employee?` | Mitarbeiter oder `null`. |
+| `PeekNextEmployeeNumber()` | `int` | Nummer, die das nächste `Add` vergeben würde — **ohne** sie zu verbrauchen. Nur für die Anzeige. |
 | `Add(Employee employee)` | `void` | Erfasst neu, **vergibt die Mitarbeiternummer automatisch**, speichert. |
 | `Update(Employee employee)` | `void` | Überträgt Änderungen (per `Id`), speichert. Bei Lernenden werden auch die Lehr-Felder übernommen. |
 | `Delete(Guid id)` | `void` | Löscht, speichert. |
@@ -255,7 +274,8 @@ gesetzt werden, alles andere ist optional (`null` erlaubt).
 
 Es gibt **keinen Speichern-Button**. Jede mutierende Methode (`Add`, `Update`, `Delete`,
 `Activate`, `Deactivate`, `AddNote`) schreibt den Datenstamm sofort auf die Festplatte.
-Reine Lesemethoden (`GetAll`, `GetById`, `Search`, `GetNotes`) speichern nicht.
+Reine Lesemethoden (`GetAll`, `GetById`, `Search`, `GetNotes`, `PeekNext…Number`)
+speichern nicht.
 
 Ebenso wird beim Erstellen der Fassade **automatisch geladen**. Fehlt die Datei beim ersten
 Start, beginnt die App mit leerem Datenstamm (das Repository wirft dann **nicht**).

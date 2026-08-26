@@ -92,8 +92,12 @@ namespace ContactManager.UI.WinForms.Forms
             if (_employee is null)
             {
                 LblEmployeeInfos.Text = "Neue Mitarbeitende erfassen";
-                // Die Nummer vergibt die Business-Schicht erst beim Speichern.
-                TxtbEmployeeNr.Text = "(neu)";
+
+                // Vorschau auf die Nummer, die beim Speichern vergeben wird. Peek erhöht
+                // den Zähler nicht - wird die Erfassung abgebrochen, entsteht also keine
+                // Lücke in der Nummerierung. Verbindlich vergeben wird die Nummer erst
+                // beim Speichern; sind zwei Erfassungsfenster offen, zeigen beide dieselbe.
+                TxtbEmployeeNr.Text = $"{_contacts.Employees.PeekNextEmployeeNumber()}";
             }
             else
             {
