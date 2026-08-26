@@ -65,6 +65,12 @@ namespace ContactManager.UI.WinForms.Forms
             this.ClientSize = new Size(this.ClientSize.Width, 840);
             TxtbEmployeeNr.ReadOnly = true;
 
+            // Der Status ist Pflichtfeld und kennt genau zwei gültige Werte - eine freie
+            // Eingabe von Hand ergäbe hier keinen Sinn. Im Designer steht die ComboBox als
+            // bearbeitbares DropDown; korrigiert wird das hier statt dort, weil der Designer
+            // den Kolleg*innen gehört. Im CustomerDetailForm ist der Stil bereits gesetzt.
+            CombStatus.DropDownStyle = ComboBoxStyle.DropDownList;
+
             // Bewusst hier statt im Designer verdrahtet: Der Designer gehört den
             // Kolleg*innen, jede Änderung daran erzeugt unnötige Merge-Konflikte.
             BtnSave.Click += BtnSave_Click;
@@ -86,8 +92,12 @@ namespace ContactManager.UI.WinForms.Forms
             if (_employee is null)
             {
                 LblEmployeeInfos.Text = "Neue Mitarbeitende erfassen";
-                // Die Nummer vergibt die Business-Schicht erst beim Speichern.
-                TxtbEmployeeNr.Text = "(neu)";
+
+                // Vorschau auf die Nummer, die beim Speichern vergeben wird. Peek erhöht
+                // den Zähler nicht - wird die Erfassung abgebrochen, entsteht also keine
+                // Lücke in der Nummerierung. Verbindlich vergeben wird die Nummer erst
+                // beim Speichern; sind zwei Erfassungsfenster offen, zeigen beide dieselbe.
+                TxtbEmployeeNr.Text = $"{_contacts.Employees.PeekNextEmployeeNumber()}";
             }
             else
             {
@@ -112,6 +122,7 @@ namespace ContactManager.UI.WinForms.Forms
             ControlBinding.WriteDate(DtpDateOfBirth, employee.DateOfBirth);
             ControlBinding.SelectEnum(CombGender, employee.Gender);
             ControlBinding.SelectEnum(CombSalutation, employee.Salutation);
+            ControlBinding.SelectEnum<Status>(CombStatus, employee.PersonStatus);
             TxtbSocialSecNr.Text = employee.SocialSecurityNumber ?? string.Empty;
             CombNationality.Text = employee.Nationality ?? string.Empty;
 
@@ -158,11 +169,14 @@ namespace ContactManager.UI.WinForms.Forms
             string lastName = TxtbLastName.Text.Trim();
             string firstName = TxtbFirstName.Text.Trim();
 
-            // Der Status ist Pflichtfeld, hat aber noch kein Control (Lücke 3 in PLAN.md).
-            // Beim Bearbeiten wird der bestehende Status beibehalten — sonst würde jedes
-            // Speichern eine deaktivierte Person stillschweigend wieder aktivieren.
-            // TODO: an Status-Control binden, sobald vorhanden.
-            Status status = _employee?.PersonStatus ?? Status.Active;
+            // Der Status ist Pflichtfeld. CombStatus ist eine DropDownList und wird beim
+            // Öffnen vorbelegt, hat also immer eine Auswahl; die beiden Rückfallwerte
+            // greifen nur, falls das je nicht mehr gilt. Der bestehende Status geht dabei
+            // vor Status.Active — sonst würde ein Fehlgriff eine deaktivierte Person
+            // stillschweigend wieder aktivieren.
+            Status status = ControlBinding.ReadEnum<Status>(CombStatus)
+                ?? _employee?.PersonStatus
+                ?? Status.Active;
 
             Employee employee = ChkbIsApprentice.Checked
                 ? new Apprentice
@@ -265,6 +279,7 @@ namespace ContactManager.UI.WinForms.Forms
             // und der Compiler sonst nicht weiss, welche der Überladungen gemeint ist.
             ControlBinding.FillEnumCombo<Gender>(CombGender, EnumDisplay.ToText);
             ControlBinding.FillEnumCombo<Salutation>(CombSalutation, EnumDisplay.ToText);
+            ControlBinding.FillEnumCombo<Status>(CombStatus, EnumDisplay.ToText);
 
             // Die Kaderstufe reicht laut Business-Regel von 0 bis 5. Die ComboBox ist im
             // Designer leer angelegt, deshalb werden die Werte hier gesetzt.
@@ -343,6 +358,11 @@ namespace ContactManager.UI.WinForms.Forms
             CombManagementLevel.SelectedIndex = -1;
             CombNationality.Text = string.Empty;
 
+            // Anders als Geschlecht und Anrede ist der Status kein optionales Feld: Eine
+            // neue Person ist per Voreinstellung aktiv. Leer lassen ginge nicht, die
+            // DropDownList kennt keine Eingabe von Hand.
+            ControlBinding.SelectEnum<Status>(CombStatus, Status.Active);
+
             DtpDateOfBirth.Checked = false;
             DtpHireDate.Checked = false;
             DtpTerminationDate.Checked = false;
@@ -362,6 +382,7 @@ namespace ContactManager.UI.WinForms.Forms
 
                 // Anstellung
                 CombDepartment, TxtbJobTitle, CombManagementLevel,TxtbEmploymentLevel, DtpHireDate, DtpTerminationDate,
+                CombStatus,
 
                 // Privatadresse
                 TxtbPrivateStreet, TxtbPrivatePostalCode, TxtbPrivateCity,
