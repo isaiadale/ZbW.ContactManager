@@ -87,9 +87,9 @@ namespace ContactManager.UI.WinForms.Forms
 
                 // Vorschau auf die Nummer, die beim Speichern vergeben wird. Peek erhöht
                 // den Zähler nicht - wird die Erfassung abgebrochen, entsteht also keine
-                // Lücke in der Nummerierung. Der Zusatz im Text ist Absicht: Solange nicht
-                // gespeichert ist, gehört die Nummer noch niemandem.
-                TxtbCustomerNr.Text = $"{_contacts.Customers.PeekNextCustomerNumber()} (wird beim Speichern vergeben)";
+                // Lücke in der Nummerierung. Verbindlich vergeben wird die Nummer erst
+                // beim Speichern; sind zwei Erfassungsfenster offen, zeigen beide dieselbe.
+                TxtbCustomerNr.Text = $"{_contacts.Customers.PeekNextCustomerNumber()}";
 
                 // AddNote braucht eine Kunden-Id, die es vor dem ersten Speichern noch
                 // nicht gibt. Der Bereich wird deshalb gesperrt statt beim Klick mit einer

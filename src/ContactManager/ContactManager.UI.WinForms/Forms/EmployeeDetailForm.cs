@@ -89,9 +89,9 @@ namespace ContactManager.UI.WinForms.Forms
 
                 // Vorschau auf die Nummer, die beim Speichern vergeben wird. Peek erhöht
                 // den Zähler nicht - wird die Erfassung abgebrochen, entsteht also keine
-                // Lücke in der Nummerierung. Der Zusatz im Text ist Absicht: Solange nicht
-                // gespeichert ist, gehört die Nummer noch niemandem.
-                TxtbEmployeeNr.Text = $"{_contacts.Employees.PeekNextEmployeeNumber()} (wird beim Speichern vergeben)";
+                // Lücke in der Nummerierung. Verbindlich vergeben wird die Nummer erst
+                // beim Speichern; sind zwei Erfassungsfenster offen, zeigen beide dieselbe.
+                TxtbEmployeeNr.Text = $"{_contacts.Employees.PeekNextEmployeeNumber()}";
             }
             else
             {
