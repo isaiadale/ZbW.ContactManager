@@ -63,6 +63,22 @@ namespace ContactManager.Business.Services
         }
 
         /// <summary>
+        /// Meldet, welche Kundennummer das nächste <see cref="Add"/> vergeben würde,
+        /// <b>ohne</b> sie zu verbrauchen. Damit kann die Oberfläche die Nummer schon beim
+        /// Erfassen anzeigen; wird die Erfassung abgebrochen, geht keine Nummer verloren.
+        /// </summary>
+        /// <returns>Die Nummer, die als nächste vergeben würde.</returns>
+        /// <remarks>
+        /// Rein informativ: Verbindlich vergeben wird die Nummer erst in <see cref="Add"/>.
+        /// Werden zwei Kunden erfasst, ohne dass zwischendurch gespeichert wird, meldet
+        /// die Vorschau beide Male denselben Wert.
+        /// </remarks>
+        public int PeekNextCustomerNumber()
+        {
+            return NumberGenerator.PeekNextCustomerNumber(_data);
+        }
+
+        /// <summary>
         /// Fügt einen neuen Kunden zum Datenstamm hinzu und speichert die Änderung.
         /// </summary>
         /// <param name="customer">Der neu zu erfassende Kunde.</param>

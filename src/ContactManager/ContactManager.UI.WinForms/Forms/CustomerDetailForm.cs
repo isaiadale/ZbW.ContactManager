@@ -84,8 +84,12 @@ namespace ContactManager.UI.WinForms.Forms
             if (_customer is null)
             {
                 LblCustomerInfos.Text = "Neuen Kunden erfassen";
-                // Die Nummer vergibt die Business-Schicht erst beim Speichern.
-                TxtbCustomerNr.Text = "(neu)";
+
+                // Vorschau auf die Nummer, die beim Speichern vergeben wird. Peek erhöht
+                // den Zähler nicht - wird die Erfassung abgebrochen, entsteht also keine
+                // Lücke in der Nummerierung. Der Zusatz im Text ist Absicht: Solange nicht
+                // gespeichert ist, gehört die Nummer noch niemandem.
+                TxtbCustomerNr.Text = $"{_contacts.Customers.PeekNextCustomerNumber()} (wird beim Speichern vergeben)";
 
                 // AddNote braucht eine Kunden-Id, die es vor dem ersten Speichern noch
                 // nicht gibt. Der Bereich wird deshalb gesperrt statt beim Klick mit einer

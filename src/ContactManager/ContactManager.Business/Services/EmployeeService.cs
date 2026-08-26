@@ -64,6 +64,22 @@ namespace ContactManager.Business.Services
         }
 
         /// <summary>
+        /// Meldet, welche Mitarbeiternummer das nächste <see cref="Add"/> vergeben würde,
+        /// <b>ohne</b> sie zu verbrauchen. Damit kann die Oberfläche die Nummer schon beim
+        /// Erfassen anzeigen; wird die Erfassung abgebrochen, geht keine Nummer verloren.
+        /// </summary>
+        /// <returns>Die Nummer, die als nächste vergeben würde.</returns>
+        /// <remarks>
+        /// Rein informativ: Verbindlich vergeben wird die Nummer erst in <see cref="Add"/>.
+        /// Werden zwei Mitarbeitende erfasst, ohne dass zwischendurch gespeichert wird,
+        /// meldet die Vorschau beide Male denselben Wert.
+        /// </remarks>
+        public int PeekNextEmployeeNumber()
+        {
+            return NumberGenerator.PeekNextEmployeeNumber(_data);
+        }
+
+        /// <summary>
         /// Fügt einen neuen Mitarbeiter zum Datenstamm hinzu und speichert die Änderung.
         /// </summary>
         /// <param name="employee">Der neu zu erfassende Mitarbeiter.</param>
