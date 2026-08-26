@@ -98,8 +98,9 @@ namespace ContactManager.UI.WinForms.Forms
             ColLastname.DataPropertyName = nameof(Employee.LastName);
             ColFirstName.DataPropertyName = nameof(Employee.FirstName);
             ColDateOfBirth.DataPropertyName = nameof(Employee.DateOfBirth);
-            // ColPhone ist mehrdeutig (Mobile oder Geschäft) - hier bewusst die Mobilnummer.
-            ColPhone.DataPropertyName = nameof(Employee.MobilePhone);
+            // Die Spalte ist mit "Telefon" beschriftet und zeigt deshalb die
+            // Geschäftsnummer; die Mobilnummer steht im Detailformular.
+            ColPhone.DataPropertyName = nameof(Employee.BusinessPhone);
             ColEmail.DataPropertyName = nameof(Employee.Email);
             ColDepartment.DataPropertyName = nameof(Employee.Department);
             ColJobTitle.DataPropertyName = nameof(Employee.JobTitle);
