@@ -71,6 +71,19 @@ namespace ContactManager.UI.WinForms.Forms
             // den Kolleg*innen gehört. Im CustomerDetailForm ist der Stil bereits gesetzt.
             CombStatus.DropDownStyle = ComboBoxStyle.DropDownList;
 
+            // Ein Geburtsdatum in der Zukunft weist die Business-Schicht ohnehin ab; der
+            // Kalender lässt es hier gar nicht erst auswählen. Im Designer steht als
+            // Obergrenze noch der Platzhalter 31.12.3333 - korrigiert wird das aus
+            // demselben Grund wie beim Status hier statt dort. Der Setter zieht einen zu
+            // grossen Value automatisch auf die neue Obergrenze nach.
+            DtpDateOfBirth.MaxDate = DateTime.Today;
+
+            // Der Austritt hat im Designer als einziges der drei Datumsfelder keine
+            // Untergrenze und liesse damit Daten ab 1753 zu. Hier gilt dieselbe Grenze wie
+            // beim Eintritt - sonst liesse sich ein Austritt erfassen, den der CSV-Import
+            // anschliessend nicht mehr annimmt.
+            DtpTerminationDate.MinDate = new DateTime(1950, 1, 1);
+
             // Bewusst hier statt im Designer verdrahtet: Der Designer gehört den
             // Kolleg*innen, jede Änderung daran erzeugt unnötige Merge-Konflikte.
             BtnSave.Click += BtnSave_Click;
@@ -362,6 +375,13 @@ namespace ContactManager.UI.WinForms.Forms
             // neue Person ist per Voreinstellung aktiv. Leer lassen ginge nicht, die
             // DropDownList kennt keine Eingabe von Hand.
             ControlBinding.SelectEnum<Status>(CombStatus, Status.Active);
+
+            // Im Designer stehen für diese drei Felder feste Platzhalterwerte (01.01.3333).
+            // Bewusst hier statt im Designer korrigiert (siehe Konstruktor): Eine neue
+            // Erfassung soll als Vorschlag das aktuelle Datum zeigen statt dieses Platzhalters.
+            DtpDateOfBirth.Value = DateTime.Today;
+            DtpHireDate.Value = DateTime.Today;
+            DtpTerminationDate.Value = DateTime.Today;
 
             DtpDateOfBirth.Checked = false;
             DtpHireDate.Checked = false;

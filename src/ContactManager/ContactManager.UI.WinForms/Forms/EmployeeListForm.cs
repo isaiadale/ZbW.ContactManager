@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using ContactManager.Business;
+using ContactManager.Business.Exceptions;
 using ContactManager.Business.Search;
 using ContactManager.Model;
 using ContactManager.UI.WinForms.Base;
@@ -47,6 +49,8 @@ namespace ContactManager.UI.WinForms.Forms
             BtnDeleteEmployee.Click += BtnDeleteEmployee_Click;
             DgvEmployeeList.CellFormatting += DgvEmployeeList_CellFormatting;
             BtnFilterReset.Click += BtnFilterReset_Click;
+            BtnCSVExport.Click += BtnCSVExport_Click;
+            BtnCSVImport.Click += BtnCSVImport_Click;
 
             SetTabOrder();
         }
@@ -353,5 +357,104 @@ namespace ContactManager.UI.WinForms.Forms
                 e.FormattingApplied = true;
             }
         }
+
+        // Exportiert den gesamten Datenstamm (nicht nur die gefilterte Ansicht) als CSV-Datei.
+        // Bewusst ungefiltert: Ein Export ist eher als Datensicherung/Weitergabe gedacht,
+        // eine aktive Suche soll ihn nicht unbemerkt verkleinern.
+        private void BtnCSVExport_Click(object? sender, EventArgs e)
+        {
+            using SaveFileDialog dialog = new SaveFileDialog
+            {
+                Filter = "CSV-Datei (*.csv)|*.csv",
+                FileName = "Mitarbeitende.csv"
+            };
+
+            if (dialog.ShowDialog(this) != DialogResult.OK)
+            {
+                return;
+            }
+
+            try
+            {
+                List<Employee> all = _contacts.Employees.GetAll().ToList();
+                CsvContactConverter.ExportEmployees(all, dialog.FileName);
+
+                MessageBox.Show($"{all.Count} Mitarbeitende wurden exportiert.",
+                    "Export abgeschlossen", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex) when (ex is IOException or UnauthorizedAccessException)
+            {
+                MessageBox.Show($"Die Datei konnte nicht geschrieben werden:\n{ex.Message}",
+                    "Export fehlgeschlagen", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        // Importiert Mitarbeitende (inkl. Lernende) aus einer CSV-Datei. Jede gültig
+        // gelesene Zeile durchläuft dieselbe Validierung und Nummernvergabe wie eine
+        // manuelle Erfassung (contacts.Employees.Add) - der Import umgeht also keine
+        // Geschäftsregel. Fehlerhafte Zeilen werden übersprungen statt den ganzen Import
+        // abzubrechen; am Schluss steht eine zusammenfassende Meldung, analog zum Löschen
+        // mehrerer Personen (BtnDeleteEmployee_Click).
+        private void BtnCSVImport_Click(object? sender, EventArgs e)
+        {
+            using OpenFileDialog dialog = new OpenFileDialog
+            {
+                Filter = "CSV-Datei (*.csv)|*.csv"
+            };
+
+            if (dialog.ShowDialog(this) != DialogResult.OK)
+            {
+                return;
+            }
+
+            CsvImportResult<Employee> parsed;
+
+            try
+            {
+                parsed = CsvContactConverter.ImportEmployees(dialog.FileName);
+            }
+            catch (Exception ex) when (ex is IOException or UnauthorizedAccessException or CsvFormatException)
+            {
+                MessageBox.Show(ex.Message, "Import fehlgeschlagen", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            List<CsvRowError> errors = new(parsed.Errors);
+            int imported = 0;
+            string? aborted = null;
+
+            foreach (CsvImportRow<Employee> row in parsed.Imported)
+            {
+                try
+                {
+                    _contacts.Employees.Add(row.Item);
+                    imported++;
+                }
+                catch (ValidationException ex)
+                {
+                    errors.Add(new CsvRowError(row.LineNumber, ex.Message));
+                }
+                catch (Exception ex) when (ex is IOException or UnauthorizedAccessException)
+                {
+                    // Jedes Add speichert selbst; schlägt das Schreiben fehl, scheitern auch
+                    // alle folgenden. Hier abzubrechen ist ehrlicher, als denselben Fehler
+                    // für jede weitere Zeile zu sammeln.
+                    aborted = ex.Message;
+                    break;
+                }
+            }
+
+            // Liste neu aufbauen, damit importierte Personen sofort erscheinen - auch wenn
+            // nur ein Teil der Datei übernommen werden konnte.
+            LoadEmployees();
+
+            MessageBox.Show(
+                CsvContactConverter.BuildImportSummary(imported, "Mitarbeiter/in", "Mitarbeitende", errors, aborted),
+                "Import abgeschlossen", MessageBoxButtons.OK,
+                errors.Count > 0 || aborted is not null
+                    ? MessageBoxIcon.Warning
+                    : MessageBoxIcon.Information);
+        }
+
     }
 }
