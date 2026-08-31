@@ -51,6 +51,8 @@
             TxtbDateOfBirthSearch = new TextBox();
             BtnDeleteEmployee = new Button();
             BtnFilterReset = new Button();
+            BtnCSVImport = new Button();
+            BtnCSVExport = new Button();
             ((System.ComponentModel.ISupportInitialize)DgvEmployeeList).BeginInit();
             SuspendLayout();
             // 
@@ -265,11 +267,31 @@
             BtnFilterReset.Text = "Filter zurücksetzten";
             BtnFilterReset.UseVisualStyleBackColor = true;
             // 
+            // BtnCSVImport
+            // 
+            BtnCSVImport.Location = new Point(1069, 228);
+            BtnCSVImport.Name = "BtnCSVImport";
+            BtnCSVImport.Size = new Size(292, 34);
+            BtnCSVImport.TabIndex = 29;
+            BtnCSVImport.Text = "CSV Import";
+            BtnCSVImport.UseVisualStyleBackColor = true;
+            // 
+            // BtnCSVExport
+            // 
+            BtnCSVExport.Location = new Point(1069, 276);
+            BtnCSVExport.Name = "BtnCSVExport";
+            BtnCSVExport.Size = new Size(292, 34);
+            BtnCSVExport.TabIndex = 30;
+            BtnCSVExport.Text = "CSV Export";
+            BtnCSVExport.UseVisualStyleBackColor = true;
+            // 
             // EmployeeListForm
             // 
             AutoScaleDimensions = new SizeF(11F, 21F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1413, 694);
+            Controls.Add(BtnCSVExport);
+            Controls.Add(BtnCSVImport);
             Controls.Add(BtnFilterReset);
             Controls.Add(BtnDeleteEmployee);
             Controls.Add(TxtbDateOfBirthSearch);
@@ -317,5 +339,7 @@
         private DataGridViewTextBoxColumn ColDepartment;
         private DataGridViewTextBoxColumn ColJobTitle;
         private Button BtnFilterReset;
+        private Button BtnCSVImport;
+        private Button BtnCSVExport;
     }
 }

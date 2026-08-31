@@ -51,6 +51,8 @@
             LblDateOfBirth = new Label();
             BtnDeleteCustomer = new Button();
             BtnFilterReset = new Button();
+            BtnCSVExport = new Button();
+            BtnCSVImport = new Button();
             ((System.ComponentModel.ISupportInitialize)DgvCustomerList).BeginInit();
             SuspendLayout();
             // 
@@ -68,10 +70,10 @@
             // BtnAddCustomer
             // 
             BtnAddCustomer.Font = new Font("Century Gothic", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            BtnAddCustomer.Location = new Point(1069, 119);
+            BtnAddCustomer.Location = new Point(1028, 119);
             BtnAddCustomer.Margin = new Padding(5, 4, 5, 4);
             BtnAddCustomer.Name = "BtnAddCustomer";
-            BtnAddCustomer.Size = new Size(251, 43);
+            BtnAddCustomer.Size = new Size(292, 43);
             BtnAddCustomer.TabIndex = 3;
             BtnAddCustomer.Text = "Neuer Kontakt";
             BtnAddCustomer.UseVisualStyleBackColor = true;
@@ -269,11 +271,31 @@
             BtnFilterReset.Text = "Filter zurücksetzten";
             BtnFilterReset.UseVisualStyleBackColor = true;
             // 
+            // BtnCSVExport
+            // 
+            BtnCSVExport.Location = new Point(1028, 284);
+            BtnCSVExport.Name = "BtnCSVExport";
+            BtnCSVExport.Size = new Size(292, 34);
+            BtnCSVExport.TabIndex = 32;
+            BtnCSVExport.Text = "CSV Export";
+            BtnCSVExport.UseVisualStyleBackColor = true;
+            // 
+            // BtnCSVImport
+            // 
+            BtnCSVImport.Location = new Point(1028, 236);
+            BtnCSVImport.Name = "BtnCSVImport";
+            BtnCSVImport.Size = new Size(292, 34);
+            BtnCSVImport.TabIndex = 31;
+            BtnCSVImport.Text = "CSV Import";
+            BtnCSVImport.UseVisualStyleBackColor = true;
+            // 
             // CustomerListForm
             // 
             AutoScaleDimensions = new SizeF(11F, 21F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1413, 694);
+            Controls.Add(BtnCSVExport);
+            Controls.Add(BtnCSVImport);
             Controls.Add(BtnFilterReset);
             Controls.Add(BtnDeleteCustomer);
             Controls.Add(TxtbDateOfBirthSearch);
@@ -321,5 +343,7 @@
         private DataGridViewTextBoxColumn ColEmail;
         private DataGridViewTextBoxColumn ColStatus;
         private Button BtnFilterReset;
+        private Button BtnCSVExport;
+        private Button BtnCSVImport;
     }
 }

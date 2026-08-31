@@ -9,6 +9,25 @@ namespace ContactManager.Model
     /// Ein Mitarbeiterkontakt. Erbt die gemeinsamen Personendaten von <see cref="Person"/>
     /// und ergänzt sie um beschäftigungsspezifische Informationen.
     /// </summary>
+    /// <remarks>
+    /// Lernende liegen in <see cref="ContactData.Employees"/> als <see cref="Employee"/>.
+    /// System.Text.Json schreibt aber standardmässig nur die Eigenschaften des
+    /// <i>deklarierten</i> Typs - ohne die Registrierung unten gingen beim Speichern die
+    /// Lehrjahre und die Typinformation verloren, und eine lernende Person wäre nach dem
+    /// nächsten Programmstart ein gewöhnlicher Mitarbeiter.
+    /// <para>
+    /// Der Diskriminator erscheint als <c>"$type": "Apprentice"</c> in der JSON-Datei, und
+    /// zwar nur bei Lernenden. Bestehende Datensätze ohne dieses Feld werden unverändert
+    /// als <see cref="Employee"/> gelesen; die Datei muss also nicht neu aufgebaut werden.
+    /// </para>
+    /// <para>
+    /// <b>Jede weitere Klasse, die von <see cref="Employee"/> erbt, gehört hier ebenfalls
+    /// eingetragen.</b> Ein nicht registrierter Untertyp wird beim Speichern nicht mehr
+    /// stillschweigend als <see cref="Employee"/> geschrieben, sondern quittiert mit einer
+    /// <see cref="System.NotSupportedException"/>.
+    /// </para>
+    /// </remarks>
+    [JsonDerivedType(typeof(Apprentice), typeDiscriminator: "Apprentice")]
     public class Employee : Person
     {
         /// <summary>
