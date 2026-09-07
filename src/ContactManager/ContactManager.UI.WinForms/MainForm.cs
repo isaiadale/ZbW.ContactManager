@@ -30,19 +30,23 @@ namespace ContactManager.UI.WinForms
             // Kacheln gemäss der selbst erstellten Farbpalette
             PnlCustomerTile.BackColor = AppColors.Primary;
             PnlEmployeeTile.BackColor = AppColors.Primary;
+            PnlDashboardTile.BackColor = AppColors.Accent;
 
             // Textfarbe anpassen, da der Background dunkel ist
             LblCustomerTile.ForeColor = AppColors.TextOnPrimary;
             LblEmployeeTile.ForeColor = AppColors.TextOnPrimary;
+            LblDashboardTile.ForeColor = AppColors.TextOnPrimary;
 
             // Cursor bei Hover auf Hand setzen, zeigt Klickbarkeit der Kacheln an
             PnlCustomerTile.Cursor = Cursors.Hand;
             PnlEmployeeTile.Cursor = Cursors.Hand;
+            PnlDashboardTile.Cursor = Cursors.Hand;
         }
 
         // Merkt sich das aktuell offene Fenster oder null, falls keins offen ist
         private CustomerListForm? _customerListForm;
         private EmployeeListForm? _employeeListForm;
+        private DashboardForm? _dashboardForm;
 
 
         private void LblCustomerTile_Click(object sender, EventArgs e)
@@ -89,6 +93,28 @@ namespace ContactManager.UI.WinForms
             this.Hide();
         }
 
+        private void LblDashboardTile_Click(object sender, EventArgs e)
+        {
+            // Fenster wird geöffnet - sofern noch nicht geöffnet oder bereits geschlossen
+            if (_dashboardForm == null || _dashboardForm.IsDisposed)
+            {
+                _dashboardForm = new DashboardForm(_contacts);
+
+                // Reagiert, sobald das Dashboard-Fenster geschlossen wird
+                _dashboardForm.FormClosed += DashboardForm_Closed;
+                _dashboardForm.Show();
+            }
+
+            // Fenster existiert bereits, deshalb nur in den Vordergrund holen
+            else
+            {
+                _dashboardForm.BringToFront();
+            }
+
+            // Startseite ausblenden, solange das Dashboard-Fenster offen ist
+            this.Hide();
+        }
+
         // Wird automatisch aufgerufen, wenn das Kundschaft-Fenster geschlossen wird
         private void CustomerListForm_Closed(object? sender, FormClosedEventArgs e)
         {
@@ -96,6 +122,12 @@ namespace ContactManager.UI.WinForms
             this.Show();
         }
         private void EmployeeListForm_Closed(object? sender, FormClosedEventArgs e)
+        {
+            // Startseite wieder anzeigen
+            this.Show();
+        }
+
+        private void DashboardForm_Closed(object? sender, FormClosedEventArgs e)
         {
             // Startseite wieder anzeigen
             this.Show();

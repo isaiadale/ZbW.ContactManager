@@ -55,6 +55,9 @@ Die Anwendung startet mit einem Anmeldefenster.
 - **Login** mit dateibasierten Zugangsdaten (`users.json`, PBKDF2-Hash)
 - **CSV-Import und -Export** für Mitarbeitende und Kundschaft, inklusive Beispieldateien
   (siehe [Testdaten](#testdaten))
+- **Dashboard** mit Kennzahlen zu Mitarbeitenden, Lernenden und Kundschaft (Mengenverhältnis,
+  Status, Personal- und Zeitverlauf-Auswertungen, Datenqualität), erreichbar über eine
+  eigene Kachel auf der Startseite
 
 ---
 
