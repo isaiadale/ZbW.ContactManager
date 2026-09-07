@@ -1,0 +1,9 @@
+﻿Typ;MitarbeiterNr;Anrede;Nachname;Vorname;Geburtsdatum;Geschlecht;AhvNummer;Nationalitaet;GeschaeftsTelefon;Mobile;Email;Abteilung;Rolle;Kaderstufe;Stellenprozent;Eintritt;Austritt;Status;PrivatStrasse;PrivatPlz;PrivatOrt;GeschaeftsStrasse;GeschaeftsPlz;GeschaeftsOrt;Lehrjahre;AktuellesLehrjahr
+Mitarbeiter;1;Herr;Muster;Hans;12.04.1985;Männlich;756.1234.5678.97;CH;071 111 22 33;079 111 22 33;hans.muster@example.ch;IT;Applikationsentwickler;0;100;01.08.2018;;Aktiv;Bahnhofstrasse 1;9000;St. Gallen;Industriestrasse 5;9015;St. Gallen;;
+Mitarbeiter;2;Frau;Müller;Sandra;03.11.1979;Weiblich;756.9876.5432.10;CH;071 222 33 44;079 222 33 44;sandra.mueller@example.ch;Finanzen;Leiterin Finanzen;3;80;01.02.2015;;Aktiv;Seestrasse 12;8280;Kreuzlingen;Industriestrasse 5;9015;St. Gallen;;
+Mitarbeiter;3;Herr;Bianchi;Marco;27.07.1990;Männlich;756.4444.3333.22;IT;071 333 44 55;076 333 44 55;marco.bianchi@example.ch;Verkauf;Verkaufsberater;1;100;15.03.2021;;Aktiv;Rebbergweg 8;9500;Wil;;;;;
+Mitarbeiter;4;Keine Anrede;Keller;Alex;18.09.1995;Divers;;CH;071 444 55 66;;alex.keller@example.ch;Marketing;Marketing-Fachperson;0;60;01.06.2022;;Aktiv;Lindenweg 3;8400;Winterthur;;;;;
+Mitarbeiter;5;Frau;Schneider;Petra;05.05.1968;Weiblich;756.1111.2222.33;CH;071 555 66 77;079 555 66 77;petra.schneider@example.ch;Personal;Leiterin Personal;4;100;01.01.2010;31.12.2024;Passiv;Dorfstrasse 22;9200;Gossau;Industriestrasse 5;9015;St. Gallen;;
+Lernender;6;Herr;Frei;Tim;14.02.2007;Männlich;;CH;071 666 77 88;078 666 77 88;tim.frei@example.ch;IT;Lernender Applikationsentwicklung;0;100;01.08.2023;;Aktiv;Schulweg 4;9016;St. Gallen;Industriestrasse 5;9015;St. Gallen;4;2
+Lernender;7;Frau;Zürcher;Nina;30.06.2008;Weiblich;;CH;;079 777 88 99;nina.zuercher@example.ch;Kaufmännisch;Lernende Kauffrau;0;100;01.08.2024;;Aktiv;Bergstrasse 17;8001;Zürich;;;;3;1
+Mitarbeiter;8;;Rossi;Elena;;;;;;;;;;;;;;;;;;;;;;
