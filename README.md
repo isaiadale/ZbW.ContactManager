@@ -149,7 +149,9 @@ Startprojekt setzen, F5.
 
 Der Ordner **[`Testdaten/`](Testdaten/)** enthält CSV-Dateien zum Ausprobieren des Imports:
 
-- `Mitarbeitende_gueltig.csv` / `Kundschaft_gueltig.csv` — fehlerfreie Datensätze
+- `Mitarbeitende_gueltig.csv` / `Kundschaft_gueltig.csv` — fehlerfreie Datensätze (100
+  Mitarbeitende inkl. 10 Lernende, 300 Kundschaft), bewusst gross und mit breiter Streuung
+  über alle Felder, damit auch das Dashboard nach dem Import aussagekräftige Werte zeigt
 - `Mitarbeitende_fehlerhaft.csv` / `Kundschaft_fehlerhaft.csv` — pro Zeile **ein**
   gezielter Fehler, um Validierung und Fehlermeldungen vorzuführen
 - `Mitarbeitende_KopfzeileUnvollstaendig.csv` und `Leer.csv` — fehlerhafte Dateien, die
