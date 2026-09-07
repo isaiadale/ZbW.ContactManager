@@ -9,10 +9,10 @@ Semesterprojekt im Modul **Programming Foundation II** (ZbW, HF Informatik).
 
 ## Gruppenmitglieder
 
-| Name |
-|---|
-| Isaia D'Alessandro |
-| Tobi Rey |
+| Name                   |
+| ---------------------- |
+| Isaia D'Alessandro     |
+| Tobi Rey               |
 | Nia Schmid (teilweise) |
 
 ---
@@ -22,8 +22,8 @@ Semesterprojekt im Modul **Programming Foundation II** (ZbW, HF Informatik).
 Die Anwendung startet mit einem Anmeldefenster.
 
 | Benutzername | Passwort |
-|---|---|
-| `admin` | `admin` |
+| ------------ | -------- |
+| `admin`      | `admin`  |
 
 - Dieses Konto wird beim **ersten Start automatisch angelegt** — das Anmeldefenster weist
   im unteren Bereich darauf hin.
@@ -48,8 +48,7 @@ Die Anwendung startet mit einem Anmeldefenster.
 - Automatische Vergabe der Mitarbeiternummer (zusätzlich auch der Kundennummer)
 - Notizen zu Kundenkontakten inklusive **Historie** (neuste zuerst, unveränderlich)
 - Suche über Vorname, Nachname, Geburtsdatum und laufende Nummer
-- **Automatisches Speichern** des Datenstamms auf die Festplatte — es gibt keinen
-  Speichern-Button, jede Änderung wird sofort persistiert
+- **Speichern** des Datenstamms auf die Festplatte
 
 **Umgesetzte optionale Anforderungen**
 
@@ -63,12 +62,12 @@ Die Anwendung startet mit einem Anmeldefenster.
 
 Die Solution liegt unter `src/ContactManager/` und besteht aus vier Projekten:
 
-| Projekt | Zweck | Referenziert |
-|---|---|---|
-| `ContactManager.Model` | Datenklassen und Vererbungshierarchie | — |
-| `ContactManager.Persistence.Json` | Laden/Speichern via `System.Text.Json` | Model |
-| `ContactManager.Business` | Geschäftslogik, Validierung, CRUD-Regeln | Model, Persistence.Json |
-| `ContactManager.UI.WinForms` | Windows-Forms-Oberfläche (**Startprojekt**) | Business, Model |
+| Projekt                           | Zweck                                       | Referenziert            |
+| --------------------------------- | ------------------------------------------- | ----------------------- |
+| `ContactManager.Model`            | Datenklassen und Vererbungshierarchie       | —                       |
+| `ContactManager.Persistence.Json` | Laden/Speichern via `System.Text.Json`      | Model                   |
+| `ContactManager.Business`         | Geschäftslogik, Validierung, CRUD-Regeln    | Model, Persistence.Json |
+| `ContactManager.UI.WinForms`      | Windows-Forms-Oberfläche (**Startprojekt**) | Business, Model         |
 
 Abhängigkeitsrichtung: **UI → Business → Persistence → Model**.
 Die UI enthält keine Geschäftslogik, das Model kennt keine andere Schicht.
@@ -77,12 +76,12 @@ Die UI spricht ausschliesslich mit der **`ContactManagerFacade`** — dem einzig
 öffentlichen Einstiegspunkt der Business-Schicht. Sie lädt den Datenstamm einmalig und
 stellt vier Services bereit:
 
-| Property | Aufgabe |
-|---|---|
+| Property    | Aufgabe                                                                                 |
+| ----------- | --------------------------------------------------------------------------------------- |
 | `Customers` | `GetAll`, `GetById`, `GetByNumber`, `Add`, `Update`, `Delete`, `Activate`, `Deactivate` |
-| `Employees` | dieselben Methoden für Mitarbeitende und Lernende |
-| `Notes` | `AddNote`, `GetNotes` (Kundennotizen, nur anfügen) |
-| `Search` | `Search(SearchCriteria)` über beide Personengruppen |
+| `Employees` | dieselben Methoden für Mitarbeitende und Lernende                                       |
+| `Notes`     | `AddNote`, `GetNotes` (Kundennotizen, nur anfügen)                                      |
+| `Search`    | `Search(SearchCriteria)` über beide Personengruppen                                     |
 
 Das Repository wird der Fassade per Konstruktor übergeben (Dependency Inversion) — die
 Business-Schicht kennt nur das Interface `IContactRepository`, nie die JSON-Implementierung.
