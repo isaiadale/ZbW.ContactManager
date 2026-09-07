@@ -7,6 +7,16 @@ Semesterprojekt im Modul **Programming Foundation II** (ZbW, HF Informatik).
 
 ---
 
+## Gruppenmitglieder
+
+| Name |
+|---|
+| Isaia D'Alessandro |
+| Tobi Rey |
+| Nia Schmid (teilweise) |
+
+---
+
 ## 🔑 Zugangsdaten (Demo)
 
 Die Anwendung startet mit einem Anmeldefenster.
