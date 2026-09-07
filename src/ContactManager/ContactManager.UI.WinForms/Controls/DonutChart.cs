@@ -73,15 +73,19 @@ namespace ContactManager.UI.WinForms.Controls
             }
 
             if (ShowLegend)
-                DrawLegend(graphics, legendWidth, padding, total);
+                DrawLegend(graphics, bounds, legendWidth, padding, total);
         }
 
-        private void DrawLegend(Graphics graphics, int legendWidth, int padding, int total)
+        // Zentriert den Legendenblock vertikal auf die Mitte des Rings, statt ihn oben
+        // anzuheften - sonst wirkt die Komposition unzentriert, sobald der Ring (z. B. in
+        // einer hohen, schmalen Kachel) deutlich weniger Höhe braucht als der Ring-Bereich.
+        private void DrawLegend(Graphics graphics, Rectangle ringBounds, int legendWidth, int padding, int total)
         {
             int legendX = Width - legendWidth + padding;
             int swatchSize = LogicalToDeviceUnits(12);
             int rowHeight = LogicalToDeviceUnits(22);
-            int y = padding;
+            int contentHeight = Slices.Count * rowHeight;
+            int y = Math.Max(padding, ringBounds.Y + (ringBounds.Height - contentHeight) / 2);
 
             for (int i = 0; i < Slices.Count; i++)
             {

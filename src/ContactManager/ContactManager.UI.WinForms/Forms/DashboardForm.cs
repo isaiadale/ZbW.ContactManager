@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 using ContactManager.Business;
@@ -36,6 +37,7 @@ namespace ContactManager.UI.WinForms.Forms
             // Bewusst hier statt im Designer verdrahtet: Der Designer gehört den
             // Kolleg*innen, jede Änderung daran erzeugt unnötige Merge-Konflikte.
             BtnReturnToHome.Click += BtnReturnToHome_Click;
+            TabDashboard.DrawItem += TabDashboard_DrawItem;
         }
 
         /// <summary>
@@ -49,7 +51,31 @@ namespace ContactManager.UI.WinForms.Forms
         {
             base.OnLoad(e);
 
+            ConfigureTabHeaders();
             LoadStatistics();
+        }
+
+        // Legt die Grösse der Reiter-Köpfe fest. Bewusst hier und nicht im Designer:
+        // Das Umschalten von SizeMode verwirft eine zuvor gesetzte ItemSize wieder, und
+        // die automatische Skalierung des Formulars (AutoScaleMode.Font) läuft erst beim
+        // Laden - vorher gesetzte Werte würden ein zweites Mal skaliert.
+        private void ConfigureTabHeaders()
+        {
+            // Nach der Breite des längsten Titels bemessen, damit kein Reiter abgeschnitten
+            // wird. Gemessen wird fett, weil der ausgewählte Reiter fett gezeichnet wird.
+            using Font boldFont = new Font(TabDashboard.Font, FontStyle.Bold);
+
+            Size longest = Size.Empty;
+            foreach (TabPage page in TabDashboard.TabPages)
+            {
+                Size caption = TextRenderer.MeasureText(page.Text, boldFont);
+                longest = new Size(
+                    Math.Max(longest.Width, caption.Width),
+                    Math.Max(longest.Height, caption.Height));
+            }
+
+            TabDashboard.SizeMode = TabSizeMode.Fixed;
+            TabDashboard.ItemSize = new Size(longest.Width + 40, longest.Height + 20);
         }
 
         /// <summary>
@@ -195,6 +221,39 @@ namespace ContactManager.UI.WinForms.Forms
         private void BtnReturnToHome_Click(object? sender, EventArgs e)
         {
             this.Close();
+        }
+
+        // Malt die Reiter-Köpfe selbst (TabDrawMode.OwnerDrawFixed im Designer gesetzt),
+        // damit der ausgewählte Reiter farblich hervorsticht - native TabControls lassen
+        // sich sonst nicht einfärben.
+        private void TabDashboard_DrawItem(object? sender, DrawItemEventArgs e)
+        {
+            TabPage page = TabDashboard.TabPages[e.Index];
+            bool isSelected = e.State.HasFlag(DrawItemState.Selected);
+
+            Color background = isSelected ? AppColors.Primary : Color.FromArgb(0xE0, 0xD4, 0xF0);
+            Color foreground = isSelected ? AppColors.TextOnPrimary : AppColors.TextDark;
+
+            using (SolidBrush backBrush = new SolidBrush(background))
+            {
+                e.Graphics.FillRectangle(backBrush, e.Bounds);
+            }
+
+            // Die fette Schrift des ausgewählten Reiters wird eigens erzeugt und wieder
+            // freigegeben. Die Schrift des TabControls darf dabei nie in ein using
+            // geraten - sie gehört dem Control und wird sonst mitten im Zeichnen
+            // freigegeben, was die Anwendung beim nächsten Zugriff hart beendet.
+            TextFormatFlags flags = TextFormatFlags.HorizontalCenter | TextFormatFlags.VerticalCenter;
+
+            if (isSelected)
+            {
+                using Font boldFont = new Font(TabDashboard.Font, FontStyle.Bold);
+                TextRenderer.DrawText(e.Graphics, page.Text, boldFont, e.Bounds, foreground, flags);
+            }
+            else
+            {
+                TextRenderer.DrawText(e.Graphics, page.Text, TabDashboard.Font, e.Bounds, foreground, flags);
+            }
         }
     }
 }

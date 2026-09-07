@@ -134,6 +134,8 @@ namespace ContactManager.UI.WinForms.Forms
             TabDashboard.Controls.Add(TabEmployees);
             TabDashboard.Controls.Add(TabQuality);
             TabDashboard.Dock = DockStyle.Fill;
+            TabDashboard.DrawMode = TabDrawMode.OwnerDrawFixed;
+            TabDashboard.Font = new Font("Century Gothic", 11F, FontStyle.Regular, GraphicsUnit.Point, 0);
             TabDashboard.Location = new Point(0, 56);
             TabDashboard.Name = "TabDashboard";
             TabDashboard.SelectedIndex = 0;
@@ -160,11 +162,11 @@ namespace ContactManager.UI.WinForms.Forms
             TlpOverviewBody.Controls.Add(TlpOverviewSummaries, 0, 0);
             TlpOverviewBody.Controls.Add(ChtContactShare, 1, 0);
             TlpOverviewBody.Dock = DockStyle.Fill;
-            TlpOverviewBody.Location = new Point(12, 122);
+            TlpOverviewBody.Location = new Point(12, 302);
             TlpOverviewBody.Name = "TlpOverviewBody";
             TlpOverviewBody.RowCount = 1;
             TlpOverviewBody.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            TlpOverviewBody.Size = new Size(1148, 542);
+            TlpOverviewBody.Size = new Size(1148, 362);
             TlpOverviewBody.TabIndex = 1;
             //
             // TlpOverviewSummaries
@@ -356,7 +358,7 @@ namespace ContactManager.UI.WinForms.Forms
             FlpOverviewTiles.Dock = DockStyle.Top;
             FlpOverviewTiles.Location = new Point(12, 12);
             FlpOverviewTiles.Name = "FlpOverviewTiles";
-            FlpOverviewTiles.Size = new Size(1148, 110);
+            FlpOverviewTiles.Size = new Size(1148, 290);
             FlpOverviewTiles.TabIndex = 0;
             FlpOverviewTiles.WrapContents = true;
             //
@@ -365,7 +367,7 @@ namespace ContactManager.UI.WinForms.Forms
             TleTotalContacts.Caption = "Kontakte gesamt";
             TleTotalContacts.Margin = new Padding(0, 0, 12, 12);
             TleTotalContacts.Name = "TleTotalContacts";
-            TleTotalContacts.Size = new Size(178, 90);
+            TleTotalContacts.Size = new Size(370, 130);
             TleTotalContacts.TabIndex = 0;
             TleTotalContacts.TileColor = Color.FromArgb(0x5C, 0x2D, 0x91);
             TleTotalContacts.Value = "0";
@@ -375,7 +377,7 @@ namespace ContactManager.UI.WinForms.Forms
             TleEmployees.Caption = "Mitarbeitende";
             TleEmployees.Margin = new Padding(0, 0, 12, 12);
             TleEmployees.Name = "TleEmployees";
-            TleEmployees.Size = new Size(178, 90);
+            TleEmployees.Size = new Size(370, 130);
             TleEmployees.TabIndex = 1;
             TleEmployees.TileColor = Color.FromArgb(0x5C, 0x2D, 0x91);
             TleEmployees.Value = "0";
@@ -385,7 +387,7 @@ namespace ContactManager.UI.WinForms.Forms
             TleApprentices.Caption = "Lernende";
             TleApprentices.Margin = new Padding(0, 0, 12, 12);
             TleApprentices.Name = "TleApprentices";
-            TleApprentices.Size = new Size(178, 90);
+            TleApprentices.Size = new Size(370, 130);
             TleApprentices.TabIndex = 2;
             TleApprentices.TileColor = Color.FromArgb(0x6E, 0x5A, 0xC8);
             TleApprentices.Value = "0";
@@ -395,7 +397,7 @@ namespace ContactManager.UI.WinForms.Forms
             TleCustomers.Caption = "Kundschaft";
             TleCustomers.Margin = new Padding(0, 0, 12, 12);
             TleCustomers.Name = "TleCustomers";
-            TleCustomers.Size = new Size(178, 90);
+            TleCustomers.Size = new Size(370, 130);
             TleCustomers.TabIndex = 3;
             TleCustomers.TileColor = Color.FromArgb(0x8A, 0x4F, 0xB8);
             TleCustomers.Value = "0";
@@ -405,7 +407,7 @@ namespace ContactManager.UI.WinForms.Forms
             TleAverageAge.Caption = "Ø Alter";
             TleAverageAge.Margin = new Padding(0, 0, 12, 12);
             TleAverageAge.Name = "TleAverageAge";
-            TleAverageAge.Size = new Size(178, 90);
+            TleAverageAge.Size = new Size(370, 130);
             TleAverageAge.TabIndex = 4;
             TleAverageAge.TileColor = Color.FromArgb(0xB0, 0x84, 0xD4);
             TleAverageAge.Value = "–";
@@ -415,7 +417,7 @@ namespace ContactManager.UI.WinForms.Forms
             TleNoteCount.Caption = "Notizen gesamt";
             TleNoteCount.Margin = new Padding(0, 0, 12, 12);
             TleNoteCount.Name = "TleNoteCount";
-            TleNoteCount.Size = new Size(178, 90);
+            TleNoteCount.Size = new Size(370, 130);
             TleNoteCount.TabIndex = 5;
             TleNoteCount.TileColor = Color.FromArgb(0xB0, 0x84, 0xD4);
             TleNoteCount.Value = "0";
@@ -443,14 +445,14 @@ namespace ContactManager.UI.WinForms.Forms
             TlpEmployeeCharts.Controls.Add(ChtApprenticeYears, 1, 1);
             TlpEmployeeCharts.Controls.Add(ChtHiresPerYear, 0, 2);
             TlpEmployeeCharts.Dock = DockStyle.Fill;
-            TlpEmployeeCharts.Location = new Point(12, 122);
+            TlpEmployeeCharts.Location = new Point(12, 162);
             TlpEmployeeCharts.Name = "TlpEmployeeCharts";
             TlpEmployeeCharts.RowCount = 3;
             TlpEmployeeCharts.RowStyles.Add(new RowStyle(SizeType.Percent, 33F));
             TlpEmployeeCharts.RowStyles.Add(new RowStyle(SizeType.Percent, 33F));
             TlpEmployeeCharts.RowStyles.Add(new RowStyle(SizeType.Percent, 34F));
             TlpEmployeeCharts.SetColumnSpan(ChtHiresPerYear, 2);
-            TlpEmployeeCharts.Size = new Size(1148, 542);
+            TlpEmployeeCharts.Size = new Size(1148, 502);
             TlpEmployeeCharts.TabIndex = 1;
             //
             // ChtDepartments
@@ -511,7 +513,7 @@ namespace ContactManager.UI.WinForms.Forms
             FlpEmployeeTiles.Dock = DockStyle.Top;
             FlpEmployeeTiles.Location = new Point(12, 12);
             FlpEmployeeTiles.Name = "FlpEmployeeTiles";
-            FlpEmployeeTiles.Size = new Size(1148, 110);
+            FlpEmployeeTiles.Size = new Size(1148, 150);
             FlpEmployeeTiles.TabIndex = 0;
             FlpEmployeeTiles.WrapContents = true;
             //
@@ -520,7 +522,7 @@ namespace ContactManager.UI.WinForms.Forms
             TleAverageEmploymentLevel.Caption = "Ø Beschäftigungsgrad";
             TleAverageEmploymentLevel.Margin = new Padding(0, 0, 12, 12);
             TleAverageEmploymentLevel.Name = "TleAverageEmploymentLevel";
-            TleAverageEmploymentLevel.Size = new Size(178, 90);
+            TleAverageEmploymentLevel.Size = new Size(275, 130);
             TleAverageEmploymentLevel.TabIndex = 0;
             TleAverageEmploymentLevel.TileColor = Color.FromArgb(0x5C, 0x2D, 0x91);
             TleAverageEmploymentLevel.Value = "–";
@@ -530,7 +532,7 @@ namespace ContactManager.UI.WinForms.Forms
             TlePartTimeCount.Caption = "Teilzeit (< 100 %)";
             TlePartTimeCount.Margin = new Padding(0, 0, 12, 12);
             TlePartTimeCount.Name = "TlePartTimeCount";
-            TlePartTimeCount.Size = new Size(178, 90);
+            TlePartTimeCount.Size = new Size(275, 130);
             TlePartTimeCount.TabIndex = 1;
             TlePartTimeCount.TileColor = Color.FromArgb(0x8A, 0x4F, 0xB8);
             TlePartTimeCount.Value = "0";
@@ -540,7 +542,7 @@ namespace ContactManager.UI.WinForms.Forms
             TleLeftCount.Caption = "Ausgetretene";
             TleLeftCount.Margin = new Padding(0, 0, 12, 12);
             TleLeftCount.Name = "TleLeftCount";
-            TleLeftCount.Size = new Size(178, 90);
+            TleLeftCount.Size = new Size(275, 130);
             TleLeftCount.TabIndex = 2;
             TleLeftCount.TileColor = Color.FromArgb(0xB0, 0x84, 0xD4);
             TleLeftCount.Value = "0";
@@ -550,7 +552,7 @@ namespace ContactManager.UI.WinForms.Forms
             TleAverageTenure.Caption = "Ø Betriebszugehörigkeit (Jahre)";
             TleAverageTenure.Margin = new Padding(0, 0, 12, 12);
             TleAverageTenure.Name = "TleAverageTenure";
-            TleAverageTenure.Size = new Size(178, 90);
+            TleAverageTenure.Size = new Size(275, 130);
             TleAverageTenure.TabIndex = 3;
             TleAverageTenure.TileColor = Color.FromArgb(0x6E, 0x5A, 0xC8);
             TleAverageTenure.Value = "–";
@@ -577,12 +579,12 @@ namespace ContactManager.UI.WinForms.Forms
             TlpQualityCharts.Controls.Add(ChtTopCities, 0, 1);
             TlpQualityCharts.Controls.Add(ChtTopPostalCodes, 1, 1);
             TlpQualityCharts.Dock = DockStyle.Fill;
-            TlpQualityCharts.Location = new Point(12, 122);
+            TlpQualityCharts.Location = new Point(12, 162);
             TlpQualityCharts.Name = "TlpQualityCharts";
             TlpQualityCharts.RowCount = 2;
             TlpQualityCharts.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
             TlpQualityCharts.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            TlpQualityCharts.Size = new Size(1148, 542);
+            TlpQualityCharts.Size = new Size(1148, 502);
             TlpQualityCharts.TabIndex = 1;
             //
             // ChtNotesPerMonth
@@ -633,7 +635,7 @@ namespace ContactManager.UI.WinForms.Forms
             FlpQualityTiles.Dock = DockStyle.Top;
             FlpQualityTiles.Location = new Point(12, 12);
             FlpQualityTiles.Name = "FlpQualityTiles";
-            FlpQualityTiles.Size = new Size(1148, 110);
+            FlpQualityTiles.Size = new Size(1148, 150);
             FlpQualityTiles.TabIndex = 0;
             FlpQualityTiles.WrapContents = true;
             //
@@ -642,7 +644,7 @@ namespace ContactManager.UI.WinForms.Forms
             TleWithoutEmail.Caption = "Ohne E-Mail";
             TleWithoutEmail.Margin = new Padding(0, 0, 12, 12);
             TleWithoutEmail.Name = "TleWithoutEmail";
-            TleWithoutEmail.Size = new Size(178, 90);
+            TleWithoutEmail.Size = new Size(217, 130);
             TleWithoutEmail.TabIndex = 0;
             TleWithoutEmail.TileColor = Color.FromArgb(0xBD, 0xB5, 0xC8);
             TleWithoutEmail.Value = "0";
@@ -652,7 +654,7 @@ namespace ContactManager.UI.WinForms.Forms
             TleWithoutPhone.Caption = "Ohne Telefon";
             TleWithoutPhone.Margin = new Padding(0, 0, 12, 12);
             TleWithoutPhone.Name = "TleWithoutPhone";
-            TleWithoutPhone.Size = new Size(178, 90);
+            TleWithoutPhone.Size = new Size(217, 130);
             TleWithoutPhone.TabIndex = 1;
             TleWithoutPhone.TileColor = Color.FromArgb(0xBD, 0xB5, 0xC8);
             TleWithoutPhone.Value = "0";
@@ -662,7 +664,7 @@ namespace ContactManager.UI.WinForms.Forms
             TleWithoutAddress.Caption = "Kundschaft ohne Adresse";
             TleWithoutAddress.Margin = new Padding(0, 0, 12, 12);
             TleWithoutAddress.Name = "TleWithoutAddress";
-            TleWithoutAddress.Size = new Size(178, 90);
+            TleWithoutAddress.Size = new Size(217, 130);
             TleWithoutAddress.TabIndex = 2;
             TleWithoutAddress.TileColor = Color.FromArgb(0xBD, 0xB5, 0xC8);
             TleWithoutAddress.Value = "0";
@@ -672,7 +674,7 @@ namespace ContactManager.UI.WinForms.Forms
             TleCustomersWithoutNote.Caption = "Kundschaft ohne Notiz";
             TleCustomersWithoutNote.Margin = new Padding(0, 0, 12, 12);
             TleCustomersWithoutNote.Name = "TleCustomersWithoutNote";
-            TleCustomersWithoutNote.Size = new Size(178, 90);
+            TleCustomersWithoutNote.Size = new Size(217, 130);
             TleCustomersWithoutNote.TabIndex = 3;
             TleCustomersWithoutNote.TileColor = Color.FromArgb(0x8A, 0x4F, 0xB8);
             TleCustomersWithoutNote.Value = "0";
@@ -682,7 +684,7 @@ namespace ContactManager.UI.WinForms.Forms
             TleBirthdaysThisMonth.Caption = "Geburtstage diesen Monat";
             TleBirthdaysThisMonth.Margin = new Padding(0, 0, 12, 12);
             TleBirthdaysThisMonth.Name = "TleBirthdaysThisMonth";
-            TleBirthdaysThisMonth.Size = new Size(178, 90);
+            TleBirthdaysThisMonth.Size = new Size(217, 130);
             TleBirthdaysThisMonth.TabIndex = 4;
             TleBirthdaysThisMonth.TileColor = Color.FromArgb(0xB0, 0x84, 0xD4);
             TleBirthdaysThisMonth.Value = "0";
