@@ -1,21 +1,31 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <OutputType>WinExe</OutputType>
-    <TargetFramework>net10.0-windows</TargetFramework>
-    <Nullable>enable</Nullable>
-    <UseWindowsForms>true</UseWindowsForms>
-    <ImplicitUsings>enable</ImplicitUsings>
-	<!-- Einheitliche Schriftart für die gesamte Anwendung, gilt für alle Forms/Controls ohne eigene Font-Angabe -->
-	<ApplicationDefaultFont>Century Gothic, 9pt</ApplicationDefaultFont>
-  </PropertyGroup>
+	<PropertyGroup>
+		<OutputType>WinExe</OutputType>
+		<TargetFramework>net10.0-windows</TargetFramework>
+		<Nullable>enable</Nullable>
+		<UseWindowsForms>true</UseWindowsForms>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<!-- Einheitliche Schriftart für die gesamte Anwendung, gilt für alle Forms/Controls ohne eigene Font-Angabe -->
+		<ApplicationDefaultFont>Century Gothic, 9pt</ApplicationDefaultFont>
+		<!-- Icon der .exe (Explorer, Taskleiste, Alt-Tab) -->
+		<ApplicationIcon>Resources\ContactManager.ico</ApplicationIcon>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\ContactManager.Business\ContactManager.Business.csproj" />
-    <ProjectReference Include="..\ContactManager.Model\ContactManager.Model.csproj" />
-    <!-- Nur für den Composition Root in Program.cs: dort wird die konkrete Ablage
+	<ItemGroup>
+		<ProjectReference Include="..\ContactManager.Business\ContactManager.Business.csproj" />
+		<ProjectReference Include="..\ContactManager.Model\ContactManager.Model.csproj" />
+		<!-- Nur für den Composition Root in Program.cs: dort wird die konkrete Ablage
          (JsonContactRepository) gewählt. Alle Formulare kennen ausschliesslich die Fassade. -->
-    <ProjectReference Include="..\ContactManager.Persistence.Json\ContactManager.Persistence.Json.csproj" />
-  </ItemGroup>
+		<ProjectReference Include="..\ContactManager.Persistence.Json\ContactManager.Persistence.Json.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<!-- Wird zur Laufzeit über BaseForm geladen (Fenster-/Taskleisten-Icon aller Formulare),
+         deshalb zusätzlich zu ApplicationIcon als Content mit ins Ausgabeverzeichnis kopiert. -->
+		<Content Include="Resources\ContactManager.ico">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Content>
+	</ItemGroup>
 
 </Project>
