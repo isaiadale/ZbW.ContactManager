@@ -1,0 +1,12 @@
+﻿KundenNr;Anrede;Titel;Nachname;Vorname;Geburtsdatum;Geschlecht;Telefon;Mobile;Email;Status;Strasse;Plz;Ort
+201;Herr;;Vornameleer;;01.01.1990;Männlich;071 000 00 00;;vornameleer@example.ch;Aktiv;Musterweg 1;9000;St. Gallen
+202;Herr;;;Nachnameleer;01.01.1990;Männlich;071 000 00 00;;nachnameleer@example.ch;Aktiv;Musterweg 1;9000;St. Gallen
+203;Herr;;Mailfalsch;Marius;01.01.1990;Männlich;071 000 00 00;;marius.mailfalsch(at)example.ch;Aktiv;Musterweg 1;9000;St. Gallen
+204;Herr;;Zukunft;Zacharias;01.01.2090;Männlich;071 000 00 00;;zukunft@example.ch;Aktiv;Musterweg 1;9000;St. Gallen
+205;Herr;;Datumsformat;Dario;12.13.1990;Männlich;071 000 00 00;;datumsformat@example.ch;Aktiv;Musterweg 1;9000;St. Gallen
+206;Herr;;Statusfalsch;Sven;01.01.1990;Männlich;071 000 00 00;;statusfalsch@example.ch;halbaktiv;Musterweg 1;9000;St. Gallen
+207;Fräulein;;Anredefalsch;Anita;01.01.1990;Weiblich;071 000 00 00;;anredefalsch@example.ch;Aktiv;Musterweg 1;9000;St. Gallen
+208;Herr;;Geschlechtfalsch;Gustav;01.01.1990;unbekannt;071 000 00 00;;geschlechtfalsch@example.ch;Aktiv;Musterweg 1;9000;St. Gallen
+209;Herr;;Plzfalsch;Peter;01.01.1990;Männlich;071 000 00 00;;plzfalsch@example.ch;Aktiv;Musterweg 1;12345;St. Gallen
+210;Herr;;Ortleer;Oliver;01.01.1990;Männlich;071 000 00 00;;ortleer@example.ch;Aktiv;Musterweg 1;9000;
+211;Herr;;Feldzahl;Fabio;01.01.1990;Männlich

@@ -1,0 +1,9 @@
+﻿KundenNr;Anrede;Titel;Nachname;Vorname;Geburtsdatum;Geschlecht;Telefon;Mobile;Email;Status;Strasse;Plz;Ort
+1;Frau;Dr.;Amrein;Anna;12.03.1990;Weiblich;071 222 33 44;079 222 33 44;anna.amrein@example.ch;Aktiv;Bahnhofstrasse 1;9000;St. Gallen
+2;Herr;;Brunner;Peter;08.08.1975;Männlich;044 111 22 33;079 111 44 55;peter.brunner@example.ch;Aktiv;Seefeldstrasse 40;8008;Zürich
+3;Frau;lic. iur.;Cavelti;Regula;22.11.1982;Weiblich;081 300 20 10;;regula.cavelti@example.ch;Aktiv;Via Maistra 7;7500;St. Moritz
+4;Herr;Prof.;Diaz;Miguel;03.01.1968;Männlich;031 555 44 33;079 555 44 33;miguel.diaz@example.ch;Passiv;Kramgasse 12;3011;Bern
+5;Keine Anrede;;Egli;Robin;27.05.1999;Divers;;076 888 99 00;robin.egli@example.ch;Aktiv;Rosenweg 5;6003;Luzern
+6;Frau;;Fischer;Sabine;15.07.1993;Weiblich;052 333 22 11;;sabine.fischer@example.ch;Aktiv;;;
+7;Herr;;Gerber;Thomas;30.09.1959;Männlich;062 777 66 55;079 777 66 55;thomas.gerber@example.ch;Passiv;Hauptstrasse 88;4600;Olten
+8;Frau;;Hübscher;Livia;;Weiblich;;079 222 11 00;livia.huebscher@example.ch;Aktiv;Müllerweg 3;8280;Kreuzlingen

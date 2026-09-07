@@ -1,0 +1,21 @@
+﻿Typ;MitarbeiterNr;Anrede;Nachname;Vorname;Geburtsdatum;Geschlecht;AhvNummer;Nationalitaet;GeschaeftsTelefon;Mobile;Email;Abteilung;Rolle;Kaderstufe;Stellenprozent;Eintritt;Austritt;Status;PrivatStrasse;PrivatPlz;PrivatOrt;GeschaeftsStrasse;GeschaeftsPlz;GeschaeftsOrt;Lehrjahre;AktuellesLehrjahr
+;101;Herr;Typleer;Tobias;01.01.1990;Männlich;;CH;071 000 00 00;;typleer@example.ch;IT;Sachbearbeiter;0;100;01.01.2020;;Aktiv;Musterweg 1;9000;St. Gallen;;;;;
+Praktikant;102;Herr;Typfalsch;Tim;01.01.1990;Männlich;;CH;071 000 00 00;;typfalsch@example.ch;IT;Sachbearbeiter;0;100;01.01.2020;;Aktiv;Musterweg 1;9000;St. Gallen;;;;;
+Mitarbeiter;103;Herr;Datumsformat;Dario;32.13.1990;Männlich;;CH;071 000 00 00;;datumsformat@example.ch;IT;Sachbearbeiter;0;100;01.01.2020;;Aktiv;Musterweg 1;9000;St. Gallen;;;;;
+Mitarbeiter;104;Herr;Datumsbereich;Daniel;01.01.1899;Männlich;;CH;071 000 00 00;;datumsbereich@example.ch;IT;Sachbearbeiter;0;100;01.01.2020;;Aktiv;Musterweg 1;9000;St. Gallen;;;;;
+Mitarbeiter;105;Herr;Zahlformat;Zeno;01.01.1990;Männlich;;CH;071 000 00 00;;zahlformat@example.ch;IT;Sachbearbeiter;0;achtzig;01.01.2020;;Aktiv;Musterweg 1;9000;St. Gallen;;;;;
+Mitarbeiter;106;Herr;Statusfalsch;Sven;01.01.1990;Männlich;;CH;071 000 00 00;;statusfalsch@example.ch;IT;Sachbearbeiter;0;100;01.01.2020;;halbaktiv;Musterweg 1;9000;St. Gallen;;;;;
+Mitarbeiter;107;Fräulein;Anredefalsch;Anita;01.01.1990;Weiblich;;CH;071 000 00 00;;anredefalsch@example.ch;IT;Sachbearbeiterin;0;100;01.01.2020;;Aktiv;Musterweg 1;9000;St. Gallen;;;;;
+Mitarbeiter;108;Herr;Geschlechtfalsch;Gustav;01.01.1990;unbekannt;;CH;071 000 00 00;;geschlechtfalsch@example.ch;IT;Sachbearbeiter;0;100;01.01.2020;;Aktiv;Musterweg 1;9000;St. Gallen;;;;;
+Mitarbeiter;109;Herr;Feldzahl;Fabio;01.01.1990;Männlich;;CH;071 000 00 00
+Mitarbeiter;110;Herr;Vornameleer;;01.01.1990;Männlich;;CH;071 000 00 00;;vornameleer@example.ch;IT;Sachbearbeiter;0;100;01.01.2020;;Aktiv;Musterweg 1;9000;St. Gallen;;;;;
+Mitarbeiter;111;Herr;;Nachnameleer;01.01.1990;Männlich;;CH;071 000 00 00;;nachnameleer@example.ch;IT;Sachbearbeiter;0;100;01.01.2020;;Aktiv;Musterweg 1;9000;St. Gallen;;;;;
+Mitarbeiter;112;Herr;Mailfalsch;Marius;01.01.1990;Männlich;;CH;071 000 00 00;;marius.mailfalsch(at)example.ch;IT;Sachbearbeiter;0;100;01.01.2020;;Aktiv;Musterweg 1;9000;St. Gallen;;;;;
+Mitarbeiter;113;Herr;Zukunft;Zacharias;01.01.2090;Männlich;;CH;071 000 00 00;;zukunft@example.ch;IT;Sachbearbeiter;0;100;01.01.2020;;Aktiv;Musterweg 1;9000;St. Gallen;;;;;
+Mitarbeiter;114;Herr;Pensumzuhoch;Pascal;01.01.1990;Männlich;;CH;071 000 00 00;;pensumzuhoch@example.ch;IT;Sachbearbeiter;0;150;01.01.2020;;Aktiv;Musterweg 1;9000;St. Gallen;;;;;
+Mitarbeiter;115;Herr;Kaderstufezuhoch;Kevin;01.01.1990;Männlich;;CH;071 000 00 00;;kaderstufezuhoch@example.ch;IT;Sachbearbeiter;9;100;01.01.2020;;Aktiv;Musterweg 1;9000;St. Gallen;;;;;
+Mitarbeiter;116;Herr;Austrittzufrueh;Andreas;01.01.1990;Männlich;;CH;071 000 00 00;;austrittzufrueh@example.ch;IT;Sachbearbeiter;0;100;01.01.2020;31.12.2019;Aktiv;Musterweg 1;9000;St. Gallen;;;;;
+Mitarbeiter;117;Herr;Plzfalsch;Peter;01.01.1990;Männlich;;CH;071 000 00 00;;plzfalsch@example.ch;IT;Sachbearbeiter;0;100;01.01.2020;;Aktiv;Musterweg 1;900;St. Gallen;;;;;
+Mitarbeiter;118;Herr;Strasseleer;Stefan;01.01.1990;Männlich;;CH;071 000 00 00;;strasseleer@example.ch;IT;Sachbearbeiter;0;100;01.01.2020;;Aktiv;;9000;St. Gallen;;;;;
+Lernender;119;Herr;Lehrjahrenull;Lukas;01.01.2007;Männlich;;CH;071 000 00 00;;lehrjahrenull@example.ch;IT;Lernender;0;100;01.08.2023;;Aktiv;Musterweg 1;9000;St. Gallen;;;;0;1
+Lernender;120;Herr;Lehrjahrzuhoch;Livio;01.01.2007;Männlich;;CH;071 000 00 00;;lehrjahrzuhoch@example.ch;IT;Lernender;0;100;01.08.2023;;Aktiv;Musterweg 1;9000;St. Gallen;;;;3;5
