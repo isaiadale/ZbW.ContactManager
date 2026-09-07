@@ -47,8 +47,8 @@ Hinweise:
 
 | Datei | Inhalt |
 |---|---|
-| `Mitarbeitende_gueltig.csv` | 8 fehlerfreie Mitarbeitende und Lernende |
-| `Kundschaft_gueltig.csv` | 8 fehlerfreie Kundinnen und Kunden |
+| `Mitarbeitende_gueltig.csv` | 100 fehlerfreie Mitarbeitende, davon 10 Lernende |
+| `Kundschaft_gueltig.csv` | 300 fehlerfreie Kundinnen und Kunden |
 | `Mitarbeitende_fehlerhaft.csv` | 20 Zeilen mit je **einem** gezielten Fehler |
 | `Kundschaft_fehlerhaft.csv` | 11 Zeilen mit je **einem** gezielten Fehler |
 | `Mitarbeitende_KopfzeileUnvollstaendig.csv` | Kopfzeile ohne `Nachname`/`Vorname` |
@@ -56,6 +56,33 @@ Hinweise:
 
 Die gültigen Dateien lassen sich mehrfach importieren — es entstehen dann Duplikate mit
 neuen laufenden Nummern, was gewollt ist (der Import prüft nicht auf Doubletten).
+
+### Warum so viele Datensätze in `Mitarbeitende_gueltig.csv` / `Kundschaft_gueltig.csv`?
+
+Die beiden Dateien sind bewusst gross (100 bzw. 300 Zeilen) und decken jede Auswertung des
+**Dashboards** mit plausiblen, nicht-leeren Werten ab — nicht nur die paar Zeilen, die für
+einen CSV-Import-Funktionstest nötig wären. Konkret:
+
+- **Statusmix:** Mitarbeitende und Kundschaft je mit Aktiv/Passiv-Anteil, 10 Lernende unter
+  den Mitarbeitenden.
+- **Geburtsdatum:** über alle 12 Monate verteilt (mindestens ~20 Geburtstage pro Monat), damit
+  „Geburtstage diesen Monat" unabhängig vom tatsächlichen Testdatum nie leer ist.
+- **Geschlecht:** Männlich/Weiblich/Divers sowie einige leere Werte für den Fall „nicht
+  erfasst" in der Verteilung.
+- **Abteilung, Nationalität, Kaderstufe, Lehrjahr:** je mehrere unterschiedliche Werte mit
+  ungleicher Häufigkeit, damit die Balkendiagramme eine erkennbare Rangfolge zeigen.
+- **Beschäftigungsgrad:** überwiegend 100 %, ein Teil davon 50–90 % (Teilzeit).
+- **Eintritt/Austritt:** Eintritte über rund 20 Jahre verteilt, 12 Mitarbeitende mit
+  Austrittsdatum (für „Ausgetretene" und die Betriebszugehörigkeit).
+- **Fehlende Angaben:** eine Handvoll Personen ohne E-Mail bzw. ohne Telefon, 15 Kundschaft
+  ganz ohne Adresse — für die Kacheln zur Datenqualität.
+- **Orte/PLZ der Kundschaft:** rund 15 echte Schweizer Städte mit ungleicher Häufigkeit
+  (Zürich/Genf am häufigsten) für „Top Orte" und „Top Postleitzahlen".
+
+⚠️ **Einzige Lücke:** Die CSV-Dateien kennen keine Notizen-Spalte (Notizen hängen an einer
+bereits gespeicherten Kunden-Id und einem Zeitstempel, siehe `ContactNoteService.AddNote`).
+Nach dem Import zeigen „Notizen gesamt", „Notizen pro Monat" und „Kundschaft ohne Notiz"
+deshalb erst Werte, wenn im `CustomerDetailForm` von Hand ein paar Notizen erfasst wurden.
 
 ## Erwartete Fehlermeldungen
 

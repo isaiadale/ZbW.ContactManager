@@ -33,8 +33,11 @@
             LblCustomerTile = new Label();
             PnlEmployeeTile = new Panel();
             LblEmployeeTile = new Label();
+            PnlDashboardTile = new Panel();
+            LblDashboardTile = new Label();
             PnlCustomerTile.SuspendLayout();
             PnlEmployeeTile.SuspendLayout();
+            PnlDashboardTile.SuspendLayout();
             SuspendLayout();
             // 
             // LblHomeTitle
@@ -44,7 +47,7 @@
             LblHomeTitle.Location = new Point(0, 0);
             LblHomeTitle.Margin = new Padding(2, 0, 2, 0);
             LblHomeTitle.Name = "LblHomeTitle";
-            LblHomeTitle.Size = new Size(834, 57);
+            LblHomeTitle.Size = new Size(950, 57);
             LblHomeTitle.TabIndex = 0;
             LblHomeTitle.Text = "Kontaktübersicht";
             LblHomeTitle.TextAlign = ContentAlignment.BottomCenter;
@@ -52,7 +55,7 @@
             // PnlCustomerTile
             // 
             PnlCustomerTile.Controls.Add(LblCustomerTile);
-            PnlCustomerTile.Location = new Point(175, 155);
+            PnlCustomerTile.Location = new Point(90, 155);
             PnlCustomerTile.Margin = new Padding(2);
             PnlCustomerTile.Name = "PnlCustomerTile";
             PnlCustomerTile.Size = new Size(230, 170);
@@ -74,7 +77,7 @@
             // PnlEmployeeTile
             // 
             PnlEmployeeTile.Controls.Add(LblEmployeeTile);
-            PnlEmployeeTile.Location = new Point(445, 155);
+            PnlEmployeeTile.Location = new Point(360, 155);
             PnlEmployeeTile.Margin = new Padding(2);
             PnlEmployeeTile.Name = "PnlEmployeeTile";
             PnlEmployeeTile.Size = new Size(230, 170);
@@ -93,11 +96,34 @@
             LblEmployeeTile.TextAlign = ContentAlignment.MiddleCenter;
             LblEmployeeTile.Click += LblEmployeeTile_Click;
             // 
+            // PnlDashboardTile
+            // 
+            PnlDashboardTile.Controls.Add(LblDashboardTile);
+            PnlDashboardTile.Location = new Point(630, 155);
+            PnlDashboardTile.Margin = new Padding(2);
+            PnlDashboardTile.Name = "PnlDashboardTile";
+            PnlDashboardTile.Size = new Size(230, 170);
+            PnlDashboardTile.TabIndex = 3;
+            // 
+            // LblDashboardTile
+            // 
+            LblDashboardTile.Dock = DockStyle.Fill;
+            LblDashboardTile.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            LblDashboardTile.Location = new Point(0, 0);
+            LblDashboardTile.Margin = new Padding(2, 0, 2, 0);
+            LblDashboardTile.Name = "LblDashboardTile";
+            LblDashboardTile.Size = new Size(230, 170);
+            LblDashboardTile.TabIndex = 0;
+            LblDashboardTile.Text = "Dashboard";
+            LblDashboardTile.TextAlign = ContentAlignment.MiddleCenter;
+            LblDashboardTile.Click += LblDashboardTile_Click;
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 17F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(834, 441);
+            ClientSize = new Size(950, 441);
+            Controls.Add(PnlDashboardTile);
             Controls.Add(PnlEmployeeTile);
             Controls.Add(PnlCustomerTile);
             Controls.Add(LblHomeTitle);
@@ -108,6 +134,7 @@
             Text = "ContactManager - Home";
             PnlCustomerTile.ResumeLayout(false);
             PnlEmployeeTile.ResumeLayout(false);
+            PnlDashboardTile.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -118,5 +145,7 @@
         private Label LblCustomerTile;
         private Panel PnlEmployeeTile;
         private Label LblEmployeeTile;
+        private Panel PnlDashboardTile;
+        private Label LblDashboardTile;
     }
 }

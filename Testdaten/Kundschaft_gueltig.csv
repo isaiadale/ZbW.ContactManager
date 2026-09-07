@@ -1,9 +1,301 @@
 ﻿KundenNr;Anrede;Titel;Nachname;Vorname;Geburtsdatum;Geschlecht;Telefon;Mobile;Email;Status;Strasse;Plz;Ort
-1;Frau;Dr.;Amrein;Anna;12.03.1990;Weiblich;071 222 33 44;079 222 33 44;anna.amrein@example.ch;Aktiv;Bahnhofstrasse 1;9000;St. Gallen
-2;Herr;;Brunner;Peter;08.08.1975;Männlich;044 111 22 33;079 111 44 55;peter.brunner@example.ch;Aktiv;Seefeldstrasse 40;8008;Zürich
-3;Frau;lic. iur.;Cavelti;Regula;22.11.1982;Weiblich;081 300 20 10;;regula.cavelti@example.ch;Aktiv;Via Maistra 7;7500;St. Moritz
-4;Herr;Prof.;Diaz;Miguel;03.01.1968;Männlich;031 555 44 33;079 555 44 33;miguel.diaz@example.ch;Passiv;Kramgasse 12;3011;Bern
-5;Keine Anrede;;Egli;Robin;27.05.1999;Divers;;076 888 99 00;robin.egli@example.ch;Aktiv;Rosenweg 5;6003;Luzern
-6;Frau;;Fischer;Sabine;15.07.1993;Weiblich;052 333 22 11;;sabine.fischer@example.ch;Aktiv;;;
-7;Herr;;Gerber;Thomas;30.09.1959;Männlich;062 777 66 55;079 777 66 55;thomas.gerber@example.ch;Passiv;Hauptstrasse 88;4600;Olten
-8;Frau;;Hübscher;Livia;;Weiblich;;079 222 11 00;livia.huebscher@example.ch;Aktiv;Müllerweg 3;8280;Kreuzlingen
+1;Keine Anrede;Dr.;Müller;Robin;09.01.2000;Divers;044 908 60 74;078 743 74 63;robin.mueller@example.ch;Aktiv;Seestrasse 119;4000;Basel
+2;Herr;;Weber;Silvan;03.05.1989;Männlich;031 927 29 78;078 500 85 91;silvan.weber@example.ch;Aktiv;Hauptstrasse 66;1200;Genf
+3;Frau;;Graf;Sabine;28.12.1953;Weiblich;044 544 24 68;076 416 95 94;sabine.graf@example.ch;Passiv;Seestrasse 32;4000;Basel
+4;Frau;;Muster;Barbara;01.12.1991;Weiblich;081 629 43 31;078 229 44 25;barbara.muster@example.ch;Aktiv;Rosenweg 45;3000;Bern
+5;Frau;;Sutter;Anna;17.05.1954;Weiblich;044 369 83 90;076 608 68 75;anna.sutter@example.ch;Aktiv;;;
+6;Herr;;Baur;Ivan;06.06.1987;Männlich;081 790 24 39;076 145 11 41;ivan.baur@example.ch;Passiv;Dorfstrasse 115;4000;Basel
+7;Herr;;Bühler;Nicolas;28.03.1989;Männlich;;;nicolas.buehler@example.ch;Aktiv;Bachstrasse 103;8000;Zürich
+8;Frau;;Frei;Jasmin;14.04.1967;Weiblich;044 685 57 25;076 283 38 76;jasmin.frei@example.ch;Aktiv;Bergstrasse 106;1200;Genf
+9;Keine Anrede;;Keller;Sam;25.05.1949;Divers;081 567 11 57;077 398 82 48;sam.keller@example.ch;Aktiv;Poststrasse 12;1200;Genf
+10;Frau;;Hofmann;Ursula;16.10.1961;Weiblich;031 254 10 62;076 338 79 54;ursula.hofmann@example.ch;Aktiv;Bachstrasse 98;4000;Basel
+11;Frau;;Sutter;Sandra;13.11.2008;Weiblich;081 343 63 72;076 245 45 21;sandra.sutter@example.ch;Aktiv;Dorfstrasse 27;1200;Genf
+12;Herr;;Trüb;Simon;23.07.1942;Männlich;044 694 22 74;077 752 60 19;simon.trueb@example.ch;Aktiv;Alpenblickstrasse 96;8400;Winterthur
+13;Frau;;Lehmann;Nicole;10.04.1992;Weiblich;071 817 51 50;079 378 39 19;nicole.lehmann@example.ch;Aktiv;Poststrasse 119;4000;Basel
+14;Frau;;Vogel;Petra;04.03.1995;Weiblich;061 516 25 78;078 888 36 67;;Aktiv;Alpenblickstrasse 60;3000;Bern
+15;Herr;;Baur;David;06.02.1993;Männlich;031 955 51 28;076 828 41 55;david.baur@example.ch;Aktiv;Ringstrasse 6;1200;Genf
+16;Herr;;Blanc;Martin;27.05.1970;Männlich;071 669 80 41;076 573 23 27;martin.blanc@example.ch;Passiv;Bahnhofstrasse 52;3000;Bern
+17;Herr;;Arnold;Martin;07.03.1980;Männlich;091 760 20 84;078 932 19 12;martin.arnold@example.ch;Aktiv;Rebweg 88;8400;Winterthur
+18;Keine Anrede;;Trüb;Noel;03.03.1952;Divers;071 151 31 83;079 941 60 73;noel.trueb@example.ch;Aktiv;Dorfstrasse 6;1000;Lausanne
+19;Herr;;Gerber;Philipp;06.04.1963;Männlich;031 135 88 89;077 762 47 73;philipp.gerber@example.ch;Aktiv;Bergstrasse 58;1200;Genf
+20;Herr;;Amrein;Ralph;09.02.2001;Männlich;031 758 77 41;076 491 55 71;ralph.amrein@example.ch;Aktiv;Industriestrasse 54;8400;Winterthur
+21;Frau;;Berger;Denise;13.06.1944;Weiblich;061 711 38 13;078 159 70 77;denise.berger@example.ch;Aktiv;Gartenstrasse 4;1200;Genf
+22;Herr;Dr.;Frei;Timo;08.02.1988;Männlich;091 157 38 83;079 463 32 32;timo.frei@example.ch;Aktiv;Bergstrasse 69;4000;Basel
+23;Herr;;Peter;Kevin;01.10.1963;Männlich;031 676 34 73;078 279 72 14;kevin.peter@example.ch;Passiv;Waldweg 73;1000;Lausanne
+24;Herr;;Santos;Simon;17.01.1980;Männlich;081 306 26 53;077 921 51 17;simon.santos@example.ch;Aktiv;Bahnhofstrasse 43;9000;St. Gallen
+25;Herr;;Fontana;Timo;28.02.1990;Männlich;061 821 94 60;076 444 48 51;timo.fontana@example.ch;Aktiv;Rebweg 10;2500;Biel/Bienne
+26;Herr;;Egli;Reto;16.11.1953;Männlich;081 810 88 55;077 781 85 32;reto.egli@example.ch;Aktiv;Gartenstrasse 91;1200;Genf
+27;Herr;;Meyer;Adrian;01.12.1986;Männlich;081 133 33 87;078 928 88 38;adrian.meyer@example.ch;Aktiv;Sonnenweg 109;1950;Sitten
+28;Frau;;Aebi;Monika;11.03.1945;Weiblich;;;monika.aebi@example.ch;Aktiv;Schulstrasse 45;8000;Zürich
+29;Keine Anrede;Dr.;Favre;Sascha;22.12.1997;Divers;061 314 41 98;076 458 42 23;sascha.favre@example.ch;Aktiv;Alpenblickstrasse 2;1000;Lausanne
+30;Frau;;Bühler;Nicole;14.12.1952;Weiblich;071 459 79 58;076 948 71 83;nicole.buehler@example.ch;Aktiv;Mühlestrasse 64;3000;Bern
+31;Frau;;Fischer;Rita;26.02.1951;Weiblich;061 367 23 19;078 274 58 30;rita.fischer@example.ch;Aktiv;Feldweg 3;8000;Zürich
+32;Frau;;Trüb;Rahel;20.06.1997;Weiblich;091 268 87 65;077 154 22 52;rahel.trueb@example.ch;Aktiv;Bahnhofstrasse 56;9000;St. Gallen
+33;Herr;;Christen;Roman;10.11.1975;Männlich;044 502 83 80;079 257 16 56;roman.christen@example.ch;Aktiv;Schulstrasse 13;1200;Genf
+34;;;Wyss;Beat;04.04.1947;;091 398 20 70;076 415 60 70;beat.wyss@example.ch;Aktiv;Kirchweg 22;8000;Zürich
+35;Frau;Dr.;Weber;Doris;12.03.1959;Weiblich;071 145 43 66;079 369 38 44;doris.weber@example.ch;Passiv;Rebweg 24;8400;Winterthur
+36;Frau;;Schwarz;Nadine;22.02.1996;Weiblich;061 927 79 62;077 666 17 59;nadine.schwarz@example.ch;Passiv;;;
+37;Frau;;Conti;Jasmin;08.10.1948;Weiblich;;;jasmin.conti@example.ch;Passiv;Feldweg 11;9000;St. Gallen
+38;Herr;;Rossi;Urs;22.10.1942;Männlich;071 277 31 37;077 229 15 64;urs.rossi@example.ch;Aktiv;Dorfstrasse 97;3000;Bern
+39;Herr;;Brunner;Philipp;09.10.1990;Männlich;071 669 60 80;078 977 45 76;philipp.brunner@example.ch;Aktiv;Hauptstrasse 12;1200;Genf
+40;Herr;Dr.;Küng;Hans;04.07.1942;Männlich;081 702 84 22;076 676 22 46;hans.kueng@example.ch;Aktiv;Industriestrasse 19;6000;Luzern
+41;Frau;;Röthlisberger;Sarah;13.05.1956;Weiblich;071 138 32 45;079 247 89 87;sarah.roethlisberger@example.ch;Passiv;Waldweg 78;6900;Lugano
+42;Frau;Prof.;Meier;Vanessa;23.06.1958;Weiblich;071 375 57 12;078 937 48 49;vanessa.meier@example.ch;Aktiv;Seestrasse 96;4000;Basel
+43;Herr;;Baur;Ivan;05.04.1996;Männlich;061 375 63 87;076 292 66 37;ivan.baur2@example.ch;Passiv;Alpenblickstrasse 100;1200;Genf
+44;Frau;;Wenger;Jasmin;28.09.1946;Weiblich;031 167 49 74;079 238 77 82;;Aktiv;Seestrasse 66;8400;Winterthur
+45;Herr;;Röthlisberger;Roman;08.01.1983;Männlich;044 567 16 56;077 380 57 69;roman.roethlisberger@example.ch;Passiv;;;
+46;Frau;Prof.;Blanc;Barbara;12.04.2005;Weiblich;031 991 70 85;078 452 30 43;barbara.blanc@example.ch;Aktiv;Ringstrasse 58;6900;Lugano
+47;Frau;;Wyss;Karin;02.07.2005;Weiblich;031 977 38 92;077 793 36 44;karin.wyss@example.ch;Aktiv;Waldweg 100;3000;Bern
+48;Frau;;Müller;Yvonne;05.08.2007;Weiblich;044 329 42 87;078 829 92 45;yvonne.mueller@example.ch;Aktiv;Ringstrasse 103;3000;Bern
+49;Herr;Dr.;Baur;Samuel;09.08.1964;Männlich;091 633 89 60;076 107 75 94;samuel.baur@example.ch;Aktiv;Alpenblickstrasse 39;4000;Basel
+50;Keine Anrede;;Marchetti;Charlie;22.05.1972;Divers;061 383 91 51;078 367 93 93;charlie.marchetti@example.ch;Passiv;Rosenweg 9;8000;Zürich
+51;Herr;;Ferrari;Stefan;26.01.1978;Männlich;031 838 13 93;079 402 43 63;stefan.ferrari@example.ch;Aktiv;Poststrasse 88;8400;Winterthur
+52;Herr;;Silva;Urs;24.06.1984;Männlich;091 327 97 78;079 787 55 74;urs.silva@example.ch;Passiv;;;
+53;Herr;;Arnold;Reto;04.05.1985;Männlich;061 842 81 33;078 770 21 38;reto.arnold@example.ch;Aktiv;Industriestrasse 95;9000;St. Gallen
+54;Herr;;Christen;Marc;09.06.1966;Männlich;044 581 16 91;076 583 34 74;marc.christen@example.ch;Aktiv;Feldweg 60;2000;Neuenburg
+55;Herr;;Ferrari;Samuel;02.07.1970;Männlich;061 519 82 68;077 423 33 20;samuel.ferrari@example.ch;Aktiv;Industriestrasse 26;3000;Bern
+56;Frau;;Roth;Regula;15.01.2001;Weiblich;031 690 30 72;076 232 88 65;regula.roth@example.ch;Aktiv;Kirchweg 98;1200;Genf
+57;Frau;;Lehmann;Vanessa;01.07.1947;Weiblich;091 482 11 51;077 118 96 10;vanessa.lehmann@example.ch;Aktiv;Bachstrasse 26;8000;Zürich
+58;Frau;;Frei;Ursula;05.05.1964;Weiblich;;;ursula.frei@example.ch;Aktiv;Sonnenweg 65;8000;Zürich
+59;Frau;Dr.;Keller;Andrea;10.05.2003;Weiblich;081 445 65 97;077 450 72 55;andrea.keller@example.ch;Aktiv;Lindenstrasse 77;9000;St. Gallen
+60;Frau;;Zbinden;Andrea;08.01.1957;Weiblich;091 122 85 74;077 226 56 93;andrea.zbinden@example.ch;Aktiv;Industriestrasse 28;4000;Basel
+61;Frau;;Röthlisberger;Melanie;20.09.1976;Weiblich;091 210 93 12;076 806 24 63;melanie.roethlisberger@example.ch;Aktiv;Ringstrasse 7;8000;Zürich
+62;Herr;;Marchetti;Christian;23.08.1976;Männlich;091 745 11 48;079 777 22 94;christian.marchetti@example.ch;Aktiv;Kirchweg 89;3000;Bern
+63;Frau;;Santos;Fabienne;27.07.1991;Weiblich;081 220 46 24;076 609 35 87;fabienne.santos@example.ch;Aktiv;Lindenstrasse 93;8000;Zürich
+64;Herr;;Arnold;David;12.04.1942;Männlich;044 661 73 36;079 438 40 10;;Aktiv;Feldweg 21;8400;Winterthur
+65;;;Zbinden;Beat;22.10.1994;;081 176 22 42;077 567 47 43;beat.zbinden@example.ch;Aktiv;Industriestrasse 12;6900;Lugano
+66;Herr;;Iten;Andreas;28.01.1986;Männlich;091 420 64 24;076 971 15 11;andreas.iten@example.ch;Aktiv;Rebweg 103;1200;Genf
+67;Frau;;Sutter;Andrea;20.08.1963;Weiblich;061 287 24 61;079 567 44 59;andrea.sutter@example.ch;Aktiv;Hauptstrasse 48;1200;Genf
+68;Frau;;Peter;Carmen;26.11.1955;Weiblich;;;carmen.peter@example.ch;Aktiv;Dorfstrasse 17;3000;Bern
+69;Frau;;Baur;Nicole;14.02.1988;Weiblich;081 794 66 33;079 897 55 88;nicole.baur@example.ch;Aktiv;Rosenweg 103;1700;Freiburg
+70;Herr;;Amrein;Marco;14.02.1946;Männlich;061 770 50 11;077 785 53 76;marco.amrein@example.ch;Passiv;Seestrasse 9;6000;Luzern
+71;Frau;;Huber;Fabienne;24.11.1953;Weiblich;091 792 92 59;077 959 81 88;fabienne.huber@example.ch;Aktiv;Rosenweg 45;4000;Basel
+72;Herr;;Rossi;Reto;28.08.1948;Männlich;031 176 72 51;077 438 45 16;;Aktiv;;;
+73;Frau;;Rochat;Rahel;27.07.1960;Weiblich;071 920 83 67;076 977 73 67;rahel.rochat@example.ch;Aktiv;Hauptstrasse 59;4000;Basel
+74;Herr;;Wenger;Ivan;13.02.2006;Männlich;081 100 21 87;078 620 81 36;ivan.wenger@example.ch;Passiv;Seestrasse 72;6000;Luzern
+75;Frau;;Sutter;Nina;27.01.1962;Weiblich;081 885 89 86;079 833 94 56;nina.sutter@example.ch;Aktiv;Alpenblickstrasse 43;4000;Basel
+76;Frau;;Huber;Barbara;11.01.1980;Weiblich;081 482 99 23;076 268 73 27;barbara.huber@example.ch;Aktiv;Feldweg 71;1000;Lausanne
+77;Frau;;Huber;Jasmin;07.10.1976;Weiblich;071 320 68 34;078 210 63 15;jasmin.huber@example.ch;Aktiv;Dorfstrasse 120;3000;Bern
+78;Frau;;Schneider;Selina;22.08.1951;Weiblich;081 616 27 73;076 643 16 80;selina.schneider@example.ch;Aktiv;;;
+79;Frau;;Amrein;Selina;23.03.1943;Weiblich;031 206 59 94;078 616 59 63;selina.amrein@example.ch;Aktiv;Gartenstrasse 94;2000;Neuenburg
+80;Keine Anrede;;Widmer;Noel;10.06.1958;Divers;071 716 99 75;078 963 99 80;noel.widmer@example.ch;Aktiv;Industriestrasse 18;9000;St. Gallen
+81;Frau;;Favre;Rahel;07.04.1981;Weiblich;091 235 93 32;078 827 24 55;rahel.favre@example.ch;Aktiv;Rebweg 118;1200;Genf
+82;Frau;;Costa;Selina;24.11.1955;Weiblich;071 927 11 76;076 125 58 28;selina.costa@example.ch;Aktiv;Feldweg 113;3600;Thun
+83;Herr;;Brunner;Martin;10.03.1974;Männlich;044 807 47 36;076 467 67 23;martin.brunner@example.ch;Aktiv;Industriestrasse 108;4000;Basel
+84;Frau;;Odermatt;Rahel;21.12.1980;Weiblich;081 903 99 46;076 490 59 63;rahel.odermatt@example.ch;Aktiv;Sonnenweg 31;1950;Sitten
+85;Keine Anrede;;Marchetti;Charlie;24.01.2002;Divers;061 307 89 66;077 748 92 57;charlie.marchetti2@example.ch;Aktiv;;;
+86;Frau;;Wenger;Esther;07.12.1983;Weiblich;091 176 33 32;076 486 15 64;esther.wenger@example.ch;Aktiv;Alpenblickstrasse 23;1200;Genf
+87;Herr;;Meyer;David;28.10.1988;Männlich;071 826 29 15;077 430 86 16;david.meyer@example.ch;Aktiv;Bahnhofstrasse 43;4000;Basel
+88;Frau;;Arnold;Fabienne;26.08.1970;Weiblich;044 902 50 77;077 288 76 18;fabienne.arnold@example.ch;Aktiv;Bachstrasse 46;1950;Sitten
+89;Frau;;Christen;Andrea;12.02.1957;Weiblich;;;andrea.christen@example.ch;Aktiv;Kirchweg 85;4000;Basel
+90;Herr;;Wyss;Nicolas;17.10.1981;Männlich;091 109 24 95;078 556 40 92;nicolas.wyss@example.ch;Aktiv;Bachstrasse 106;9000;St. Gallen
+91;Frau;;Zimmermann;Fabienne;11.11.2003;Weiblich;061 653 46 13;078 626 75 67;fabienne.zimmermann@example.ch;Aktiv;Dorfstrasse 50;8400;Winterthur
+92;Frau;Dr.;Trüb;Tanja;17.06.1984;Weiblich;081 646 10 90;076 315 95 90;tanja.trueb@example.ch;Passiv;Dorfstrasse 22;8000;Zürich
+93;Frau;;Arnold;Chiara;18.04.1995;Weiblich;091 257 13 68;078 138 21 19;chiara.arnold@example.ch;Aktiv;Hauptstrasse 96;6000;Luzern
+94;Herr;;Marchetti;David;27.10.1999;Männlich;071 561 90 61;079 423 12 59;david.marchetti@example.ch;Aktiv;Bergstrasse 53;4000;Basel
+95;Frau;;Muster;Esther;19.12.2000;Weiblich;081 208 47 97;078 721 21 46;esther.muster@example.ch;Aktiv;Hauptstrasse 46;8000;Zürich
+96;Frau;;Bühler;Lena;01.11.1958;Weiblich;031 239 60 79;078 749 28 48;lena.buehler@example.ch;Aktiv;Gartenstrasse 69;9000;St. Gallen
+97;Frau;;Muster;Michelle;02.02.1990;Weiblich;071 650 80 20;078 315 54 37;;Aktiv;Waldweg 77;8000;Zürich
+98;Herr;;Steiner;Dominik;08.03.1988;Männlich;031 787 82 16;079 760 80 19;dominik.steiner@example.ch;Passiv;Kirchweg 15;4000;Basel
+99;Herr;;Moser;Daniel;24.04.1996;Männlich;061 231 95 93;077 202 46 89;daniel.moser@example.ch;Passiv;Rosenweg 43;2000;Neuenburg
+100;Herr;;Roth;Roman;11.08.1946;Männlich;081 680 56 50;079 272 10 50;roman.roth@example.ch;Passiv;Waldweg 20;1200;Genf
+101;Herr;;Fontana;Simon;27.05.1953;Männlich;091 439 71 69;079 467 49 72;simon.fontana@example.ch;Aktiv;Industriestrasse 87;1000;Lausanne
+102;Frau;;Rochat;Regula;28.05.1998;Weiblich;061 851 90 19;076 119 74 90;regula.rochat@example.ch;Aktiv;Bachstrasse 26;3000;Bern
+103;Herr;;Silva;Timo;07.10.1957;Männlich;081 652 70 93;077 474 60 38;timo.silva@example.ch;Aktiv;Bachstrasse 34;8000;Zürich
+104;Frau;;Egli;Selina;15.03.1971;Weiblich;071 472 74 11;077 968 88 97;selina.egli@example.ch;Aktiv;Lindenstrasse 12;6900;Lugano
+105;Herr;;Meyer;Dominik;06.03.1951;Männlich;031 853 71 55;076 324 72 39;dominik.meyer@example.ch;Aktiv;Waldweg 85;1950;Sitten
+106;Herr;;Frei;Nicolas;07.11.2003;Männlich;071 565 15 15;078 205 76 91;;Aktiv;Rebweg 50;2500;Biel/Bienne
+107;Frau;;Silva;Doris;21.07.1986;Weiblich;091 955 19 76;078 485 38 76;doris.silva@example.ch;Aktiv;Rebweg 76;8400;Winterthur
+108;Herr;Dr.;Bianchi;Yannick;01.10.1947;Männlich;031 335 19 75;078 316 29 33;yannick.bianchi@example.ch;Aktiv;Industriestrasse 57;6900;Lugano
+109;Herr;;Fontana;Elias;08.11.1993;Männlich;044 593 96 71;079 315 85 30;elias.fontana@example.ch;Passiv;Poststrasse 93;6000;Luzern
+110;Frau;;Müller;Jasmin;05.01.1977;Weiblich;081 706 30 27;076 686 28 17;jasmin.mueller@example.ch;Aktiv;;;
+111;Herr;;Ferrari;Beat;19.10.1957;Männlich;031 559 87 70;079 274 38 62;beat.ferrari@example.ch;Aktiv;Feldweg 11;8000;Zürich
+112;Frau;;Iten;Selina;22.10.1985;Weiblich;081 370 31 97;078 564 86 85;selina.iten@example.ch;Aktiv;;;
+113;Herr;;Bühler;Samuel;01.02.1992;Männlich;081 800 63 29;076 281 70 88;samuel.buehler@example.ch;Aktiv;Lindenstrasse 111;4000;Basel
+114;Frau;;Rossi;Esther;16.02.1993;Weiblich;044 893 96 93;079 634 63 57;esther.rossi@example.ch;Aktiv;Ringstrasse 70;3000;Bern
+115;Frau;;Lehmann;Priska;26.08.1979;Weiblich;091 879 99 83;076 535 27 42;priska.lehmann@example.ch;Aktiv;Rebweg 76;8400;Winterthur
+116;Herr;;Zbinden;Simon;20.05.1998;Männlich;031 105 10 83;076 632 10 58;simon.zbinden@example.ch;Aktiv;Mühlestrasse 33;3600;Thun
+117;Frau;;Christen;Laura;05.02.1962;Weiblich;061 975 78 64;078 726 45 97;laura.christen@example.ch;Aktiv;Waldweg 33;6000;Luzern
+118;Herr;Dr.;Christen;Michael;12.03.1947;Männlich;061 414 83 54;079 853 27 94;michael.christen@example.ch;Aktiv;Bachstrasse 62;7000;Chur
+119;Herr;;Marti;Simon;07.02.1988;Männlich;061 920 80 88;076 264 59 91;simon.marti@example.ch;Aktiv;Sonnenweg 101;2500;Biel/Bienne
+120;;;Iten;Beat;20.08.1990;;061 327 57 20;076 841 59 61;beat.iten@example.ch;Aktiv;Hauptstrasse 9;6000;Luzern
+121;Frau;;Wyss;Priska;21.03.2001;Weiblich;031 970 94 76;078 299 14 86;priska.wyss@example.ch;Aktiv;Alpenblickstrasse 2;6900;Lugano
+122;Frau;;Dubois;Rita;02.11.1987;Weiblich;044 261 21 45;079 461 95 60;rita.dubois@example.ch;Aktiv;Schulstrasse 84;1000;Lausanne
+123;Herr;;Ferrari;Roman;23.12.2007;Männlich;;;roman.ferrari@example.ch;Aktiv;Hauptstrasse 71;8000;Zürich
+124;Herr;;Zbinden;Ralph;27.06.1964;Männlich;;;ralph.zbinden@example.ch;Aktiv;Schulstrasse 78;1200;Genf
+125;Keine Anrede;;Aebi;Toni;01.10.1957;Divers;081 209 81 19;078 448 24 75;toni.aebi@example.ch;Aktiv;Gartenstrasse 53;4000;Basel
+126;Keine Anrede;;Perrin;Alex;19.07.1952;Divers;061 894 68 97;079 700 13 71;alex.perrin@example.ch;Aktiv;Schulstrasse 97;9000;St. Gallen
+127;Herr;;Bühler;Daniel;23.11.1980;Männlich;061 628 78 11;078 354 46 21;;Passiv;Poststrasse 53;4000;Basel
+128;Herr;;Keller;Fabian;11.08.1986;Männlich;081 375 33 97;077 610 35 40;;Aktiv;Kirchweg 115;1000;Lausanne
+129;Frau;;Baumann;Doris;27.04.1979;Weiblich;031 897 23 25;076 792 94 73;doris.baumann@example.ch;Passiv;Ringstrasse 46;4000;Basel
+130;Frau;Dr. med.;Meier;Esther;20.06.1947;Weiblich;081 989 45 72;077 882 75 45;esther.meier@example.ch;Aktiv;Rosenweg 115;1200;Genf
+131;Herr;Dr.;Meyer;Sven;26.09.2002;Männlich;044 614 54 60;077 568 25 99;sven.meyer@example.ch;Aktiv;Rosenweg 70;6000;Luzern
+132;Frau;;Perrin;Laura;22.01.2007;Weiblich;044 433 56 88;078 291 80 43;laura.perrin@example.ch;Aktiv;Sonnenweg 75;4000;Basel
+133;Herr;Dr.;Dubois;Bruno;06.06.1965;Männlich;071 817 57 56;079 386 67 33;bruno.dubois@example.ch;Aktiv;Mühlestrasse 27;6900;Lugano
+134;Frau;;Blanc;Ladina;24.02.1979;Weiblich;071 976 58 35;077 919 29 70;ladina.blanc@example.ch;Passiv;Schulstrasse 72;1200;Genf
+135;Frau;;Christen;Regula;28.03.1945;Weiblich;061 904 72 48;078 675 82 16;regula.christen@example.ch;Aktiv;Bachstrasse 93;2500;Biel/Bienne
+136;Herr;Prof.;Schmid;Reto;16.05.1981;Männlich;061 366 56 56;078 452 12 62;reto.schmid@example.ch;Aktiv;Alpenblickstrasse 96;8000;Zürich
+137;Herr;;Brunner;Elias;12.05.1986;Männlich;091 557 20 58;078 574 90 28;elias.brunner@example.ch;Aktiv;Lindenstrasse 63;1000;Lausanne
+138;Frau;;Christen;Julia;03.02.1957;Weiblich;061 424 93 47;078 719 92 60;julia.christen@example.ch;Aktiv;Poststrasse 30;3000;Bern
+139;Herr;;Vogel;Roger;19.12.1962;Männlich;031 288 12 26;077 777 42 99;roger.vogel@example.ch;Aktiv;Alpenblickstrasse 53;2500;Biel/Bienne
+140;Frau;;Fischer;Franziska;04.02.1958;Weiblich;044 126 60 77;076 206 43 89;franziska.fischer@example.ch;Passiv;Rosenweg 71;8000;Zürich
+141;Herr;;Graf;Samuel;24.04.1979;Männlich;031 234 77 31;076 135 94 55;samuel.graf@example.ch;Aktiv;Alpenblickstrasse 81;1200;Genf
+142;Frau;;Odermatt;Laura;28.08.1948;Weiblich;071 238 99 79;077 705 86 68;;Aktiv;Bergstrasse 71;3600;Thun
+143;Frau;;Lehmann;Ladina;21.11.1941;Weiblich;061 593 79 39;076 552 49 56;ladina.lehmann@example.ch;Passiv;Feldweg 117;3600;Thun
+144;Herr;;Graf;Stefan;17.01.2007;Männlich;071 647 11 98;079 873 71 48;stefan.graf@example.ch;Aktiv;Rebweg 37;3000;Bern
+145;;;Peter;Ursula;08.10.1971;;031 521 81 65;079 355 30 92;ursula.peter@example.ch;Passiv;Bachstrasse 48;8000;Zürich
+146;Herr;;Frei;Samuel;14.02.1975;Männlich;081 926 98 97;078 391 93 78;;Passiv;Lindenstrasse 98;4000;Basel
+147;Frau;;Brunner;Jasmin;05.03.2000;Weiblich;071 732 67 44;079 292 51 12;jasmin.brunner@example.ch;Aktiv;Dorfstrasse 82;1200;Genf
+148;Herr;;Müller;Matthias;10.02.1985;Männlich;071 844 11 39;076 254 11 73;matthias.mueller@example.ch;Aktiv;Industriestrasse 92;1200;Genf
+149;Herr;Dr.;Graf;Jan;15.06.1945;Männlich;031 157 44 60;076 656 70 33;jan.graf@example.ch;Aktiv;Poststrasse 11;8000;Zürich
+150;Herr;;Iten;David;04.01.1960;Männlich;071 353 14 35;079 852 22 76;david.iten@example.ch;Aktiv;Sonnenweg 99;4000;Basel
+151;Frau;;Amrein;Franziska;10.11.1959;Weiblich;091 143 80 76;076 359 71 91;franziska.amrein@example.ch;Passiv;Gartenstrasse 81;1000;Lausanne
+152;Herr;;Röthlisberger;Nicolas;07.11.2002;Männlich;071 432 11 31;078 698 25 60;;Passiv;Schulstrasse 82;8000;Zürich
+153;Frau;;Meier;Sandra;20.12.1948;Weiblich;044 354 30 73;076 802 89 53;sandra.meier@example.ch;Passiv;Rebweg 99;3000;Bern
+154;Frau;;Schmid;Nicole;05.11.1963;Weiblich;071 338 50 81;078 924 66 34;nicole.schmid@example.ch;Aktiv;Dorfstrasse 17;3600;Thun
+155;Herr;;Berger;Samuel;02.05.1991;Männlich;061 655 99 72;077 680 33 79;;Passiv;Alpenblickstrasse 72;6900;Lugano
+156;Herr;;Widmer;Werner;17.02.1988;Männlich;061 654 56 68;076 894 91 74;werner.widmer@example.ch;Aktiv;Alpenblickstrasse 38;3000;Bern
+157;Herr;;Röthlisberger;Beat;28.10.2006;Männlich;061 838 18 94;079 294 77 97;beat.roethlisberger@example.ch;Aktiv;Ringstrasse 31;1000;Lausanne
+158;Frau;;Steiner;Rahel;14.06.1972;Weiblich;081 774 18 15;077 282 14 35;rahel.steiner@example.ch;Aktiv;Dorfstrasse 13;1200;Genf
+159;Herr;;Huber;Roman;21.10.2004;Männlich;081 818 85 42;076 475 38 87;roman.huber@example.ch;Aktiv;Rosenweg 68;8400;Winterthur
+160;Frau;;Aebi;Sandra;16.11.1982;Weiblich;091 162 56 81;079 941 57 17;sandra.aebi@example.ch;Aktiv;Alpenblickstrasse 103;8000;Zürich
+161;Frau;;Ferrari;Manuela;03.12.2003;Weiblich;081 199 22 39;079 294 34 77;manuela.ferrari@example.ch;Passiv;Hauptstrasse 28;1200;Genf
+162;Frau;;Favre;Ladina;24.09.1986;Weiblich;044 884 91 83;078 790 68 99;;Passiv;Mühlestrasse 96;7000;Chur
+163;Frau;;Fischer;Monika;13.09.1985;Weiblich;;;monika.fischer@example.ch;Aktiv;Poststrasse 85;6900;Lugano
+164;Herr;;Marti;Elias;18.06.1963;Männlich;091 540 51 87;077 676 79 37;elias.marti@example.ch;Aktiv;Rebweg 53;1000;Lausanne
+165;Herr;;Aebi;Ralph;15.06.1976;Männlich;091 135 46 86;076 630 27 48;ralph.aebi@example.ch;Aktiv;Sonnenweg 1;6000;Luzern
+166;;;Baumann;Roger;25.01.1968;;081 684 83 29;076 138 68 55;roger.baumann@example.ch;Aktiv;Bachstrasse 66;1200;Genf
+167;Herr;;Kaufmann;David;09.04.1977;Männlich;071 682 37 19;078 911 71 32;david.kaufmann@example.ch;Aktiv;Hauptstrasse 74;1200;Genf
+168;Frau;;Iten;Ladina;21.10.1996;Weiblich;081 490 20 17;078 456 65 63;ladina.iten@example.ch;Aktiv;Seestrasse 94;1200;Genf
+169;Frau;Dr. med.;Odermatt;Barbara;21.12.1979;Weiblich;061 636 15 50;077 434 74 99;barbara.odermatt@example.ch;Passiv;Sonnenweg 7;8000;Zürich
+170;Herr;;Blanc;Martin;25.08.1958;Männlich;044 327 65 47;079 251 26 53;martin.blanc2@example.ch;Aktiv;Waldweg 65;1700;Freiburg
+171;Herr;;Wenger;Sven;13.09.2002;Männlich;081 544 99 26;077 592 81 35;sven.wenger@example.ch;Aktiv;Hauptstrasse 52;4000;Basel
+172;Frau;;Brunner;Ladina;08.04.1941;Weiblich;071 431 97 83;076 215 95 62;ladina.brunner@example.ch;Aktiv;Bergstrasse 100;8000;Zürich
+173;Herr;;Brunner;Yannick;20.06.1967;Männlich;061 731 66 89;077 551 15 39;yannick.brunner@example.ch;Aktiv;Feldweg 22;8000;Zürich
+174;Herr;;Steiner;Nicolas;24.02.1998;Männlich;031 989 46 11;078 810 24 49;nicolas.steiner@example.ch;Aktiv;Schulstrasse 80;8000;Zürich
+175;Herr;Dr.;Sutter;Peter;18.12.1982;Männlich;081 868 43 80;079 737 28 98;peter.sutter@example.ch;Aktiv;Kirchweg 70;4000;Basel
+176;Frau;;Bühler;Anna;09.01.1941;Weiblich;031 908 99 89;078 154 69 93;anna.buehler@example.ch;Passiv;Seestrasse 37;3000;Bern
+177;Frau;;Bühler;Sabine;28.11.1974;Weiblich;061 988 93 59;077 489 75 22;sabine.buehler@example.ch;Aktiv;Dorfstrasse 3;1000;Lausanne
+178;Frau;Dr.;Odermatt;Denise;07.03.1997;Weiblich;091 122 15 41;078 441 72 60;denise.odermatt@example.ch;Aktiv;Alpenblickstrasse 72;6900;Lugano
+179;Frau;;Berger;Anna;21.06.1963;Weiblich;061 931 17 90;078 999 59 13;anna.berger@example.ch;Passiv;Schulstrasse 65;1200;Genf
+180;Frau;;Frei;Manuela;13.06.1989;Weiblich;091 240 21 58;077 527 40 83;;Aktiv;;;
+181;Herr;;Zbinden;Marc;18.08.1966;Männlich;031 694 79 97;077 983 27 49;marc.zbinden@example.ch;Aktiv;Kirchweg 84;3000;Bern
+182;Frau;;Zbinden;Priska;25.07.1991;Weiblich;031 425 18 81;076 288 50 28;priska.zbinden@example.ch;Aktiv;Waldweg 118;3000;Bern
+183;Frau;;Röthlisberger;Laura;10.07.1956;Weiblich;031 209 26 33;076 880 88 88;laura.roethlisberger@example.ch;Aktiv;Bergstrasse 20;6000;Luzern
+184;Herr;;Dubois;Sven;08.10.1979;Männlich;044 804 71 27;079 829 93 57;sven.dubois@example.ch;Aktiv;Bahnhofstrasse 46;4000;Basel
+185;Herr;;Bianchi;Samuel;06.03.1948;Männlich;;;samuel.bianchi@example.ch;Aktiv;Schulstrasse 5;3000;Bern
+186;Herr;;Aebi;Hans;08.07.1974;Männlich;031 549 88 72;078 987 68 41;hans.aebi@example.ch;Aktiv;Kirchweg 9;4000;Basel
+187;Herr;;Santos;Urs;11.12.1960;Männlich;081 708 78 77;076 633 23 67;urs.santos@example.ch;Aktiv;Ringstrasse 96;8400;Winterthur
+188;Herr;;Röthlisberger;Urs;18.09.1977;Männlich;;;urs.roethlisberger@example.ch;Aktiv;Seestrasse 72;8400;Winterthur
+189;Herr;;Brunner;Martin;13.08.1971;Männlich;031 532 47 88;076 806 76 28;martin.brunner2@example.ch;Aktiv;Feldweg 60;1200;Genf
+190;Herr;Prof.;Weber;Roger;06.02.1944;Männlich;071 523 51 67;076 283 68 85;roger.weber@example.ch;Aktiv;Bachstrasse 18;2000;Neuenburg
+191;Frau;;Röthlisberger;Corinne;09.02.1950;Weiblich;091 226 21 24;079 749 56 20;corinne.roethlisberger@example.ch;Aktiv;Gartenstrasse 92;1000;Lausanne
+192;Frau;;Egli;Melanie;06.10.1943;Weiblich;044 886 31 52;077 266 28 32;melanie.egli@example.ch;Aktiv;Bachstrasse 49;8400;Winterthur
+193;Frau;;Christen;Nicole;24.05.1969;Weiblich;031 220 26 35;076 737 42 11;nicole.christen@example.ch;Aktiv;Feldweg 81;6000;Luzern
+194;Herr;;Conti;Ivan;16.10.2008;Männlich;091 587 68 62;079 181 86 86;ivan.conti@example.ch;Passiv;Kirchweg 76;4000;Basel
+195;;;Widmer;Carmen;06.01.1982;;061 137 28 14;078 439 21 16;carmen.widmer@example.ch;Aktiv;Seestrasse 84;3000;Bern
+196;Herr;Dr.;Fischer;Beat;22.10.1972;Männlich;081 281 68 84;078 136 21 48;beat.fischer@example.ch;Aktiv;Waldweg 101;1700;Freiburg
+197;Herr;;Iten;Samuel;27.07.2000;Männlich;071 237 25 98;078 437 77 62;;Aktiv;Hauptstrasse 38;7000;Chur
+198;Frau;Dr. med.;Dubois;Franziska;19.02.2001;Weiblich;;;franziska.dubois@example.ch;Aktiv;Hauptstrasse 62;3600;Thun
+199;Frau;;Aebi;Livia;20.07.1972;Weiblich;;;livia.aebi@example.ch;Aktiv;Bergstrasse 68;1200;Genf
+200;Frau;;Berger;Fabienne;19.10.1992;Weiblich;091 609 73 33;077 825 47 34;fabienne.berger@example.ch;Aktiv;Lindenstrasse 94;6900;Lugano
+201;;;Hofmann;Martin;28.12.1993;;071 146 52 54;077 111 91 35;;Aktiv;Ringstrasse 54;4000;Basel
+202;Frau;;Küng;Doris;10.05.2000;Weiblich;044 216 97 52;078 505 82 88;doris.kueng@example.ch;Aktiv;Bachstrasse 42;6900;Lugano
+203;Keine Anrede;;Brunner;Sascha;22.06.1966;Divers;044 761 27 71;077 742 68 78;sascha.brunner@example.ch;Aktiv;Rosenweg 103;9000;St. Gallen
+204;Frau;;Küng;Nina;02.12.1956;Weiblich;091 794 50 81;076 313 83 97;nina.kueng@example.ch;Passiv;Feldweg 73;2500;Biel/Bienne
+205;Herr;;Keller;Yannick;27.05.1989;Männlich;091 647 31 83;079 291 86 24;yannick.keller@example.ch;Aktiv;Poststrasse 49;8000;Zürich
+206;Frau;;Fontana;Simone;02.12.1968;Weiblich;071 998 40 57;079 949 48 37;simone.fontana@example.ch;Aktiv;Mühlestrasse 12;1200;Genf
+207;Frau;;Schneider;Regula;25.01.1961;Weiblich;081 125 71 74;077 294 53 71;regula.schneider@example.ch;Passiv;Hauptstrasse 57;4000;Basel
+208;Frau;;Graf;Priska;25.03.1967;Weiblich;031 310 14 68;079 830 76 24;priska.graf@example.ch;Aktiv;Lindenstrasse 87;8000;Zürich
+209;;;Blanc;Thomas;15.06.1997;;091 863 49 12;078 754 36 51;thomas.blanc@example.ch;Aktiv;Dorfstrasse 67;8000;Zürich
+210;Herr;;Widmer;Adrian;22.08.1968;Männlich;031 380 24 11;076 311 79 54;adrian.widmer@example.ch;Passiv;Bergstrasse 20;3000;Bern
+211;Frau;;Steiner;Manuela;08.10.1972;Weiblich;031 172 49 88;078 653 66 16;manuela.steiner@example.ch;Aktiv;;;
+212;Herr;;Trüb;Bruno;13.02.2002;Männlich;071 283 86 85;079 731 55 49;bruno.trueb@example.ch;Aktiv;Hauptstrasse 55;8000;Zürich
+213;Herr;;Fontana;Roman;19.08.1998;Männlich;091 579 22 68;078 800 92 69;roman.fontana@example.ch;Aktiv;Hauptstrasse 105;3000;Bern
+214;Herr;Prof.;Steiner;Simon;13.06.1975;Männlich;061 564 72 13;076 586 24 54;simon.steiner@example.ch;Aktiv;Poststrasse 101;3000;Bern
+215;Herr;;Wyss;Reto;19.10.1964;Männlich;071 937 23 51;076 911 48 78;reto.wyss@example.ch;Passiv;Lindenstrasse 14;3000;Bern
+216;Herr;Prof.;Christen;Timo;08.10.1978;Männlich;;;timo.christen@example.ch;Passiv;Gartenstrasse 62;7000;Chur
+217;Herr;;Baumann;Fabian;19.07.1953;Männlich;031 277 94 95;076 857 83 72;fabian.baumann@example.ch;Aktiv;Bachstrasse 89;1000;Lausanne
+218;Herr;;Hofmann;Elias;04.09.1967;Männlich;071 171 86 23;079 435 73 92;elias.hofmann@example.ch;Aktiv;Gartenstrasse 40;6000;Luzern
+219;Frau;;Baumann;Karin;25.10.1991;Weiblich;031 563 78 47;079 730 83 67;karin.baumann@example.ch;Aktiv;Industriestrasse 85;8000;Zürich
+220;Herr;Dr.;Graf;Kevin;23.07.1970;Männlich;044 726 75 61;077 972 47 17;;Aktiv;Hauptstrasse 75;1000;Lausanne
+221;Herr;;Schmid;Ralph;18.12.2008;Männlich;061 986 13 40;079 819 85 60;ralph.schmid@example.ch;Passiv;Dorfstrasse 111;1000;Lausanne
+222;Frau;Prof.;Rüegg;Melanie;18.07.1960;Weiblich;031 292 81 59;078 960 63 29;melanie.rueegg@example.ch;Aktiv;Gartenstrasse 61;4000;Basel
+223;Herr;;Meyer;Marco;21.02.2007;Männlich;071 773 65 27;076 240 92 63;marco.meyer@example.ch;Aktiv;Industriestrasse 93;8000;Zürich
+224;Frau;;Aebi;Livia;06.10.1954;Weiblich;081 939 67 59;078 331 33 64;livia.aebi2@example.ch;Aktiv;Lindenstrasse 55;9000;St. Gallen
+225;Frau;;Bianchi;Ladina;17.12.1978;Weiblich;081 690 56 14;076 681 71 57;ladina.bianchi@example.ch;Aktiv;Mühlestrasse 119;1200;Genf
+226;Herr;;Perrin;Bruno;24.03.1998;Männlich;091 639 45 69;076 635 88 21;bruno.perrin@example.ch;Aktiv;;;
+227;Herr;Prof.;Blanc;Daniel;02.10.1969;Männlich;061 647 11 70;079 624 70 83;daniel.blanc@example.ch;Aktiv;;;
+228;Frau;;Berger;Jasmin;06.05.1971;Weiblich;061 844 82 43;076 744 70 84;jasmin.berger@example.ch;Aktiv;Ringstrasse 96;8000;Zürich
+229;Herr;;Girard;Martin;20.12.1971;Männlich;044 229 74 19;078 358 26 88;martin.girard@example.ch;Aktiv;Feldweg 63;8000;Zürich
+230;Herr;;Muster;David;06.10.1994;Männlich;071 478 32 43;077 596 33 77;david.muster@example.ch;Aktiv;Industriestrasse 85;1700;Freiburg
+231;Frau;;Weber;Julia;27.10.1990;Weiblich;071 888 59 40;079 843 91 31;julia.weber@example.ch;Aktiv;Rosenweg 97;3000;Bern
+232;Herr;;Schmid;Yannick;02.02.1975;Männlich;071 408 70 78;077 488 97 59;yannick.schmid@example.ch;Aktiv;Alpenblickstrasse 52;3000;Bern
+233;Herr;Dr. med.;Ferrari;Stefan;10.01.1953;Männlich;061 642 97 15;076 644 91 55;stefan.ferrari2@example.ch;Passiv;Sonnenweg 87;6000;Luzern
+234;Keine Anrede;;Dubois;Sam;09.06.1974;Divers;091 698 60 69;077 851 96 85;sam.dubois@example.ch;Aktiv;Dorfstrasse 33;1200;Genf
+235;Frau;;Sutter;Priska;18.06.1985;Weiblich;044 112 62 22;076 801 67 54;priska.sutter@example.ch;Aktiv;Bahnhofstrasse 107;8000;Zürich
+236;Herr;;Moser;Adrian;01.01.1984;Männlich;091 955 37 86;076 825 25 21;adrian.moser@example.ch;Aktiv;Seestrasse 77;8000;Zürich
+237;Frau;;Bühler;Petra;23.02.1985;Weiblich;071 776 19 91;079 383 64 98;petra.buehler@example.ch;Aktiv;Bergstrasse 38;3000;Bern
+238;Frau;;Moser;Laura;09.02.1988;Weiblich;061 161 43 43;077 551 18 72;laura.moser@example.ch;Aktiv;Sonnenweg 50;8000;Zürich
+239;Keine Anrede;;Dubois;Noel;21.03.1958;Divers;081 887 65 37;076 552 43 23;noel.dubois@example.ch;Aktiv;Dorfstrasse 19;6900;Lugano
+240;Herr;;Costa;Daniel;01.08.1976;Männlich;091 100 14 95;079 372 29 99;daniel.costa@example.ch;Aktiv;Industriestrasse 84;6900;Lugano
+241;Herr;;Costa;Silvan;23.09.2008;Männlich;071 964 18 79;077 103 59 98;silvan.costa@example.ch;Aktiv;Rosenweg 56;6900;Lugano
+242;Frau;;Schneider;Carmen;22.06.1963;Weiblich;;;carmen.schneider@example.ch;Aktiv;Sonnenweg 8;1200;Genf
+243;Frau;;Kaufmann;Karin;27.02.1965;Weiblich;031 280 80 15;079 776 34 48;karin.kaufmann@example.ch;Aktiv;Feldweg 83;9000;St. Gallen
+244;Frau;;Favre;Monika;03.08.1963;Weiblich;044 297 13 85;077 600 59 18;monika.favre@example.ch;Aktiv;Kirchweg 18;6000;Luzern
+245;Frau;;Bianchi;Simone;02.01.1951;Weiblich;091 143 61 25;077 926 93 95;simone.bianchi@example.ch;Aktiv;Seestrasse 44;1000;Lausanne
+246;Frau;Dr.;Steiner;Esther;02.02.1979;Weiblich;044 582 89 15;077 818 93 26;esther.steiner@example.ch;Aktiv;Rosenweg 84;3000;Bern
+247;;Dr.;Trüb;Andreas;15.02.1969;;044 216 73 86;077 164 35 64;andreas.trueb@example.ch;Aktiv;Waldweg 9;3000;Bern
+248;Herr;;Roth;Silvan;19.11.1993;Männlich;031 882 15 85;077 443 18 25;silvan.roth@example.ch;Aktiv;Industriestrasse 42;7000;Chur
+249;Herr;;Fischer;Jan;06.09.1961;Männlich;081 141 27 22;079 896 30 12;jan.fischer@example.ch;Aktiv;Schulstrasse 119;6000;Luzern
+250;Frau;Dr.;Muster;Karin;03.03.2008;Weiblich;091 926 70 98;077 311 28 91;karin.muster@example.ch;Aktiv;Feldweg 54;1700;Freiburg
+251;Herr;;Christen;Roger;20.03.1978;Männlich;091 611 88 21;078 456 63 10;roger.christen@example.ch;Aktiv;Ringstrasse 24;8000;Zürich
+252;Frau;;Schneider;Corinne;20.02.1941;Weiblich;031 575 90 94;077 383 16 34;corinne.schneider@example.ch;Aktiv;Bachstrasse 65;1000;Lausanne
+253;Herr;;Blanc;Stefan;06.08.1948;Männlich;091 472 46 36;079 357 52 88;stefan.blanc@example.ch;Aktiv;Seestrasse 7;3000;Bern
+254;Frau;Dr.;Meier;Nina;02.12.1995;Weiblich;;;nina.meier@example.ch;Aktiv;Gartenstrasse 21;3600;Thun
+255;Frau;Dr.;Rossi;Denise;08.02.1994;Weiblich;061 529 35 96;078 335 24 51;denise.rossi@example.ch;Aktiv;Waldweg 75;6000;Luzern
+256;Herr;Prof.;Wenger;Lukas;13.04.1956;Männlich;;;lukas.wenger@example.ch;Aktiv;Hauptstrasse 61;4000;Basel
+257;Frau;;Röthlisberger;Nicole;07.03.1953;Weiblich;061 239 68 34;078 376 35 52;nicole.roethlisberger@example.ch;Passiv;Gartenstrasse 50;9000;St. Gallen
+258;Herr;Dr. med.;Schmid;Sven;04.03.1973;Männlich;031 878 53 38;078 718 30 91;sven.schmid@example.ch;Aktiv;Alpenblickstrasse 54;9000;St. Gallen
+259;Keine Anrede;;Costa;Sascha;14.02.1979;Divers;031 705 70 69;078 114 64 41;sascha.costa@example.ch;Aktiv;Rosenweg 111;2500;Biel/Bienne
+260;Herr;;Silva;Philipp;05.10.1980;Männlich;044 141 70 74;076 535 77 60;philipp.silva@example.ch;Aktiv;Bahnhofstrasse 54;1950;Sitten
+261;Herr;Dr.;Marti;Andreas;03.04.1945;Männlich;091 516 37 26;078 402 40 92;;Passiv;Bahnhofstrasse 89;7000;Chur
+262;Keine Anrede;;Amrein;Kim;23.03.1969;Divers;081 124 68 69;077 995 61 33;kim.amrein@example.ch;Aktiv;Waldweg 96;9000;St. Gallen
+263;Frau;;Favre;Michelle;21.12.1949;Weiblich;091 440 77 14;078 536 44 99;michelle.favre@example.ch;Passiv;Hauptstrasse 50;8000;Zürich
+264;Frau;;Costa;Esther;03.11.1982;Weiblich;091 472 16 24;079 474 69 89;esther.costa@example.ch;Aktiv;Seestrasse 66;1000;Lausanne
+265;Herr;;Gerber;Nicolas;23.09.2000;Männlich;031 652 24 93;079 855 84 99;nicolas.gerber@example.ch;Aktiv;Industriestrasse 43;4000;Basel
+266;Herr;;Roth;Simon;17.05.1963;Männlich;044 481 54 67;079 613 77 25;;Aktiv;Bergstrasse 7;6000;Luzern
+267;Herr;;Blanc;Matthias;20.08.1971;Männlich;071 189 20 60;077 395 19 23;matthias.blanc@example.ch;Aktiv;Hauptstrasse 25;1000;Lausanne
+268;Herr;Dr.;Perrin;Christian;05.08.1990;Männlich;044 400 63 97;077 585 54 63;christian.perrin@example.ch;Passiv;Lindenstrasse 81;4000;Basel
+269;Herr;Dr.;Wyss;Peter;01.02.1984;Männlich;061 521 84 53;078 597 85 95;peter.wyss@example.ch;Aktiv;Lindenstrasse 83;4000;Basel
+270;Frau;;Marti;Rahel;19.05.1950;Weiblich;061 332 71 57;078 888 16 28;rahel.marti@example.ch;Aktiv;Feldweg 22;3000;Bern
+271;Herr;;Fischer;Werner;18.12.1988;Männlich;;;werner.fischer@example.ch;Aktiv;Gartenstrasse 23;1200;Genf
+272;Frau;;Fischer;Nadine;02.02.1978;Weiblich;061 688 26 66;078 478 33 36;nadine.fischer@example.ch;Aktiv;;;
+273;Frau;;Girard;Claudia;05.06.1968;Weiblich;031 646 48 25;076 514 73 28;claudia.girard@example.ch;Aktiv;Alpenblickstrasse 70;8400;Winterthur
+274;Frau;Dr.;Steiner;Laura;18.12.2008;Weiblich;091 402 70 47;077 918 82 66;laura.steiner@example.ch;Aktiv;Poststrasse 83;6900;Lugano
+275;Herr;;Egli;Christian;05.01.1947;Männlich;044 511 89 38;079 465 21 51;christian.egli@example.ch;Aktiv;Dorfstrasse 40;7000;Chur
+276;Herr;;Silva;Roman;26.04.1941;Männlich;044 651 67 96;076 624 60 34;roman.silva@example.ch;Aktiv;Kirchweg 3;1200;Genf
+277;Frau;;Santos;Livia;22.01.1943;Weiblich;091 974 64 57;079 481 11 46;livia.santos@example.ch;Aktiv;Sonnenweg 19;1000;Lausanne
+278;Herr;;Marti;Marc;24.04.1997;Männlich;071 395 30 64;079 242 85 86;marc.marti@example.ch;Aktiv;Mühlestrasse 103;6000;Luzern
+279;Herr;;Graf;Michael;11.09.1948;Männlich;071 190 10 62;078 524 32 81;michael.graf@example.ch;Aktiv;Waldweg 97;8000;Zürich
+280;Herr;;Schwarz;Sven;06.04.1991;Männlich;;;sven.schwarz@example.ch;Aktiv;Feldweg 71;8400;Winterthur
+281;Frau;;Arnold;Simone;18.08.1970;Weiblich;044 257 43 48;079 227 93 95;simone.arnold@example.ch;Aktiv;Schulstrasse 4;9000;St. Gallen
+282;Frau;;Gerber;Jasmin;21.12.1946;Weiblich;061 604 18 86;078 695 71 82;jasmin.gerber@example.ch;Aktiv;Bahnhofstrasse 16;4000;Basel
+283;Herr;;Favre;David;27.12.1948;Männlich;091 689 12 43;077 695 17 28;david.favre@example.ch;Aktiv;Rebweg 66;3000;Bern
+284;Herr;Dr.;Berger;Marco;09.01.1988;Männlich;061 149 47 47;076 626 34 90;;Aktiv;Mühlestrasse 82;1000;Lausanne
+285;Herr;;Santos;Andreas;11.09.1987;Männlich;091 814 98 56;076 647 84 55;andreas.santos@example.ch;Aktiv;Feldweg 35;1200;Genf
+286;Frau;;Meyer;Sandra;12.05.1942;Weiblich;031 204 37 29;077 951 34 81;sandra.meyer@example.ch;Aktiv;Mühlestrasse 44;6900;Lugano
+287;Frau;;Baur;Priska;15.07.1994;Weiblich;031 117 71 54;078 807 56 27;priska.baur@example.ch;Aktiv;Dorfstrasse 105;8000;Zürich
+288;Frau;;Ferrari;Livia;23.03.1965;Weiblich;044 327 26 98;077 804 39 49;livia.ferrari@example.ch;Passiv;Bahnhofstrasse 96;1200;Genf
+289;Herr;Dr.;Weber;Marco;25.12.1954;Männlich;044 179 12 71;079 143 35 23;marco.weber@example.ch;Aktiv;;;
+290;Herr;Dr.;Silva;Dominik;04.08.2001;Männlich;061 783 11 22;076 716 36 85;dominik.silva@example.ch;Aktiv;Seestrasse 9;4000;Basel
+291;Frau;Dr. med.;Girard;Regula;03.01.1964;Weiblich;061 460 30 74;077 617 82 18;regula.girard@example.ch;Passiv;Bergstrasse 75;3000;Bern
+292;Herr;;Schwarz;Timo;07.09.2007;Männlich;;;timo.schwarz@example.ch;Aktiv;Feldweg 22;3000;Bern
+293;Frau;;Muster;Esther;17.04.1996;Weiblich;081 289 66 96;076 285 55 58;esther.muster2@example.ch;Passiv;Rebweg 90;9000;St. Gallen
+294;Herr;;Frei;Dominik;25.02.1956;Männlich;044 632 27 73;078 821 46 81;dominik.frei@example.ch;Aktiv;Dorfstrasse 60;1200;Genf
+295;Frau;;Roth;Karin;13.02.1945;Weiblich;091 419 97 66;077 667 62 47;karin.roth@example.ch;Aktiv;Alpenblickstrasse 77;1200;Genf
+296;Keine Anrede;;Brunner;Sam;22.08.2000;Divers;091 603 96 23;079 548 76 94;sam.brunner@example.ch;Aktiv;Gartenstrasse 2;1000;Lausanne
+297;Frau;;Steiner;Barbara;23.07.1958;Weiblich;031 166 56 35;078 305 86 61;barbara.steiner@example.ch;Aktiv;Dorfstrasse 95;1700;Freiburg
+298;Herr;Dr.;Egli;Philipp;25.05.1945;Männlich;091 509 55 70;079 596 75 45;philipp.egli@example.ch;Aktiv;Waldweg 35;2000;Neuenburg
+299;Herr;;Huber;Werner;16.05.1993;Männlich;031 130 22 16;076 610 96 13;werner.huber@example.ch;Aktiv;Schulstrasse 81;6900;Lugano
+300;Keine Anrede;;Santos;Sam;10.03.1967;Divers;081 885 73 69;077 400 94 73;sam.santos@example.ch;Aktiv;Hauptstrasse 85;8000;Zürich

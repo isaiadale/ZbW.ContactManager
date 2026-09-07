@@ -55,6 +55,9 @@ Die Anwendung startet mit einem Anmeldefenster.
 - **Login** mit dateibasierten Zugangsdaten (`users.json`, PBKDF2-Hash)
 - **CSV-Import und -Export** für Mitarbeitende und Kundschaft, inklusive Beispieldateien
   (siehe [Testdaten](#testdaten))
+- **Dashboard** mit Kennzahlen zu Mitarbeitenden, Lernenden und Kundschaft (Mengenverhältnis,
+  Status, Personal- und Zeitverlauf-Auswertungen, Datenqualität), erreichbar über eine
+  eigene Kachel auf der Startseite
 
 ---
 
@@ -146,7 +149,9 @@ Startprojekt setzen, F5.
 
 Der Ordner **[`Testdaten/`](Testdaten/)** enthält CSV-Dateien zum Ausprobieren des Imports:
 
-- `Mitarbeitende_gueltig.csv` / `Kundschaft_gueltig.csv` — fehlerfreie Datensätze
+- `Mitarbeitende_gueltig.csv` / `Kundschaft_gueltig.csv` — fehlerfreie Datensätze (100
+  Mitarbeitende inkl. 10 Lernende, 300 Kundschaft), bewusst gross und mit breiter Streuung
+  über alle Felder, damit auch das Dashboard nach dem Import aussagekräftige Werte zeigt
 - `Mitarbeitende_fehlerhaft.csv` / `Kundschaft_fehlerhaft.csv` — pro Zeile **ein**
   gezielter Fehler, um Validierung und Fehlermeldungen vorzuführen
 - `Mitarbeitende_KopfzeileUnvollstaendig.csv` und `Leer.csv` — fehlerhafte Dateien, die
