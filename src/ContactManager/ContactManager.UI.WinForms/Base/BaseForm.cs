@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
 using System.Windows.Forms;
 using System.Drawing;
@@ -24,6 +25,13 @@ namespace ContactManager.UI.WinForms.Base
 
             // Einheitliche Hintergrundfarbe gemäss Farbpalette (statt Standard-Grau)
             this.BackColor = AppColors.Background;
+
+            // Einheitliches Fenster-/Taskleisten-Icon für alle Formulare (inkl. Login).
+            string iconPath = Path.Combine(AppContext.BaseDirectory, "Resources", "ContactManager.ico");
+            if (File.Exists(iconPath))
+            {
+                this.Icon = new Icon(iconPath);
+            }
         }
     }
 }
