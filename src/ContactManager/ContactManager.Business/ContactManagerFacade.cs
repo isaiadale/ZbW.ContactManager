@@ -33,6 +33,7 @@ namespace ContactManager.Business
             Employees = new EmployeeService(repository, data);
             Notes = new ContactNoteService(repository, data);
             Search = new SearchService(data.Customers, data.Employees);
+            Statistics = new StatisticsService(data.Customers, data.Employees);
         }
 
         /// <summary>Geschäftslogik für Kunden: Lesen, Erfassen, Mutieren, Löschen, Aktivieren/Deaktivieren.</summary>
@@ -46,5 +47,8 @@ namespace ContactManager.Business
 
         /// <summary>Lesende Suche über alle Kunden und Mitarbeiter/Lernende.</summary>
         public SearchService Search { get; }
+
+        /// <summary>Lesende Auswertungen über den gesamten Datenstamm für das Dashboard.</summary>
+        public StatisticsService Statistics { get; }
     }
 }
