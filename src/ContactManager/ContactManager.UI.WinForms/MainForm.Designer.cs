@@ -55,7 +55,7 @@
             // PnlCustomerTile
             // 
             PnlCustomerTile.Controls.Add(LblCustomerTile);
-            PnlCustomerTile.Location = new Point(90, 155);
+            PnlCustomerTile.Location = new Point(225, 155);
             PnlCustomerTile.Margin = new Padding(2);
             PnlCustomerTile.Name = "PnlCustomerTile";
             PnlCustomerTile.Size = new Size(230, 170);
@@ -77,7 +77,7 @@
             // PnlEmployeeTile
             // 
             PnlEmployeeTile.Controls.Add(LblEmployeeTile);
-            PnlEmployeeTile.Location = new Point(360, 155);
+            PnlEmployeeTile.Location = new Point(495, 155);
             PnlEmployeeTile.Margin = new Padding(2);
             PnlEmployeeTile.Name = "PnlEmployeeTile";
             PnlEmployeeTile.Size = new Size(230, 170);
@@ -99,10 +99,10 @@
             // PnlDashboardTile
             // 
             PnlDashboardTile.Controls.Add(LblDashboardTile);
-            PnlDashboardTile.Location = new Point(630, 155);
+            PnlDashboardTile.Location = new Point(225, 365);
             PnlDashboardTile.Margin = new Padding(2);
             PnlDashboardTile.Name = "PnlDashboardTile";
-            PnlDashboardTile.Size = new Size(230, 170);
+            PnlDashboardTile.Size = new Size(500, 119);
             PnlDashboardTile.TabIndex = 3;
             // 
             // LblDashboardTile
@@ -112,7 +112,7 @@
             LblDashboardTile.Location = new Point(0, 0);
             LblDashboardTile.Margin = new Padding(2, 0, 2, 0);
             LblDashboardTile.Name = "LblDashboardTile";
-            LblDashboardTile.Size = new Size(230, 170);
+            LblDashboardTile.Size = new Size(500, 119);
             LblDashboardTile.TabIndex = 0;
             LblDashboardTile.Text = "Dashboard";
             LblDashboardTile.TextAlign = ContentAlignment.MiddleCenter;
@@ -122,7 +122,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 17F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(950, 441);
+            ClientSize = new Size(950, 524);
             Controls.Add(PnlDashboardTile);
             Controls.Add(PnlEmployeeTile);
             Controls.Add(PnlCustomerTile);
