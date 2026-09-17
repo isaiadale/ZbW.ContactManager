@@ -126,7 +126,7 @@
             LblDateOfBirth.Name = "LblDateOfBirth";
             LblDateOfBirth.Size = new Size(170, 35);
             LblDateOfBirth.TabIndex = 17;
-            LblDateOfBirth.Text = "Geburtsdatum *";
+            LblDateOfBirth.Text = "Geburtsdatum";
             // 
             // LblFirstName
             // 
@@ -163,7 +163,7 @@
             LblGender.Name = "LblGender";
             LblGender.Size = new Size(170, 35);
             LblGender.TabIndex = 20;
-            LblGender.Text = "Geschlecht *";
+            LblGender.Text = "Geschlecht";
             // 
             // CombGender
             // 
@@ -232,7 +232,7 @@
             LblNationality.Name = "LblNationality";
             LblNationality.Size = new Size(170, 35);
             LblNationality.TabIndex = 28;
-            LblNationality.Text = "Nationalität *";
+            LblNationality.Text = "Nationalität";
             // 
             // GrpPersonalData
             // 
@@ -310,7 +310,7 @@
             LblPrivateCity.Name = "LblPrivateCity";
             LblPrivateCity.Size = new Size(170, 35);
             LblPrivateCity.TabIndex = 24;
-            LblPrivateCity.Text = "Ort *";
+            LblPrivateCity.Text = "Ort";
             // 
             // TxtbPrivateCity
             // 
@@ -329,7 +329,7 @@
             LblPrivateStreet.Name = "LblPrivateStreet";
             LblPrivateStreet.Size = new Size(170, 35);
             LblPrivateStreet.TabIndex = 17;
-            LblPrivateStreet.Text = "Strasse und Nr. *";
+            LblPrivateStreet.Text = "Strasse und Nr.";
             // 
             // TxtbPrivateStreet
             // 
@@ -348,7 +348,7 @@
             LblPrivatePostalCode.Name = "LblPrivatePostalCode";
             LblPrivatePostalCode.Size = new Size(170, 35);
             LblPrivatePostalCode.TabIndex = 22;
-            LblPrivatePostalCode.Text = "Postleitzahl *";
+            LblPrivatePostalCode.Text = "Postleitzahl";
             // 
             // TxtbPrivatePostalCode
             // 
@@ -485,7 +485,7 @@
             LblDepartment.Name = "LblDepartment";
             LblDepartment.Size = new Size(170, 35);
             LblDepartment.TabIndex = 17;
-            LblDepartment.Text = "Abteilung *";
+            LblDepartment.Text = "Abteilung";
             // 
             // LblJobTitle
             // 
@@ -494,7 +494,7 @@
             LblJobTitle.Name = "LblJobTitle";
             LblJobTitle.Size = new Size(170, 35);
             LblJobTitle.TabIndex = 22;
-            LblJobTitle.Text = "Rolle *";
+            LblJobTitle.Text = "Rolle";
             // 
             // TxtbJobTitle
             // 
@@ -538,7 +538,7 @@
             LblBusinessPhone.Name = "LblBusinessPhone";
             LblBusinessPhone.Size = new Size(170, 35);
             LblBusinessPhone.TabIndex = 26;
-            LblBusinessPhone.Text = "Telefon *";
+            LblBusinessPhone.Text = "Telefon";
             // 
             // LblMobilePhone
             // 
