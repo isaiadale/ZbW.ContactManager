@@ -127,6 +127,11 @@ dotnet run --project ContactManager.UI.WinForms
 > **Plattform:** `ContactManager.UI.WinForms` zielt auf `net10.0-windows` und läuft nur
 > unter **Windows**. Die drei Bibliotheksprojekte (`net10.0`) sind plattformunabhängig.
 
+> **Anzeigeskalierung:** Die Formulare sind auf eine Windows-Skalierung von **100 %** ausgelegt.
+> Bei höheren Werten (125 %, 150 % …) können Beschriftungen abgeschnitten werden oder Fenster
+> über den Bildschirmrand hinausragen. Für ein optimales Benutzererlebnis unter
+> *Einstellungen → System → Anzeige → Skalierung* den Wert **100 %** einstellen.
+
 In Visual Studio: `ContactManager.slnx` öffnen, `ContactManager.UI.WinForms` als
 Startprojekt setzen, F5.
 

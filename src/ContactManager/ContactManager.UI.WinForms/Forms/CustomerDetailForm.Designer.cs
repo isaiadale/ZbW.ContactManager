@@ -107,7 +107,7 @@
             LblFirstName.Name = "LblFirstName";
             LblFirstName.Size = new Size(170, 35);
             LblFirstName.TabIndex = 16;
-            LblFirstName.Text = "Vorname";
+            LblFirstName.Text = "Vorname *";
             // 
             // LblLastName
             // 
@@ -116,7 +116,7 @@
             LblLastName.Name = "LblLastName";
             LblLastName.Size = new Size(170, 35);
             LblLastName.TabIndex = 15;
-            LblLastName.Text = "Nachname";
+            LblLastName.Text = "Nachname *";
             // 
             // TxtbLastName
             // 
