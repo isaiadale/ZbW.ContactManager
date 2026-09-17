@@ -77,7 +77,9 @@ einen CSV-Import-Funktionstest nötig wären. Konkret:
 - **Fehlende Angaben:** eine Handvoll Personen ohne E-Mail bzw. ohne Telefon, 15 Kundschaft
   ganz ohne Adresse — für die Kacheln zur Datenqualität.
 - **Orte/PLZ der Kundschaft:** rund 15 echte Schweizer Städte mit ungleicher Häufigkeit
-  (Zürich/Genf am häufigsten) für „Top Orte" und „Top Postleitzahlen".
+  (Zürich/Genf am häufigsten) für „Top Orte" und „Top Postleitzahlen". Grössere Städte
+  verteilen sich auf mehrere echte Quartier-PLZ (z. B. Zürich 8001/8004/8050, St. Gallen
+  9000/9014/9016), damit „Top Postleitzahlen" eine andere Rangfolge zeigt als „Top Orte".
 
 ⚠️ **Einzige Lücke:** Die CSV-Dateien kennen keine Notizen-Spalte (Notizen hängen an einer
 bereits gespeicherten Kunden-Id und einem Zeitstempel, siehe `ContactNoteService.AddNote`).
